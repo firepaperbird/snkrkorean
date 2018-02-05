@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css"/>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            .text_edit {
+                width: 100%;
+                height: 300px;
+                resize: none;
+            }
+            #view_text {
+                width: 100%;
+            }
+			.footer {
+				  position: absolute;
+				  bottom: 0;
+				  color: white;
+				  width: 100%;
+				  height: 40px; /* Set the fixed height of the footer here */
+				  line-height: 40px; /* Vertically center the text there */
+				  background-color: #444444;
+				}
+        </style>
+		<script>
+			var token = sessionStorage.getItem(tokenKey);
+			var headers = {};
+			if (token) {
+				headers.Authorization = 'Bearer ' + token;
+			}
+
+			$.ajax({
+				type: 'GET',
+				url: 'api/values/1',
+				headers: headers
+			}).done(function (data) {
+				self.result(data);
+			}).fail(showError);
+		</script>
+    </head>
+    <body>
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">ASM4</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.jsp">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="register.jsp">REGISTER</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container" style="padding-top: 50px;">
+          <div class="col-8"
+            <form id="form1" runat="server" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">User Name</label>
+                    <input type="text" name="username" value="" placeholder="Enter UserName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/><br/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" name="password" value="" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                </div>
+                <input type="submit" value="Login" id="btnsubmit" class="btn btn-primary"/>
+                <input type="submit" value="Register" name="btnAction" class="btn btn-primary"/>
+            </form>
+          </div>
+        </div>
+<div class="footer navbar-fixed-bottom text-center">
+    Copyright © LeMinhQuan 2018
+</div>      
+        <script>
+            history.pushState(null, document.title, location.href);
+            window.addEventListener('popstate', function (event)
+            {
+              history.pushState(null, document.title, location.href);
+            });
+        </script>
+    </body>
+</html>
