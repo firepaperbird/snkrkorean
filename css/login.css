@@ -1,0 +1,42 @@
+#container{
+	height: 1000px;
+	border: solid;
+	padding: 20px;
+}
+#container>div{
+	margin: 0 auto;	
+	/*border: solid;*/
+	padding: 0;
+}
+#main-logo{
+	
+	/*width: 261px;*/
+}
+#main-fbtext{
+	margin-top: 38px !important;
+	font-size: 23px;
+	text-align: center;
+
+}
+#main-fbtext>a>img{
+	width: 260px;
+
+}
+#lg-text{
+	margin-top: 20px;
+}
+#lg-text>div{
+	/*draw line*/
+	width:100%; text-align:center; border-bottom: 1px solid #707070; line-height:0.1em; margin:10px 0 20px;
+	display:inline-block;
+}
+#lg-text>div span{
+	background:#181818; 
+	padding:0 10px; 
+}
+/*nav{
+	opacity:0;
+}
+nav:hover{
+	opacity:1;
+}*/
