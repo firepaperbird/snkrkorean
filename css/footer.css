@@ -1,12 +1,14 @@
  .myFooter{
  	width: 100%;
  	background-color: #222222;
+ 	position: absolute;
+ 	bottom: 0;
  }
  .social-bar{
  	height: 70px;
  	width: 100%;
- 	padding-left: 44.4% ;
- 	padding-right: auto ;
+ 	/*padding-left: 44.4% ;
+ 	padding-right: auto ;*/
  	padding-top: 17px;
  	background: rgba(182,94,186,1);
 	background: -moz-linear-gradient(left, rgba(182,94,186,1) 0%, rgba(46,141,225,1) 100%);
@@ -19,16 +21,22 @@
  }
  .social-bar-icons{
  	float: left;
- 	margin-right: 51px; 
+ 	margin-left: 25px; 
+ 	margin-right: 25px;
  }
- .social-bar-icons>img{
- 	display: block ;/*for the img inside your div */  
+ .social-bar-icons>a>img{
 	height: 37px;
  }
+.social-bar-inter{
+	margin: 0 auto;
+	width: 268px;
+	height: 100%;
+}
+
 .second-bar{
 	height: 100px;
  	width: 100%;
- 	padding-left: 298px;
+ 	padding-left: 15.5%;
  	padding-top: 34px;
 }
 .footer-item{
@@ -48,8 +56,33 @@ a:hover {
 }
 .footer-copyright{
 	float: right;
-	margin-right: 278px;
+	margin-right: 14.5%;
 	width: 215px;
 	height: 48px;
 	font-size: 12px;
+}
+/*mobile*/
+@media (max-width: 988px) {
+	.social-bar-inter{
+
+	}
+	.social-bar-icons>img{
+	 	display: block ;/*for the img inside your div */  
+		height: 37px;
+	 }	
+	.second-bar>.footer-item{
+		font-size: 17px;
+		margin-right: 15px;
+	}
+	.second-bar{
+	 	width: 100%;
+	 	padding-left: 15.5%;
+	 	padding-top: 10px;
+	}
+	.footer-copyright{
+		float: right;
+		width: 215px;
+		height: 48px;
+		font-size: 12px;
+	}
 }

@@ -55,6 +55,7 @@ a.nav-link:hover{
 	color: rgba(182,94,186,1)!important;
 }
 
+/*mobile*/
 @media (max-width: 988px) {
 	.form-inline{
 		width: 85.5%;
