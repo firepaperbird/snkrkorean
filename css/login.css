@@ -1,7 +1,7 @@
 #container{
-	height: 1000px;
-	border: solid;
+	height: 890px;
 	padding: 20px;
+	padding-top: 60px;
 }
 #container>div{
 	margin: 0 auto;	
@@ -9,14 +9,13 @@
 	padding: 0;
 }
 #main-logo{
-	
+	width: 12.5% !important;
 	/*width: 261px;*/
 }
 #main-fbtext{
 	margin-top: 38px !important;
 	font-size: 23px;
 	text-align: center;
-
 }
 #main-fbtext>a>img{
 	width: 260px;
@@ -33,6 +32,42 @@
 #lg-text>div span{
 	background:#181818; 
 	padding:0 10px; 
+}
+.login-form{
+	margin: 0 auto;
+	text-align: left !important;
+	font-size: 18px;
+	color: #EEEEEE;
+}
+.login-form>input{
+	width: 100% !important;
+}
+.login-form button{
+	background-color: #515151 !important;
+	color: #EEEEEE;
+	font-size: 18px;
+	width: 122px;
+	height: 45px;
+	border-radius: 4px;
+	margin-left: 28%;
+}
+.login-form a{
+	font-size: 16px;
+}
+#main-fbtext, .login-form{
+	width: 14.4% !important;
+}
+@media (max-width: 988px) {
+
+	#main-fbtext, .login-form{
+		width: 100% !important;
+	}
+	#main-logo{
+	width: 60% !important;
+	}
+	#container{
+		height: 650px;
+	}
 }
 /*nav{
 	opacity:0;

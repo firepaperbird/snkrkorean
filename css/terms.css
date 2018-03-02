@@ -1,0 +1,15 @@
+#container{
+	margin-top: 21px;
+	margin-bottom: 21px;
+	height: auto;
+	max-width: 1088px;
+	padding: 23px;
+	line-height: 1.6;
+	background-color: #222222;
+}
+br{
+	line-height: 40px;
+}
+.terms-content{
+	font-size: 18px;
+}

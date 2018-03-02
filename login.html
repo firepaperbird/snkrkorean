@@ -15,17 +15,27 @@
 </head>
 <body onload="addstyle()">
     <div id="header-import"></div>
-    <div class="container" id="container">
-        <div class="col-3" id="main-logo">
+    <div class="container-fluid" id="container">
+        <div class="" id="main-logo">
             <a class="navbar-brand" href="index.html">
                 <div class="logo logo-inter"></div><div class="logo-text">SNKR Korea</div>
             </a>
         </div>
-        <div class="col-3" id="main-fbtext">
-            <a href="#"><img src="img/social/fb_login_default.png"></a>            
+        <div class="" id="main-fbtext">
+            <a href="#"><img src="img/social/fb_login_default.png" target="popup" onclick="window.open('https://www.facebook.com','popup','width=400,height=400'); return false;"></a>            
             <div id="lg-text">
-                <div><span>OR</span></div>
+                <div><span>OR</span></div>                
             </div>
+            <div>USE YOUR ACCOUNT</div>
+        </div>
+        <div class="" id="">
+            <form class="login-form">
+                    Username<input class="mr-sm-2 login" type="text" name="username" />
+                    Password<input class="mr-sm-2 login" type="text" name="password" />
+                    <a href="#">Forgot password?</a><br>
+                  <button class="btn btn-private my-2 my-sm-0" type="submit">Sign in</button><br>
+                  <a href="#">Don't have account? Sign up</a>
+            </form>
         </div>
     </div>
     <div id="footer-import"></div>
