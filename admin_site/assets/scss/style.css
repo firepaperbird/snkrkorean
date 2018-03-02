@@ -11,6 +11,10 @@
 * Tags: html, themplate, Sufee-Admin
 --------------------------------------------------------- */
 /* Bootstrap */
+
+#logo{
+  width: 200px !important;
+}
 @import url(../css/animate.css);
 .gaugejs-wrap {
   position: relative;
