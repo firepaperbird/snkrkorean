@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SnkrKorea - Profile</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div id="header-import"></div>
+<div class="container" id="container">
+    <div id="left-site">
+        <input type="button" class="btn btn-default" id="btn-profile" value="Profile">
+        <input type="button" class="btn btn-default" value="Change Password">
+
+    </div>
+    <div id="right-site">
+        <div id="profile" class="item-right">
+            <form>
+                <div class="title">
+                    <p>Your Profile</p>
+                </div>
+                <div class="item-input">
+                    <label for="fullname">Your Name</label>
+                    <input type="text" id="fullname" value="Nguyễn Văn A">
+                </div>
+                <div class="item-input">
+                    <label for="phone">Phone number</label>
+                    <input type="text" id="phone" value="0123465798">
+                </div>
+                <div class="item-input">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" value="abc@xyz.com">
+                </div>
+                <div class="item-input">
+                    <label for="address">Delivery address</label>
+                    <input type="text" id="address" value="123 abc">
+                </div>
+                <input type="button" class="btn-right" id="btn-update" value="Update profile">
+            </form>
+        </div>
+        <div id="change-password" class="item-right">
+            <form>
+                <div class="title">
+                    <p>Change password</p>
+                </div>
+                <div class="item-input">
+                    <label for="oldPassword">Old Password</label>
+                    <input type="password" id="oldPassword" >
+                </div>
+                <div class="item-input">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" >
+                </div>
+                <div class="item-input">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" >
+                </div>
+
+                <input type="button" id="btn-change-password" value="Change Password" class="btn-right">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="cleafboth"></div>
+<div id="footer-import"></div>
+<script>
+    $("#header-import").load("header.html");
+    $("#footer-import").load("footer.html");
+</script>
+<script src="js/profile-page.js"></script>
+</body>
+</html>

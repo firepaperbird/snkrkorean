@@ -1,0 +1,86 @@
+.cleafboth{
+    clear: both;
+}
+#container{
+    height: auto;
+    margin-top: 2%;
+}
+#left-site{
+    width: 20%;
+    height: 1000px;
+    float: left;
+}
+#right-site{
+    width: 60%;
+    background-color: #222222;
+    height: auto;
+    float: left;
+    margin-left: 2%;
+    padding: 3%;
+}
+/*LEFT SITE*/
+
+#left-site > input[type=button]{
+    width: 100%;
+    padding: 8%;
+    margin-bottom: 5%;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: segoeui;
+    font-weight: 700;
+    outline: 0px;
+}
+
+/*RIGHT SITE*/
+.title > p{
+    font-size: 35px;
+    font-family: segoeui;
+    font-weight: bold;
+}
+
+.item-right >form{
+    width: 65%;
+    height: auto;
+    padding: 2%;
+    float: left;
+}
+.item-input{
+    width: 100%;
+    float: left;
+    margin-bottom: 2%;
+}
+.item-input > label{
+    width: 100%;
+    font-size: 18px;
+    color: #EEEEEE;
+    font-family: segoeui;
+    margin: auto;
+}
+.item-input > input{
+    width: 100%;
+    border: 1px solid #707070;
+    outline: 0px;
+    padding: 3% 2%;
+    font-family: segoeui;
+    font-size: 18px;
+    color: black;
+    border-radius: 2%;
+}
+.btn-right{
+    width: 100%;
+    float: left;
+    padding: 3% 2%;
+    margin-top: 10%;
+    background-color: #515151;
+    color: white;
+    font-size: 18px;
+    font-family: segoeui;
+    font-weight: bold;
+    border: none;
+    border-radius: 2%;
+}
+#change-password{
+    display: none;
+}
