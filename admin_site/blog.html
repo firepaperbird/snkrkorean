@@ -10,6 +10,7 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
@@ -45,48 +46,7 @@
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
-                    </li>
-                    <h3 class="menu-title">Menu A</h3><!-- /.menu-title -->
-                    <li class="">
-                        <a href="category.html" class=""> <i class="menu-icon fa fa-sitemap"></i>Category</a>
-                    </li>
-                    <li class="">
-                        <a href="product.html" class=""> <i class="menu-icon fa fa-shopping-cart"></i>Product</a>
-                    </li>
-                    <li class="">
-                        <a href="deal.html" class=""> <i class="menu-icon fa fa-dollar"></i>Deal</a>
-                    </li>                    
-                    <li class="">
-                        <a href="voucher.html" class=""> <i class="menu-icon fa fa-gift"></i>Voucher</a>
-                    </li>  
-                    <li class="">
-                        <a href="blog.html" class=""> <i class="menu-icon fa fa-file-text-o"></i>Blog</a>
-                    </li>  
-
-                    <h3 class="menu-title">Menu B</h3><!-- /.menu-title -->
-
-                    <li class="">
-                        <a href="order.html" class=""> <i class="menu-icon fa fa-money"></i>Order</a>
-                    </li> 
-                    <li class="">
-                        <a href="user.html" class=""> <i class="menu-icon fa fa-users"></i>User Manager</a>
-                    </li> 
-                    <li>
-                        <a href="#"> <i class="menu-icon fa-picture-o"></i>else... </a>
-                    </li>
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="#">logout</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="">Web Setting</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <!-- import from file -->
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
@@ -228,19 +188,10 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Category Manager</h1>
+                        <h1>Blog Manager</h1>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard/Category Manager</li>
-                        </ol>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <!--body content -->
         <div class="content mt-3">
@@ -256,6 +207,9 @@
 
     <!-- Right Panel -->
 
+    <script>
+        $("#main-menu").load("import/main-menu.html");
+    </script> 
     <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
@@ -269,24 +223,5 @@
     <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script>
-        ( function ( $ ) {
-            "use strict";
-
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
-    </script>
-
 </body>
 </html>
