@@ -1,0 +1,14 @@
+#main-frame{
+  width: 100% !important;
+  height: 100%;
+  border-width: 0;
+    border-style: hidden;
+    border-color: initial;
+    border-image: initial;
+}
+.bd-content{
+	/*border: solid;*/
+	padding: 0px;
+	margin-top: 0px;
+	height:calc(100vh - 160px)!important;
+}

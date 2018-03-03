@@ -36,3 +36,7 @@ jQuery(document).ready(function($) {
 
 
 });
+function urlChange(url) {
+    var site = url+'?toolbar=0&amp;navpanes=0&amp;scrollbar=0';
+    document.getElementById('main-frame').src = site;
+}
