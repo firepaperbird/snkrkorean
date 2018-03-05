@@ -24,24 +24,20 @@ $("#loginForm").submit(function(event)
     return false;
 })
 function login(){
-   var request = $.ajax({
-        type:"GET",
-        url: "http://10.82.250.100:8082/category/all",
-        // data:{
-        //   username : $("#email").val(),
-        //     password: $("#password").val()
-        // },
-        cache:false,
-       headers: {
-           'Access-Control-Allow-Origin': '*'
-       }
+   var request = jQuery.ajax({
+        type:"get",
+       dataType:"json",
+        url: "http://snkrshopapi.azurewebsites.net/category/all",
+
+       cache: false
+
     });
     request.done(function (data) {
-        console.log("thành công rồi");
+        console.log("thanh cong");
         console.log(data);
     });
-    request.fail(function (msg) {
-        console.log("fail rồi");
-        console.log(msg);
+    request.fail(function (data) {
+        console.log("fail roi");
     });
+
 }
