@@ -99,6 +99,7 @@
     width: 25%;
     float: left;
     margin-bottom: 5%;
+    margin: 5px;
 }
 .item-image{
     width: 100%;
@@ -135,7 +136,12 @@
 .list .item img{
     width: 100%;
 }
-
+.list{
+    width: 100%;
+}
+#list-product{
+    width: 70%;
+}
 @media (max-width: 988px) {
     #category{
         float: none;
@@ -162,10 +168,9 @@
     }
     .list .item {
         width: 47%;
-        margin-right: 10px;
+        margin: 5px;
     }
     .list{
-        margin: 5px;
     }
     .category-title{
         width: 50%;
