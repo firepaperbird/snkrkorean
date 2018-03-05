@@ -23,29 +23,6 @@ $("#loginForm").submit(function(event)
     });
     return false;
 })
-$(document).ready(function() {
- 
-            // Check if JavaScript is enabled
-            $('body').addClass('js');
-         
-            // Make the checkbox checked on load
-            $('.login-form label').addClass('checked').children('input').attr('checked', true);
-         
-            // Click function
-            $('.login-form label').on('click', function() {
-         
-                if ($(this).children('input').attr('checked')) {
-                        $(this).children('input').attr('checked', false);
-                        $(this).removeClass('checked');
-                }         
-                else {
-                    $(this).children('input').attr('checked', true);
-                    $(this).addClass('checked');
-                }
-         
-            });
-         
-        });
 function login(){
    var request = $.ajax({
         type:"GET",
