@@ -1,6 +1,11 @@
 #container{
     margin-top: 2%;
+    padding : 0px;
     height: 100%;
+    width: 100%;
+    padding-right:  5px;
+    padding-left:  7px;
+
 }
 /*LEFT SITE*/
 #category{
@@ -12,7 +17,7 @@
     float: left;
     width: 80%;
     /*background-color: dodgerblue;*/
-    padding-left: 2%;
+    /*padding-left: 2%;*/
 }
 .clearboth{
     clear: both;
@@ -56,9 +61,14 @@
     float: left;
     width: 100%;
 }
-
+#list-product{
+    width: 65%;
+}
 .head-right > div{
     float: left;
+}
+.head-right{
+    width: 100%;
 }
 .category-title{
     width: 70%;
@@ -88,7 +98,6 @@
 .item{
     width: 25%;
     float: left;
-    margin-right: 8%;
     margin-bottom: 5%;
 }
 .item-image{
@@ -123,4 +132,42 @@
 .item:hover{
     cursor: pointer;
 }
+.list .item img{
+    width: 100%;
+}
 
+@media (max-width: 988px) {
+    #category{
+        float: none;
+        width: 100%
+
+    }
+    #category ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #category li{
+        float: left;
+        width: auto;
+        border: none;
+    }
+    .category-description{
+        visibility: hidden;
+        height: 0px
+    }
+    #list-product{
+        width: 100%;
+    }
+    .list .item {
+        width: 47%;
+        margin-right: 10px;
+    }
+    .list{
+        margin: 5px;
+    }
+    .category-title{
+        width: 50%;
+    }
+}
