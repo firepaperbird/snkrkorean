@@ -22,7 +22,7 @@ $("#loginForm").submit(function(event)
         }
     });
     return false;
-}
+})
 $(document).ready(function() {
  
             // Check if JavaScript is enabled
@@ -46,3 +46,25 @@ $(document).ready(function() {
             });
          
         });
+function login(){
+   var request = $.ajax({
+        type:"GET",
+        url: "http://10.82.250.100:8082/category/all",
+        // data:{
+        //   username : $("#email").val(),
+        //     password: $("#password").val()
+        // },
+        cache:false,
+       headers: {
+           'Access-Control-Allow-Origin': '*'
+       }
+    });
+    request.done(function (data) {
+        console.log("thành công rồi");
+        console.log(data);
+    });
+    request.fail(function (msg) {
+        console.log("fail rồi");
+        console.log(msg);
+    });
+}
