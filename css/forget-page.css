@@ -10,17 +10,14 @@
 	padding: 0;
 }
 #main-logo{
-	width: 12.5% !important;
+	width: 227px !important;
+	margin: 0 auto;
 	/*width: 261px;*/
 }
 #main-fbtext{
 	margin-top: 38px !important;
 	font-size: 23px;
 	text-align: center;
-}
-#main-fbtext>a>img{
-	width: 260px;
-
 }
 #lg-text{
 	margin-top: 20px;
@@ -34,37 +31,39 @@
 	background:#181818; 
 	padding:0 10px; 
 }
-.login-form{
+.forget-form{
+	width: 415px;
+	margin-top: 22px !important;
+}
+.reset-pass-form{
 	margin: 0 auto;
 	text-align: left !important;
 	font-size: 18px;
 	color: #EEEEEE;
 }
-.login-form input{
+.reset-pass-form>input{
 	width: 100% !important;
+	margin-bottom: 40px;
 	padding-left: 10px;
 	padding-right: 10px;
-	border-radius: 5px!important;
+	border-radius: 15px;
 }
-.login-form button{
+.reset-pass-form button{
 	background-color: #515151 !important;
 	color: #EEEEEE;
 	font-size: 18px;
 	width: 122px;
 	height: 45px;
 	border-radius: 5px;
-	margin-left: 28%;
-	margin-top: 15px !important;
+	margin-left: 35%;
 }
-.login-form a{
-	font-size: 16px;
-}
-#main-fbtext, .login-form{
-	width: 260px !important;
+
+#main-fbtext{
+	width: 320px !important;
 }
 @media (max-width: 988px) {
 
-	#main-fbtext, .login-form{
+	#main-fbtext, .reset-pass-form{
 		width: 100% !important;
 	}
 	#main-logo{

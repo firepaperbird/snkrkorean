@@ -81,11 +81,14 @@
     width: 30%;
 }
 .sort-box > select{
-    width: 70%;
-    border: 1px solid #707070;
+    width: 100%;
+    /*border: 1px solid #707070;*/
     background-color: #2C2C2C;
     color: #EEEEEE;
     font-size: 18px;
+    height: 100%;
+    padding-bottom: 6px !important;
+    padding-left: 15px;
     min-width: 180px;
 }
 
@@ -141,6 +144,11 @@
 }
 #list-product{
     width: 70%;
+}
+.custom-select{
+    background: url(../img/icon/ic_arrow_drop_down_white_24dp_1x.png) no-repeat scroll 98% 46%;
+    /* background-position: 7px 7px;
+    background-repeat: no-repeat;*/
 }
 @media (max-width: 988px) {
     #category{

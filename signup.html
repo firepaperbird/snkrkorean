@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, shrink-to-fit=no">
+    <title>snkrkorea</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <script src="js/login-page.js"></script>    
+    <link rel="stylesheet" id="style" type="text/css" href="">
+<!-- <link rel="stylesheet" href="css/login.css"/> -->
+</head>
+<body onload="addstyle('signup.css')">
+    <div id="header-import"></div>
+    <div class="container-fluid" id="container">
+        <div class="" id="main-logo">
+            <a class="navbar-brand" href="index.html">
+                <div class="logo logo-inter"></div><div class="logo-text">SNKR Korea</div>
+            </a>
+        </div>
+        <div class="" id="main-fbtext">
+            <div>SIGN UP</div>
+            <div style="font-size: 16px;">Please fill in all the fields below</div>
+        </div>
+        <div class="signup-form" id="">
+            <form class="reset-pass-form">
+                <div class="row1 form-row">
+                    <div class="form-collum1">
+                        Username<input class="form-input" type="text" name="username" id="username" />
+                    </div>
+                    <div class="form-collum2">
+                        Phone number<input class="form-input" type="text" name="phone" id="phone" />
+                    </div>
+                </div>
+                <div class="row2 form-row">
+                    <div class="form-collum1">
+                        Password<input class="form-input" type="password" name="password" id="password" />
+                    </div>
+                    <div class="form-collum2">
+                        Re-enter password<input class="form-input" type="password" name="repassword" id="repassword" />
+                    </div>
+                </div>
+                <div class="row3 form-row">
+                    Email<input class="form-input" type="text" name="email" id="email" />
+                </div>
+                <div class="row4 form-row">
+                    Delivery address<input class="form-input" type="text" name="address" id="address" />
+                </div>
+                  <button class="btn btn-private my-2 my-sm-0" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div id="footer-import"></div>
+<script>
+        $("#header-import").load("header.html");
+        $("#footer-import").load("footer.html");
+        goToByScroll();
+</script>     
+</body>
+</html>    
