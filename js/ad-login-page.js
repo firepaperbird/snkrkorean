@@ -24,20 +24,22 @@ $("#loginForm").submit(function(event)
     return false;
 })
 function login(){
-   var request = jQuery.ajax({
-        type:"get",
-       dataType:"json",
-        url: "http://snkrshopapi.azurewebsites.net/category/all",
-
-       cache: false
-
-    });
-    request.done(function (data) {
-        console.log("thanh cong");
+    var dataJSON = {  
+        username: "ngoc",
+        password: "123"
+    } 
+    var request = jQuery.ajax({
+        type:"POST",
+        url: "https://snkrapiv2.azurewebsites.net/user/login",
+        dataType: 'json',
+        data:dataJSON,
+        header: {"Access-Control-Allow-Origin":true},
+        traditional: true,
+        success: function (msg) {
+                        returnVal = msg;
+                    },
+    }); request.done(function (data) {
+        console.log("thanh cong ssss");
         console.log(data);
     });
-    request.fail(function (data) {
-        console.log("fail roi");
-    });
-
 }

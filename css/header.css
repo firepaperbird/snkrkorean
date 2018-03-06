@@ -35,10 +35,20 @@ body{
 	/*search text field*/
 	width: 100% !important;
 	height: 45px;
-	background-color: #2C2C2C;
-	border: 1px solid #707070 !important;
+	/*border: 1px solid #707070 !important;*/
 	border-radius: 15px;
+	background: url(../img/icon/ic_search_white_24dp_1x.png) no-repeat scroll 7px 7px;
+	background-color: #2C2C2C;
+	padding-left:30px;
+	padding-top: 10px;
+	color: gray;
 }
+/*.form-inline img{
+	position: absolute;
+	height:24px;
+	top: 21px;
+	left: 524px;
+}*/
 .logo{
 	width: 47px;
 	height: 47px;
@@ -94,8 +104,8 @@ a.nav-link:hover{
 }
 /* tablet - desktop*/
 @media (min-width: 989px) {
-	.navbar {
-		height: 100px;
+	.navbar {		
+		max-height: 70px !important;
 		min-height:50px !important;
 	}
 }
