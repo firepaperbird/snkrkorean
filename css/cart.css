@@ -1,3 +1,225 @@
 #container{
     margin-top: 2%;
+
+}
+#left-site{
+    width: 69%;
+    height: auto;
+    float: left;
+}
+#right-site{
+    width: 30%;
+    background-color: #222222;
+    float: left;
+    margin-left: 1%;
+    margin-top: 5%;
+    padding: 3% 1%;
+}
+.clearboth{
+    clear: both;
+}
+
+/*LEFT SITE*/
+.head-left{
+    width: 100%;
+    float: left;
+    color: #EEEEEE;
+    font-size: 23px;
+    font-family: segoeui;
+    font-weight: bold;
+    border-bottom: 1px solid #707070;
+    margin-bottom: 2%;
+
+}
+.head-left > p{
+    display: block;
+    width: 80%;
+    float: left;
+    text-transform: uppercase;
+}
+.head-left > div{
+    display: block;
+    width: 20%;
+    float: left;
+    text-align: right;
+    margin-bottom: 1%;
+}
+.head-left > div> span{
+    border-bottom: 1px solid #EEEEEE;
+
+}
+
+.item-cart{
+    width:100%;
+    float: left;
+    border-bottom: 1px solid #707070;
+    padding-bottom: 1%;
+    margin-top: 1%;
+
+}
+.item-content{
+    width: 70%;
+    float: left;
+}
+.close-button{
+    width: 10%;
+    float: right;
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+}
+.item-image{
+    width: 25%;
+    float: left;
+}
+.item-image > img{
+    width: 100%;
+}
+.item-info{
+    width: 75%;
+    float: left;
+    padding-left: 2%;
+    color: #EEEEEE;
+    font-family: segoeui;
+}
+.item-info > div{
+    width: 100%;
+    float: left;
+}
+.item-name{
+    font-size: 24px;
+}
+.item-price{
+    font-size: 24px;
+}
+.item-size{
+
+}
+.size-title{
+    width: 20%;
+    float: left;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold
+}
+.list-size{
+    width: 80%;
+    float: left;
+}
+.size-item{
+    padding: 1% 2%;
+    border-radius: 100%;
+    border: 2px solid white;
+    float: left;
+    font-size: 14px;
+    margin-right: 3%;
+    margin-bottom: 2%;
+}
+.quantity-title{
+    width: 20%;
+    float: left;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.item-quantity > select{
+    width: 70%;
+    float: left;
+    background-color: transparent;
+    border: 1px solid #707070;
+    color: #EEEEEE;
+}
+.item-quantity > select option{
+    background-color: transparent;
+    color: #000000;
+}
+.item-total{
+    font-size: 24px;
+
+}
+
+.total-title{
+    width: 20%;
+    float: left;
+
+}
+.total-price{
+    width: 25%;
+    float: right;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*RIGHT SITE*/
+.btn-coupon{
+    background-color: #515151;
+    border-radius: 5%;
+    border: none;
+    color: #EEEEEE;
+    font-size: 18px;
+    font-family: segoeui;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 8%;
+    padding: 2%;
+}
+.coupon{
+    border-bottom: 1px solid #707070;
+    padding-bottom: 3%;
+    width: 100%;
+    float: left;
+}
+.title{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #707070;
+    padding: 5%;
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+.detail{
+    width: 100%;
+    float: left;
+    padding: 5% 0%;
+    border-bottom: 1px solid #707070;
+}
+.sub-detail{
+    width: 100%;
+    float: left;
+}
+.sub-title{
+    font-size: 18px;
+    color: #EEEEEE;
+    font-weight: bold;
+    float: left;
+}
+.sub-price{
+    font-size: 18px;
+    color: #EEEEEE;
+    float: right;
+}
+.checkout-total{
+    width: 100%;
+    float: left;
+    padding: 5% 0%;
+}
+.btn-checkout{
+    background-color: #515151;
+    border-radius: 5%;
+    border: none;
+    color: #EEEEEE;
+    font-size: 18px;
+    font-family: segoeui;
+    width: 100%;
+    margin-top: 5%;
+    padding: 2%;
+    float: left;
+}
+.description{
+    float: left;
+    color: #EEEEEE;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 5%;
 }
