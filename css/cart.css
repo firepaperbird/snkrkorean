@@ -62,15 +62,24 @@
     float: left;
 }
 .close-button{
-    width: 10%;
-    float: right;
+    width: 40px;    
+    float: right;    
     text-align: center;
     font-size: 23px;
     font-weight: bold;
+    height: 36px;
+    border-radius: 100px;
+}
+.close-button:hover{
+    cursor: pointer;
+    background-color: #515151;
+    color: red;
 }
 .item-image{
     width: 25%;
     float: left;
+    max-width: 261px;
+    max-height: 314px;
 }
 .item-image > img{
     width: 100%;
@@ -92,9 +101,6 @@
 .item-price{
     font-size: 24px;
 }
-.item-size{
-
-}
 .size-title{
     width: 20%;
     float: left;
@@ -115,18 +121,38 @@
     margin-right: 3%;
     margin-bottom: 2%;
 }
+.size-slected{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+.size-item:hover{
+    cursor: pointer;
+    background-color: #515151;
+}
 .quantity-title{
-    width: 20%;
+    width: 91px;
+    margin-top: 7px;
     float: left;
     font-size: 16px;
+    font-weight: bold;
     text-transform: uppercase;
 }
+.item-quantity{
+    margin-top: 10px;
+}
 .item-quantity > select{
+    background: url(../img/icon/ic_arrow_drop_down_white_24dp_1x.png) no-repeat scroll 99% 46%;
     width: 70%;
     float: left;
     background-color: transparent;
     border: 1px solid #707070;
     color: #EEEEEE;
+    padding-right: 30px;
+    text-align-last: right;
+    text-indent: 10px;
+}
+.custom-select>option{
 }
 .item-quantity > select option{
     background-color: transparent;
