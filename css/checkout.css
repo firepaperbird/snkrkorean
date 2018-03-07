@@ -1,0 +1,187 @@
+#container{
+    margin-top: 2%;
+    padding-bottom: 50px;
+    /*background-color: pink;*/
+    height: auto;
+    overflow:auto; /*them dong nay de div auto theo content: */
+}
+#left-site{
+    width: 69%;
+    height: auto;
+    float: left;
+    /*border: solid;*/
+}
+#right-site{
+    width: 30%;
+    background-color: #222222;
+    float: left;
+    margin-left: 1%;
+    margin-top: 5%;
+    padding: 3% 1%;
+    border-radius: 4px;
+}
+#right-site>div{
+    margin-bottom: 10px;
+}
+.clearboth{
+    clear: both;
+}
+
+/*LEFT SITE*/
+.head-left{
+    width: 100%;
+    float: left;
+    color: #EEEEEE;
+    font-size: 23px;
+    font-family: segoeui;
+    font-weight: bold;
+    border-bottom: 1px solid #707070;
+    margin-bottom: 2%;
+
+}
+.head-left > p{
+    display: block;
+    width: 130px;
+    /*margin-right: 70%;*/
+    float: left;
+    text-transform: uppercase;
+}
+.head-left > div{
+    display: block;
+    width: 95px;
+    float: right;
+    text-align: right;
+    margin-bottom: 1%;
+    margin-right: 0px;
+}
+.head-left > div> span{
+    border-bottom: 1px solid #EEEEEE;
+
+}
+.left-form{
+    float: left;
+    width: 100%;
+    max-width: 812px;
+    /*background-color: gray;*/
+    line-height: 45px;
+}
+.form-row{
+    margin: 0 auto;
+    width: 90%;
+    font-size: 18px;
+
+}
+.form-row>input{
+    width: 100%;
+    border-radius: 5px;
+}
+textarea{
+    border-radius: 5px;
+    width: 100%;
+    line-height: normal;
+}
+.checkout-btn{
+    visibility: hidden;
+}
+.row5>#note{
+
+}
+
+/*RIGHT SITE*/
+.title{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #707070;
+    padding: 5%;
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+.detail{
+    width: 100%;
+    float: left;
+    padding: 5% 0%;
+    border-bottom: 1px solid #707070;
+}
+.sub-detail{
+    width: 100%;
+    float: left;
+}
+.sub-title{
+    font-size: 18px;
+    color: #EEEEEE;
+    font-weight: bold;
+    float: left;
+}
+.sub-price{
+    font-size: 18px;
+    color: #EEEEEE;
+    float: right;
+}
+.checkout-total{
+    width: 100%;
+    float: left;
+    padding: 5% 0%;
+}
+.btn-checkout{
+    background-color: #515151;
+    border-radius: 5%;
+    border: none;
+    color: #EEEEEE;
+    font-size: 18px;
+    font-family: segoeui;
+    width: 100%;
+    margin-top: 20px;
+    padding: 2%;
+    float: left;
+}
+.description{
+    float: left;
+    color: #EEEEEE;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 40px;
+}
+@media (max-width: 988px) {
+
+    #left-site, #right-site{
+        width: 92vw !important;
+        padding: 5px;
+        padding-top: 10px;
+        /*margin: 0;*/
+    }
+    .head-left > div{
+        margin-right: 30px;
+    }
+    .item-image{
+        width: 40%;
+    }
+    .item-content{
+        width:  100%;
+    }
+    .item-info{
+        width: 45%;
+        float: left;
+        padding-left: 2%;
+        color: #EEEEEE;
+        font-family: segoeui;
+    }
+    .item-info>div>p{
+        padding: 0px;
+        margin: 0px;
+    }
+    .close-button{
+        float: right;
+    }
+    .item-total{
+        width: 100%;
+        height: 40px;
+        margin-left: 0px;
+    }
+    .list-size{
+        margin-left: 5px;
+        width: 100%;
+        float: left;
+    }
+}
