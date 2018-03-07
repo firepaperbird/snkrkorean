@@ -10,7 +10,7 @@ nav {
 	color: #EEEEEE !important;
 	padding-left: 14.5% !important;
 	padding-top: 28px;
-	width: 100% !important;
+	width: 100vw !important;
 	min-width: 100% !important;
 }
 body{
@@ -65,7 +65,7 @@ body{
 	border-radius: 100px;
 }
 .navbar-brand{
-	min-width: 235px;
+	min-width: 225px;
 	font-size: 30px;
 	font-weight: lighter!important;
 }
@@ -107,5 +107,12 @@ a.nav-link:hover{
 	.navbar {		
 		max-height: 70px !important;
 		min-height:50px !important;
+	}
+	nav{
+		padding-left: 5% !important;
+	}
+	.form-inline{
+		min-width: 226px;
+		margin-left: 0px;
 	}
 }
