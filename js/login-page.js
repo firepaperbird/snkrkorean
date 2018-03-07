@@ -4,5 +4,5 @@ function addstyle(str)
       }
 function goToByScroll(){
       // Scroll
-    $('html,body').animate({ scrollTop: 70} ,'slow');
+    // $('html,body').animate({ scrollTop: 70} ,'slow');
 }
