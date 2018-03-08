@@ -24,13 +24,15 @@ $("#loginForm").submit(function(event)
     return false;
 })
 function login(){
+    console.log(HOST);
     var dataJSON = {  
-        username: "ngoc",
-        password: "123"
-    } 
+        username: jQuery("#email").val(),
+        password: jQuery("#password").val()
+    }
     var request = jQuery.ajax({
         type:"POST",
-        url: "https://snkrapiv2.azurewebsites.net/user/login",
+        // url: "https://snkrapiv2.azurewebsites.net/user/login",
+        url: HOST + "/admin/login",
         dataType: 'json',
         data:dataJSON,
         header: {"Access-Control-Allow-Origin":true},
@@ -39,7 +41,8 @@ function login(){
                         returnVal = msg;
                     },
     }); request.done(function (data) {
-        console.log("thanh cong ssss");
-        console.log(data);
+        if (data === "admin" || data === "staff"){
+            window.location.replace("admin_site/index.html");
+        }
     });
 }

@@ -1,4 +1,4 @@
 /**
  * Created by ngocnt on 3/7/2018.
  */
-var HOST = "localhost:1111";
+var HOST = "http://localhost:52609/";
