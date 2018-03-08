@@ -124,3 +124,6 @@ a.nav-link:hover{
 		margin-left: 0px;
 	}
 }
+.hidden-this{
+	visibility: hidden;
+}
