@@ -1,0 +1,107 @@
+body{
+	background-color: #FFFFFF !important;
+	color: #222222;
+}
+nav{
+	background-color: #222222 !important;
+}
+.container{
+	background-color: #FFFFFF !important;
+	height: auto;
+	width: 80%;
+	/*border: solid black;*/
+	padding: 0px;
+}
+.clearboth{
+	clear: both;
+}
+.social-bar{
+	visibility: hidden;
+}
+.second-bar{
+	background-color: #222222;
+}
+.top-post{
+	background: url(https://snkrvn.com/wp-content/uploads/2018/03/hender-scheme-adidas-originals-spring-summer-2018-campaign-001-1020x685.jpg) no-repeat scroll 50% 0%;
+	background-size: cover;  
+	width: 100%;
+	height: 500px;
+	margin-bottom: 45px;
+	/*border: solid black;*/
+}
+.below-posts{
+	border-bottom: 1px solid #000000;
+	padding-bottom: 45px;
+	height: 855px;
+	width: 100%;	
+
+}
+.left-below{
+	clear: both;
+	width: 50%;
+	float: left;
+	background: url(https://snkrvn.com/wp-content/uploads/2018/03/hender-scheme-adidas-originals-spring-summer-2018-campaign-004.jpg) no-repeat scroll 0% 0%;
+	background-size: cover;  
+	height: 800px;
+}
+.right-below{
+	width: 50%;
+	float: left;
+	background: url(https://snkrvn.com/wp-content/uploads/2018/03/hender-scheme-adidas-originals-spring-summer-2018-campaign-006.jpg) no-repeat scroll 0% 0%;
+	background-size: cover;  
+	height: 800px;
+}
+.below-posts .post-content{
+	background-color: white;
+	width: 90%;
+	padding: 10px;
+	margin-left: 0px;
+	margin-top: 100%;
+}
+.top-post>.post-content{
+	background-color: white;
+	width: 50%;
+	float: left;
+	padding: 10px;
+	margin-top: 20%;
+	/*margin-left: 0px;
+	*/
+}
+/*normal post*/
+.normal-posts>img{
+	width: 407px;
+	float: left;
+}
+.normal-posts{
+	float: left;
+	height: auto;
+	padding-top: 45px;
+	padding-bottom: 45px;
+	width: 100%;
+	border-bottom: 1px solid #000;
+	/*background-color: gray;*/
+}
+.post-content{
+	float: left;
+	width: 40%;
+	height: 250px;
+	margin-left: 30px;
+	padding-top: 35px;
+	/*background-color: yellow;*/
+}
+.post-content>h3{
+	width: 379px;
+	margin-bottom: 30px;
+}
+.post-content>div{
+	width: 100%;
+
+}
+.link-readmore{
+	border-bottom: 1px solid black;
+	padding-bottom: 3px;
+	margin-top: 25px;
+	width: 86px !important;
+	font-size: 12px;
+	color: #222222;
+}
