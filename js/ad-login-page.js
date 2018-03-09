@@ -36,11 +36,10 @@ function login(){
         dataType: 'json',
         data:dataJSON,
         header: {"Access-Control-Allow-Origin":true},
-        traditional: true,
-        success: function (msg) {
-                        returnVal = msg;
-                    },
-    }); request.done(function (data) {
+        traditional: true
+        
+    });
+    request.done(function (data) {
         if (data === "admin" || data === "staff"){
             window.location.replace("admin_site/index.html");
         }
