@@ -1,0 +1,268 @@
+#container{
+    margin-top: 2%;
+    padding : 0px;
+    height: 100%;
+    width: 100%;
+    padding-right:  5px;
+    padding-left:  7px;
+}
+/*LEFT SITE*/
+#category{
+    float: left;
+    width: 20%;
+}
+#list-product{
+    float: left;
+    width: 80%;
+}
+.clearboth{
+    clear: both;
+}
+.page-title{
+    font-size: 23px;
+    font-family: segoeui;
+    font-weight: bold;
+    color: #EEEEEE;
+}
+.menu{
+    list-style-type: none;
+    margin: auto;
+    padding-left: 10%;
+}
+.menu > li{
+    border-left: 3px solid white;
+    margin: 5px;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 18px;
+    font-family: segoeui;
+}
+.menu >li:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.li-actived{
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    text-align: right;
+    transition: all 0.1s;
+
+}
+/*Right site*/
+.path{
+    font-size: 22px;
+    color: #EEEEEE;
+    font-family: segoeui;
+}
+.path > span:last-child{
+    font-weight: bold;
+}
+.item{
+    width: 80%;
+    float: left;
+    background-color: #222222;
+    margin-bottom: 20px;
+
+}
+.item-image{
+    width: 50%;
+    float: left;
+}
+.item-image-big{
+    width: 70%;
+
+    float: left;
+}
+.item-image-big > img{
+    width: 100%;
+}
+.item-image-small{
+    width: 25%;
+    margin-left: 10px;
+    float: left;
+}
+.image{
+    width: 100%;
+    float: left;
+    margin-bottom: 5px;
+}
+.image > img{
+    width: 100px;
+    height: 100px;
+
+}
+
+.item-description{
+    width: 40%;
+    float: left;
+}
+
+.item-name{
+    font-size: 30px;
+    color: #EEEEEE;
+    font-weight: bold;
+    font-family: segoeui;
+    margin: 0px;
+}
+.item-price{
+    font-size: 30px;
+    color: #EEEEEE;
+
+}
+.item-price-delete{
+    text-decoration: line-through;
+    font-size: 22px;
+}
+.item-size{
+    margin-top: 20px;
+}
+.list-size{
+    width: 70%;
+    float: left;
+}
+.size-title{
+    width: 30%;
+    min-width: 50px;
+    float: left;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.size-item{
+    padding: 2% 3.1%;
+    border-radius: 100%;
+    border: 2px solid white;
+    float: left;
+    font-size: 14px;
+    margin-right: 4%;
+    margin-bottom: 2%;
+}
+.size-slected{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+.size-item:hover{
+    cursor: pointer;
+    background-color: #515151;
+}
+.quantity-title{
+    width: 30%;
+    min-width: 80px;
+    margin-top: 7px;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.item-quantity{
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+.item-quantity > select{
+    background: url(../img/icon/ic_arrow_drop_down_white_24dp_1x.png) no-repeat scroll 99% 46%;
+    width: 60%;
+    max-width: 313px;
+    height: 45px;
+    float: left;
+    background-color: transparent;
+    border: 1px solid #707070;
+    color: #EEEEEE;
+    padding-right: 30px;
+    text-align-last: right;
+    text-indent: 10px;
+    font-weight: bold;
+
+}
+.custom-select>option{
+}
+.item-quantity > select option{
+    background-color: transparent;
+    color: #000000;
+}
+.btn-add-cart{
+    width: 100%;
+    padding: 10px 0px;
+    margin-top: 40px;
+    background-color: #515151;
+    border: none;
+    text-transform: uppercase;
+    color: #EEEEEE;
+    font-weight: bold;
+}
+.btn-add-cart:hover{
+    cursor: pointer;
+    background-color: #EEEEEE;
+    color: #515151;
+}
+.ship-description{
+    font-size: 14px;
+    color: #EEEEEE;
+    border-bottom: 1px solid #707070;
+    margin-top: 5px;
+}
+.product-description-title{
+    font-size: 18px;
+    color: #EEEEEE;
+    margin-bottom: 0px;
+}
+.product-description-content{
+    font-size: 16px;
+    color: #EEEEEE;
+}
+.product-detail-title{
+    font-size: 18px;
+    color: #EEEEEE;
+    margin-bottom: 0px;
+}
+.list-product-detail{
+    list-style-type: none;
+    font-size: 16px;
+    color: #EEEEEE;
+    padding: 0px;
+}
+hr{
+    float: left;
+    height: 1px;
+    width: 100%;
+    background-color: #707070;
+}
+
+
+.item-comment{
+    width: 100%;
+    float: left;
+    color: #EEEEEE;
+
+}
+.list-comment-title{
+    font-family: segoeui;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 5%;
+    width: 100%;
+    float: left;
+}
+.list-comment{
+    width: 100%;
+    float: left;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 20px;
+}
+.comment{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.author-name{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.comment-content{
+    font-size: 16px;
+}
