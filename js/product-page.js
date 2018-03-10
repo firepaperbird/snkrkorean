@@ -1,18 +1,12 @@
 /**
  * Created by ngocnt on 3/3/2018.
  */
-function AddListenerForMenu() {
-
-    $(".menu li").on('click',function () {
-        $(".menu li").removeClass("li-actived");
-        $(this).attr("class","li-actived");
-    })
-
-}
 $(document).ready(function () {
     AddListenerForMenu();
     GetAllProduct();
 })
+
+
 
 function GetAllProduct(){
     var dataJSON ={
@@ -45,7 +39,8 @@ function  CreateListItem(products) {
 }
 
 function CreateItemProduct(product) {
-    var item = $("<div class='item'></div>");
+    console.log(product.ProductId);
+    var item = $("<div class='item' id='"+product.ProductId+"' onclick='GoToDetailPage("+product.ProductId+")'></div>");
     var itemImage = CreateImage(product.Url,product.Name);
     var description = $('<div class="item-description"></div>');
     var itemName = $('<p class="item-name"></p>');
@@ -80,4 +75,10 @@ function CreateImage(src, name) {
     image.attr('alt',name);
     itemImage.append(image);
     return itemImage;
+}
+
+function GoToDetailPage(productID) {
+    console.log(productID);
+    window.location.replace("detail.html?id="+productID);
+    console.log(productID);
 }
