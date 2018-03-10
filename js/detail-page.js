@@ -4,6 +4,7 @@
 
 $(document).ready(function () {
     AddListenerForMenu();
+    GetCategories();
     console.log(getUrlVars()["id"]);
 });
 function getUrlVars()

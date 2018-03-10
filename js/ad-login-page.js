@@ -23,9 +23,31 @@ $("#loginForm").submit(function(event)
     });
     return false;
 })
+// function login(){
+//     console.log(HOST);
+//     var dataJSON = {
+//         username: jQuery("#email").val(),
+//         password: jQuery("#password").val()
+//     }
+//     var request = jQuery.ajax({
+//         type:"POST",
+//         // url: "https://snkrapiv2.azurewebsites.net/user/login",
+//         url: HOST + "/admin/login",
+//         dataType: 'json',
+//         data:dataJSON,
+//         header: {"Access-Control-Allow-Origin":true},
+//         traditional: true
+//
+//     });
+//     request.done(function (data) {
+//         if (data === "admin" || data === "staff"){
+//             window.location.replace("admin_site/index.html");
+//         }
+//     });
+// }
 function login(){
     console.log(HOST);
-    var dataJSON = {  
+    var dataJSON = {
         username: jQuery("#email").val(),
         password: jQuery("#password").val()
     }
@@ -37,7 +59,7 @@ function login(){
         data:dataJSON,
         header: {"Access-Control-Allow-Origin":true},
         traditional: true
-        
+
     });
     request.done(function (data) {
         if (data === "admin" || data === "staff"){

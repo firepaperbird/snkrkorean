@@ -3,6 +3,7 @@
  */
 $(document).ready(function () {
     AddListenerForMenu();
+    GetCategories();
     GetAllProduct();
 })
 

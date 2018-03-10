@@ -36,6 +36,7 @@
     padding-right: 2%;
     font-size: 18px;
     font-family: segoeui;
+    text-transform: uppercase;
 }
 .menu >li:hover{
     background-color: white;
