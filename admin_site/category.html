@@ -26,26 +26,37 @@
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="css/admin-product.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="../Resources/Host.js"></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
 <body>
+<div class="breadcrumbs">
+    <div class="col-sm-12 div-add">
+        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='category-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Add Category</button>
+    </div>
+</div>
+<div class="breadcrumbs">
 
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
-    <h1>Category</h1>
+    <div class="col-sm-12">
+        <table class="table table-striped ">
+            <thead class="thead-dark ">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Parent</th>
+                <th class="ic-edit">Edit</th>
+                <th class="ic-delete">Delete</th>
+            </tr>
+            </thead>
+            <tbody id="category-table">
+
+            </tbody>
+        </table>
+    </div>
 
     <!-- Right Panel -->
 
@@ -55,7 +66,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-
+    <script src="js/category-page.js"></script>
 
     <script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
     <script src="assets/js/dashboard.js"></script>
@@ -64,6 +75,7 @@
     <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         
     </script>

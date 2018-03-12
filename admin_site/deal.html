@@ -22,47 +22,62 @@
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="assets/scss/style.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="css/admin-product.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <script src="../Resources/Host.js"></script>
 
 </head>
 <body>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
-    <h1>DEAL</h1>
+<!--start body-->
+
+<div class="breadcrumbs">
+    <div class="col-sm-12 div-add">
+        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='deal-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Add Deal</button>
+    </div>
+</div>
+
+<div class="breadcrumbs">
+
+    <div class="col-sm-12">
+        <table class="table table-striped ">
+            <thead class="thead-dark ">
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Duration</th>
+                <th>StartTime</th>
+                <th class="ic-edit">Edit</th>
+                <th class="ic-delete">Delete</th>
+            </tr>
+            </thead>
+            <tbody id="deal-table">
+
+            </tbody>
+        </table>
+    </div>
 
 
 
-    <!-- Right Panel -->
+</div>
 
-    <script>
-        $("#main-menu").load("import/main-menu.html");
-    </script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
+<!--end body-->
+<script>
+    $("#main-menu").load("import/main-menu.html");
+</script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="js/deal-page.js"></script>
+<script>
 
-    <script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/widgets.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script>
-        
-    </script>
+</script>
 
 </body>
 </html>

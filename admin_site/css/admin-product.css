@@ -1,0 +1,15 @@
+.ic-edit, .ic-delete {
+    text-align: center;
+
+}
+i:hover{
+    color: #00acc1;
+    cursor: pointer;
+}
+.btn-add{
+    margin-bottom: 20px;
+}
+.div-add{
+    text-align: right;
+    padding-right: 50px;
+}

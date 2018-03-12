@@ -19,3 +19,4 @@ function getUrlVars()
     }
     return vars;
 }
+

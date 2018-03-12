@@ -24,7 +24,12 @@ function GetCategories() {
 
 function CreateListCategory(categories){
     var divCategory = $("#categories");
-    divCategory.append(CreateCategory('All', 0));
+    var categoryAll = CreateCategory('All', 0);
+    categoryAll.on('click',function () {
+        $(".menu li").removeClass("li-actived");
+        $(this).attr("class","li-actived");
+    });
+    divCategory.append(categoryAll);
     categories.forEach(function (category,index) {
         console.log(category);
         var item = CreateCategory(category.Name,category.Id);
