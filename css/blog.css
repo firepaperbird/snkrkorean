@@ -20,12 +20,25 @@ nav{
 .clearboth{
 	clear: both;
 }
+/*#myFooter{
+	margin-top: 50px !important;
+}*/
 .social-bar{
 	visibility: hidden;
+	height: 0px;
 }
 .second-bar{
+	margin-top: 50px;
 	background-color: #222222;
 }
+.footer-copyright{
+	height: 0px;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+}
+
+/*posts*/
 .top-post{
 	/*background: url(https://snkrvn.com/wp-content/uploads/2018/03/hender-scheme-adidas-originals-spring-summer-2018-campaign-001-1020x685.jpg) no-repeat scroll 50% 0%;*/
 	background-size: cover;  
@@ -111,9 +124,12 @@ nav{
 /*mobile*/
 @media (max-width: 988px) {
 	.container{
-		width: inherit !important;
+		/*width: inherit !important;*/
 		width: 100vw !important;
 		margin-left: 10px;
+	}
+	.container>div{
+		width: 98vw !important;
 	}
 	.post-content{
 		width: 100% !important;
@@ -133,5 +149,11 @@ nav{
 	}
 	.below-posts .post-content{
 		margin-top: 300px !important;
+	}
+	.second-bar{
+		height: 70px;
+		padding-top:20px;
+	}.second-bar>.footer-item{
+		margin-top:0px;
 	}
 }

@@ -22,7 +22,7 @@ body{
     height: 40px;
 }*/
 .navbar {	
-	padding-left: 20% !important;
+	padding-left: 25% !important;
 }
 
 .menu-item{
@@ -103,9 +103,9 @@ a.nav-link:hover{
 	}
 
 }
-@media(max-width: 1900px){
+@media(max-width: 1800px){
 	.navbar {	
-		padding-left: 7% !important;
+		padding-left: 8% !important;
 	}
 }
 @media (max-width: 320px){
@@ -129,6 +129,7 @@ a.nav-link:hover{
 		min-width: 226px;
 		margin-left: 0px;
 	}
+	
 }
 .hidden-this{
 	visibility: hidden;
