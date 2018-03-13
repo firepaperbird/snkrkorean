@@ -267,3 +267,35 @@ hr{
 .comment-content{
     font-size: 16px;
 }
+@media (max-width: 988px) {
+    .container{
+        padding: 10px !important;
+    }
+    #category{
+        float: none;
+        width: 100%;
+        pos
+    }
+    #category ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #category li{
+        float: left;
+        width: auto;
+        border: none;
+    }
+    .category-description{
+        visibility: hidden;
+        height: 0px;
+    }
+    .item{
+        padding-left: 10px;
+        width: 100% !important;
+    }
+    .item-image, .item-description{
+        width: 100%;
+    }
+}

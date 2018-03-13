@@ -156,7 +156,7 @@
 @media (max-width: 988px) {
     #category{
         float: none;
-        width: 100%
+        width: 100%;
 
     }
     #category ul {
@@ -172,7 +172,7 @@
     }
     .category-description{
         visibility: hidden;
-        height: 0px
+        height: 0px;
     }
     #list-product{
         width: 100%;

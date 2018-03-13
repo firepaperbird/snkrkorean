@@ -6,6 +6,7 @@ $(document).ready(function () {
     AddListenerForMenu();
     GetCategories();
     console.log(getUrlVars()["id"]);
+    moveCategory();
 });
 function getUrlVars()
 {
@@ -20,3 +21,14 @@ function getUrlVars()
     return vars;
 }
 
+$( ".btn-add-cart" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+function moveCategory(){
+    if($('body').width() < 989){
+        $('#category').each(function() {
+            $(this).insertAfter($(this).parent().find('.item'));
+        });
+    }
+}
