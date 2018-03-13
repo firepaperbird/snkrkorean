@@ -1,0 +1,55 @@
+body{
+	background-color: #FFFFFF !important;
+	color: #222222;
+	width: 100%;
+	/*margin-left: px;*/
+}
+nav{
+	background-color: #222222 !important;
+}
+.container{
+	background-color: #FFFFFF !important;
+	height: auto;
+	/*width: 90%;*/
+	margin-top: 20px;
+	/*border: solid black;*/
+	padding: 7px;
+	/*padding-right: 5px;*/
+	min-height: 80vh;
+}
+.clearboth{
+	clear: both;
+}
+.social-bar{
+	visibility: hidden;
+}
+.second-bar{
+	background-color: #222222;
+}
+
+.img-container{
+	width: 100%;
+	max-height: 450px;
+	overflow: hidden;
+	margin-bottom: 55px;
+}
+.img-container img{
+	max-height:500px; 
+}
+.top-img-cover{
+	width: 100%;
+	object-fit: cover;
+}
+.title{
+	text-align: center;
+	width: 100%;
+	margin-bottom: 24px;
+}
+.post-content{
+	width: 100%;
+	font-size: 16px;
+}
+.author{
+	color: gray;
+	float: right;
+}

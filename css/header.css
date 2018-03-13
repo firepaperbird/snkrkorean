@@ -8,7 +8,6 @@
 nav {
 	background-color: #1E1E1E !important;
 	color: #EEEEEE !important;
-	padding-left: 14.5% !important;
 	padding-top: 28px;
 	width: 100vw !important;
 	min-width: 100% !important;
@@ -21,9 +20,11 @@ body{
 /*.navbar-nav > li > a, .navbar-brand {
     padding-top:0px !important; padding-bottom:0 !important;
     height: 40px;
+}*/
+.navbar {	
+	padding-left: 20% !important;
 }
-.navbar {min-height:40px !important;}
-*/
+
 .menu-item{
 	margin-left: 3.9%; 
 }
@@ -101,6 +102,11 @@ a.nav-link:hover{
 		font-size: 25px;
 	}
 
+}
+@media(max-width: 1900px){
+	.navbar {	
+		padding-left: 7% !important;
+	}
 }
 @media (max-width: 320px){
 	.navbar-brand{
