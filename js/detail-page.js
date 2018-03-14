@@ -40,7 +40,8 @@ $( ".btn-add-cart" ).click(function() {
     var cookieValue = getCookie("snkrcrt");
     var dataJSON = {
                         id: getUrlVars()["id"],
-                        quantity: $('.custom-select :selected').text()
+                        quantity: $('.custom-select :selected').text(),
+                        size: $('.size-slected').text()
                     }
     if(cookieValue.length!=0){
         storedAry = JSON.parse(cookieValue);        
