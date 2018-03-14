@@ -22,46 +22,55 @@
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="assets/scss/style.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="css/admin-product.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <script src="../Resources/Host.js"></script>
 
 </head>
 <body>
+<!--start body-->
 
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
-    <h1>Order</h1>
+<div class="breadcrumbs">
 
-    <!-- Right Panel -->
+    <div class="col-sm-12">
+        <table class="table table-striped ">
+            <thead class="thead-dark ">
+            <tr>
+                <th>OrderId</th>
+                <th>UserId</th>
+                <th>TotalPrice</th>
+                <th>OrderDate</th>
+                <th>Voucher</th>
+                <th>ApprovederId</th>
+                <th>Approve</th>
+                <th>Cancel</th>
+            </tr>
+            </thead>
+            <tbody id="order-table">
 
-    <script>
-        $("#main-menu").load("import/main-menu.html");
-    </script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
+            </tbody>
+        </table>
+    </div>
+</div>
 
+<!--end body-->
+<script>
+    $("#main-menu").load("import/main-menu.html");
+</script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
 
-    <script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/widgets.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script>
-        
-    </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="js/order-page.js"></script>
+<script>
+
+</script>
 
 </body>
 </html>

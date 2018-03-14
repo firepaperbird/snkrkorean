@@ -193,6 +193,7 @@
     text-transform: uppercase;
     color: #EEEEEE;
     font-weight: bold;
+    border-radius: 2px;
 }
 .btn-add-cart:hover{
     cursor: pointer;
@@ -267,6 +268,45 @@ hr{
 .comment-content{
     font-size: 16px;
 }
+
+.input-comment{
+    width: 100%;
+    float: left;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 20px;
+}
+.input-comment-author{
+    width: 100%;
+    float: left;
+    font-size: 18px;
+    font-weight: bolder;
+}
+#input-comment-content{
+    width: 100%;
+    float: left;
+    margin-bottom:15px;
+}
+#btn-comment{
+    width: 30%;
+    min-width: 150px;
+    float: right;
+    padding: 8px 0;
+    color: #EEEEEE;
+    background-color: #515151;
+    font-size: 18px;
+    border-radius: 2px;
+    border: none;
+    font-weight: bolder;
+    margin-bottom: 50px;
+}
+
+#btn-comment:hover{
+    background-color: #EEEEEE;
+    color: #515151;
+    cursor: pointer;
+}
+
 @media (max-width: 988px) {
     .container{
         padding: 10px !important;
@@ -274,7 +314,6 @@ hr{
     #category{
         float: none;
         width: 100%;
-        pos
     }
     #category ul {
         list-style-type: none;

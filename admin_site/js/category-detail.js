@@ -3,9 +3,10 @@
  */
 jQuery(document).ready(function () {
     var categoryId = localStorage.getItem("categoryId");
-    GetProduct(categoryId);
+    console.log("category Id: " + categoryId);
+    GetCategory(categoryId);
 });
-function GetProduct(categoryId) {
+function GetCategory(categoryId) {
     var request = jQuery.ajax({
         type:"GET",
         url:HOST + "admin/category/"+categoryId
@@ -55,10 +56,10 @@ function CreateInputTextarea(name, data) {
 }
 
 function CreateUpdateButton() {
-    var button = jQuery('<button class="btn btn-primary btn-lg" onclick="updateProduct()">Update</button>');
+    var button = jQuery('<button class="btn btn-primary btn-lg" onclick="updateCategory()">Update</button>');
     return button;
 }
 
-function updateProduct() {
-    console.log("Update product!!!");
+function updateCategory() {
+    console.log("Update Category!!!");
 }

@@ -1,14 +1,19 @@
 /**
- * Created by ngocnt on 3/10/2018.
+ * Created by ngocnt on 3/12/2018.
  */
 jQuery(document).ready(function () {
-    GetAllVoucher();
+    GetAllPost();
 });
 
-function GetAllVoucher() {
+function GetAllPost() {
+    var dataJSON = {
+        sortTime : -1
+    };
     var request = jQuery.ajax({
         type:"GET",
-        url: HOST + "voucher/all"
+        url: HOST + "post/all",
+        dataType:'json',
+        data:dataJSON
     });
     request.done(function (data) {
         CreateTable(data);
@@ -19,21 +24,19 @@ function GetAllVoucher() {
 }
 
 function CreateTable(data) {
-    var table = jQuery("#voucher-table");
+    var table = jQuery("#blog-table");
     data.forEach(function (item) {
         table.append(CreatetRow(item));
     });
 }
 
 function CreatetRow(item) {
-    var row = jQuery("<tr id='"+item.VoucherId+"'></tr>");
-    row.append(CreateACell(item.VoucherId));
-    row.append(CreateACell(item.Description));
-    row.append(CreateACell(item.Discount));
-    row.append(CreateACell(item.Type));
-    row.append(CreateACell(item.Duration));
-    row.append(CreateACell(item.StartTime));
-    row.append(CreateACell(item.Amount));
+    var row = jQuery("<tr id='"+item.Id+"'></tr>");
+    row.append(CreateACell(item.Id));
+    row.append(CreateACell(item.Title));
+    row.append(CreateACell(item.Content));
+    row.append(CreateACell(item.PostTime));
+    row.append(CreateACell(item.UserId));
     row.append(CreateEditButton(item.Id));
     row.append(CreateDeleteButton(item.Id));
     return row;
@@ -46,7 +49,7 @@ function CreateACell(data) {
 function CreateEditButton(id) {
     var button = jQuery('<td class="ic-edit"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<i class='fa fa-pencil-square-o fa-lg' aria-hidden='true' onclick='editVoucher("+id+")'></i>");
+    var icon = jQuery("<i class='fa fa-pencil-square-o fa-lg' aria-hidden='true' onclick='editBlog("+id+")'></i>");
 
     button.append(icon);
     return button;
@@ -54,22 +57,22 @@ function CreateEditButton(id) {
 
 function CreateDeleteButton(id) {
     var button = jQuery('<td class="ic-delete"></td>');
-    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='deleteVoucher("+id+")'></i>");
+    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='deleteBlog("+id+")'></i>");
     button.append(icon);
     return button;
 }
 
-function editVoucher(id) {
-    localStorage.setItem("voucherId",id);
-    window.location.href = 'http://localhost:63342/trunk/admin_site/voucher-detail.html';
+function editBlog(id) {
+    localStorage.setItem("dealId",id);
+    window.location.href = 'http://localhost:63342/trunk/admin_site/blog-detail.html';
 }
-function deleteVoucher(id) {
+function deleteBlog(id) {
     var dataJSON={
-        voucherId : id
+        postId : id
     };
     var request = jQuery.ajax({
         type:"GET",
-        url: HOST + "voucher/delete",
+        url: HOST + "post/delete",
         dataType:'json',
         data:dataJSON
     });

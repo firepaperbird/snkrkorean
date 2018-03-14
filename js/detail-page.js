@@ -5,9 +5,23 @@
 $(document).ready(function () {
     AddListenerForMenu();
     GetCategories();
-    // console.log(getUrlVars()["id"]);
+    GetProductDetail(getUrlVars()["id"]);
     moveCategory();
 });
+
+function GetProductDetail(id) {
+    var request = jQuery.ajax({
+        type:"GET",
+        url:HOST + "product/"+id
+    });
+    request.done(function (data) {
+        console.log(data);
+    });
+    request.fail(function (data) {
+        console.log("fail");
+    })
+}
+
 function getUrlVars()
 {
     var vars = [], hash;
