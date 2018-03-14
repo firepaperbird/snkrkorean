@@ -132,13 +132,15 @@
     font-weight: bold;
 }
 .size-item{
-    padding: 2% 3.1%;
+    padding: 8px 0px;
+    width: 40px;
     border-radius: 100%;
     border: 2px solid white;
     float: left;
     font-size: 14px;
     margin-right: 4%;
     margin-bottom: 2%;
+    text-align: center;
 }
 .size-slected{
     background-color: white;

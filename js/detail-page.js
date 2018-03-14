@@ -9,19 +9,6 @@ $(document).ready(function () {
     moveCategory();
 });
 
-function GetProductDetail(id) {
-    var request = jQuery.ajax({
-        type:"GET",
-        url:HOST + "product/"+id
-    });
-    request.done(function (data) {
-        console.log(data);
-    });
-    request.fail(function (data) {
-        console.log("fail");
-    })
-}
-
 function getUrlVars()
 {
     var vars = [], hash;
@@ -33,6 +20,100 @@ function getUrlVars()
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+function GetProductDetail(id) {
+    var request = jQuery.ajax({
+        type:"GET",
+        url:HOST + "product/"+id
+    });
+    request.done(function (data) {
+        console.log(data);
+        CreateProduct(data);
+    });
+    request.fail(function (data) {
+        console.log("fail");
+    })
+}
+
+function CreateProduct(item){
+    // product image
+    if (item.Images == null){
+        jQuery('.item-image-big img').attr('src','img/No_Image_Available.jpg');
+    }else{
+        item.Images.forEach(function (image,index) {
+            if (index == 0){
+                jQuery('.item-image-big img').attr('src',image.Url);
+            }
+            jQuery('.item-image-small').append(CreateImage(image.Url));
+        });
+    }
+
+
+    //product info
+    jQuery('.item-name').append(item.Name);
+    jQuery('.item-id').append('ID: ' + item.ProductId);
+    if (item.Discount == 0){
+        jQuery('.item-price-current').append(item.Price);
+        jQuery('.item-price-delete').css('display','none');
+    }else{
+        if (item.Type == true){
+            jQuery('.item-price-current').append((item.Price - item.Discount));
+            jQuery('.item-price-current').append("đ");
+            jQuery('.item-price-delete').append(item.Price);
+        }else{
+            jQuery('.item-price-current').append(item.Price*(1 - item.Discount/100));
+            jQuery('.item-price-current').append("đ");
+            jQuery('.item-price-delete').append(item.Price);
+        }
+    }
+    console.log(item);
+    if (item.Sizes != null){
+        item.Sizes.forEach(function (size,index) {
+            if (index == 0){
+                jQuery('.list-size').append(CreateSizeSelected(size.Id,size.Name));
+            }else{
+                jQuery('.list-size').append(CreateSizeItem(size.Id,size.Name));
+
+            }
+        });
+    }
+
+    jQuery('.product-description-content').append(item.Description);
+    //add other detail of product
+    jQuery('.list-product-detail').append(CreateRowInDetail('Brand',item.Brand));
+    jQuery('.list-product-detail').append(CreateRowInDetail('Country',item.Country));
+    jQuery('.list-product-detail').append(CreateRowInDetail('Material',item.Material));
+    if (item.Quantity == 0){
+        jQuery('.btn-add-cart').attr('value','Sold out');
+        jQuery('.btn-add-cart').attr('disabled','disabled');
+    }
+}
+
+function CreateImage(src){
+    var imageDiv = jQuery('<div class="image"></div>');
+    var image = jQuery('<img/>');
+    image.attr('src',src);
+    imageDiv.append(image);
+    return imageDiv;
+}
+
+function CreateSizeItem(id, value){
+    var itemSize =  jQuery('<span class="size-item" id="'+id+'"></span>');
+    itemSize.append(value);
+    return itemSize;
+}
+
+function CreateSizeSelected(id,value){
+    var itemSize = CreateSizeItem(id,value);
+    itemSize.add('class','size-slected');
+    return itemSize;
+}
+
+function CreateRowInDetail(name,value) {
+    var row = jQuery('<li></li>');
+    row.append(name + ': ' + value)
+    return row;
 }
 
 var storedAry;
