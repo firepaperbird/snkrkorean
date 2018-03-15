@@ -163,7 +163,7 @@ function CreateComment(comment){
 var storedAry;
 $( ".btn-add-cart" ).click(function() {
     // var cookieValue = getCookie("snkrcrt");
-    storedAry = JSON.parse(localStorage.getItem('cartlist'))
+    storedAry = JSON.parse(localStorage.getItem('cartlist'));
     var item = {
                         id: getUrlVars()["id"],
                         quantity: $('.custom-select :selected').text(),

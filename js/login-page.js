@@ -25,6 +25,7 @@ function userLogin() {
     });
     request.done(function (data) {
         if (data == "success"){
+            writteUN(jQuery("#username").val());
             window.location.replace("products.html");
         }
     });
@@ -33,14 +34,20 @@ function userLogin() {
     });
 
 }
-$(document).ready(function() {
-  $.ajaxSetup({ cache: true });
-  $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-    FB.init({
-      appId: '{your-app-id}',
-      version: 'v2.7' // or v2.1, v2.2, v2.3, ...
-    });     
-    $('#loginbutton,#feedbutton').removeAttr('disabled');
-    FB.getLoginStatus(updateStatusCallback);
-  });
-});
+function writteUN(item){
+    sessionStorage.setItem('customer', JSON.stringify(item));
+}
+function getCusname(){
+  return JSON.parse(sessionStorage.getItem('customer'));
+}
+// $(document).ready(function() {
+//   $.ajaxSetup({ cache: true });
+//   $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+//     FB.init({
+//       appId: '{your-app-id}',
+//       version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+//     });     
+//     $('#loginbutton,#feedbutton').removeAttr('disabled');
+//     FB.getLoginStatus(updateStatusCallback);
+//   });
+// });
