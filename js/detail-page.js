@@ -5,6 +5,10 @@
 $(document).ready(function () {
     AddListenerForMenu();
     GetCategories();
+    var id = getUrlVars()["id"];
+    if (id == null){
+        window.location.replace('products.html');
+    }
     GetProductDetail(getUrlVars()["id"]);
     moveCategory();
 });
