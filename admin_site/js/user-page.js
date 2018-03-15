@@ -26,9 +26,12 @@ function GetAllUser() {
 
 function CreateTable(data) {
     var table = jQuery("#user-table");
-    data.forEach(function (item) {
-        table.append(CreatetRow(item));
-    });
+    if (data != null){
+        data.forEach(function (item) {
+            table.append(CreatetRow(item));
+        });
+    }
+
 }
 
 function CreatetRow(item) {
@@ -51,7 +54,10 @@ function CreateACell(data) {
 }
 function CreateExpiredButton(id) {
     var button = jQuery('<td></td>');
-    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='expiredUser("+id+")'><i class='fa fa-ban' aria-hidden='true'></i> Block</button>");
+    var icon = jQuery("<button type='button' class='btn btn-danger btn-add'><i class='fa fa-ban' aria-hidden='true'></i> Block</button>");
+    icon.on('click', function(){
+        expiredUser(id);
+    });
     button.append(icon);
     return button;
 }
@@ -60,26 +66,26 @@ function expiredUser(id) {
     var dataJSON={
         username : id
     };
+    console.log(dataJSON);
     var request = jQuery.ajax({
-        type:"GET",
-        url: HOST + "user/delete",
+        type:'GET',
+        url: HOST + 'user/delete',
         dataType:'json',
         data:dataJSON
     });
     request.done(function (data) {
-        console.log("thanh cong roi");
+        console.log(data);
         if (data == 'success'){
-            toastr.success("Expired success");
-            jQuery("#"+id+"").remove();
+            jQuery('#'+id+'').remove();
+            toastr.success('Block success');
         }
-        if (data =='fail'){
-            toastr.error('Expired fail');
+        if (data == 'fail'){
+            toastr.error('Block fail')
         }
-
     });
     request.fail(function (data) {
-        console.log("fail roi");
-        toastr.error("Expired fail!!!");
+        console.log(data);
+        toastr.error('Block fail');
     });
 }
 
