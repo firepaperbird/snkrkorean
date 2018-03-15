@@ -262,6 +262,18 @@
     text-align: center;
     margin-top: 5%;
 }
+.disPrice{
+    font-size: 24px;
+}
+.stockPr{
+    
+}
+.form-control{
+    padding: 0 auto;
+    background: none;
+    background-color: #2C2C2C;
+    font-weight: bold;
+}
 @media (max-width: 988px) {
 
     #left-site, #right-site{

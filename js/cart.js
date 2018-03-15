@@ -34,6 +34,7 @@ function Getcart(){
         request.fail(function (data) {
            console.log("fail roi");
         });
+        updateTotalBill();
     }
     
 }
@@ -114,9 +115,6 @@ function calDiscount(price, dis){
 
 }
 
-function updateTotalBill(){
-    
-}
 //
 function removeItem(idx) {
     var removeId=idx.id;
@@ -129,4 +127,36 @@ function removeItem(idx) {
             return true;
         }
     });
+}
+
+var coupon;
+$(".btn-coupon").click(function() {
+    var couponCode= $('#copcode').val();
+    var dataJSON ={
+        voucherid: couponCode,
+    }
+    var request = jQuery.ajax({
+            type:"GET",
+            url: HOST + "voucher/use",// cho nay chua co
+            dataType:'json',
+            data:dataJSON,
+            header: {"Access-Control-Allow-Origin":true},
+            traditional: true
+        });
+        request.done(function (data) {
+            console.log(data);
+            CreateList(data);
+        });
+        request.fail(function (data) {
+           console.log("fail roi");
+        });
+});
+
+function updateTotalBill(){
+    var total =0;
+    storedAry.forEach(function (item,index) {
+        total+= (+item.lastPrice)*(+item.quantity);
+    });
+    $(".total-undis").text(total+" vnd");
+    // alert(total);
 }
