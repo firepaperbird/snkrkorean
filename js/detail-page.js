@@ -4,21 +4,20 @@
 
 $(document).ready(function () {
     var id = getUrlVars()["id"];
-    if (id == null){
+    if (id == null) {
         window.location.replace('products.html');
     }
     AddListenerForMenu();
     GetCategories();
-    GetProductDetail(getUrlVars()["id"]);
+    GetProductDetail(id);
+    GetProductComment(id)
     moveCategory();
 });
 
-function getUrlVars()
-{
+function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
+    for (var i = 0; i < hashes.length; i++) {
         hash = hashes[i].split('=');
         vars.push(hash[0]);
         vars[hash[0]] = hash[1];
@@ -28,8 +27,8 @@ function getUrlVars()
 
 function GetProductDetail(id) {
     var request = jQuery.ajax({
-        type:"GET",
-        url:HOST + "product/"+id
+        type: "GET",
+        url: HOST + "product/" + id
     });
     request.done(function (data) {
         console.log(data);
@@ -40,14 +39,14 @@ function GetProductDetail(id) {
     })
 }
 
-function CreateProduct(item){
+function CreateProduct(item) {
     // product image
-    if (item.Images == null){
-        jQuery('.item-image-big img').attr('src','img/No_Image_Available.jpg');
-    }else{
-        item.Images.forEach(function (image,index) {
-            if (index == 0){
-                jQuery('.item-image-big img').attr('src',image.Url);
+    if (item.Images == null) {
+        jQuery('.item-image-big img').attr('src', 'img/No_Image_Available.jpg');
+    } else {
+        item.Images.forEach(function (image, index) {
+            if (index == 0) {
+                jQuery('.item-image-big img').attr('src', image.Url);
             }
             jQuery('.item-image-small').append(CreateImage(image.Url));
         });
@@ -57,27 +56,26 @@ function CreateProduct(item){
     //product info
     jQuery('.item-name').append(item.Name);
     jQuery('.item-id').append('ID: ' + item.ProductId);
-    if (item.Discount == 0){
+    if (item.Discount == 0) {
         jQuery('.item-price-current').append(item.Price);
-        jQuery('.item-price-delete').css('display','none');
-    }else{
-        if (item.Type == true){
+        jQuery('.item-price-delete').css('display', 'none');
+    } else {
+        if (item.Type == true) {
             jQuery('.item-price-current').append((item.Price - item.Discount));
             jQuery('.item-price-current').append("đ");
             jQuery('.item-price-delete').append(item.Price);
-        }else{
-            jQuery('.item-price-current').append(item.Price*(1 - item.Discount/100));
+        } else {
+            jQuery('.item-price-current').append(item.Price * (1 - item.Discount / 100));
             jQuery('.item-price-current').append("đ");
             jQuery('.item-price-delete').append(item.Price);
         }
     }
-    console.log(item);
-    if (item.Sizes != null){
-        item.Sizes.forEach(function (size,index) {
-            if (index == 0){
-                jQuery('.list-size').append(CreateSizeSelected(size.Id,size.Name));
-            }else{
-                jQuery('.list-size').append(CreateSizeItem(size.Id,size.Name));
+    if (item.Sizes != null) {
+        item.Sizes.forEach(function (size, index) {
+            if (index == 0) {
+                jQuery('.list-size').append(CreateSizeSelected(size.Id, size.Name));
+            } else {
+                jQuery('.list-size').append(CreateSizeItem(size.Id, size.Name));
 
             }
         });
@@ -85,64 +83,103 @@ function CreateProduct(item){
 
     jQuery('.product-description-content').append(item.Description);
     //add other detail of product
-    jQuery('.list-product-detail').append(CreateRowInDetail('Brand',item.Brand));
-    jQuery('.list-product-detail').append(CreateRowInDetail('Country',item.Country));
-    jQuery('.list-product-detail').append(CreateRowInDetail('Material',item.Material));
-    if (item.Quantity == 0){
-        jQuery('.btn-add-cart').attr('value','Sold out');
-        jQuery('.btn-add-cart').attr('disabled','disabled');
+    jQuery('.list-product-detail').append(CreateRowInDetail('Brand', item.Brand));
+    jQuery('.list-product-detail').append(CreateRowInDetail('Country', item.Country));
+    jQuery('.list-product-detail').append(CreateRowInDetail('Material', item.Material));
+    if (item.Quantity == 0) {
+        jQuery('.btn-add-cart').attr('value', 'Sold out');
+        jQuery('.btn-add-cart').attr('disabled', 'disabled');
     }
 }
 
-function CreateImage(src){
+function CreateImage(src) {
     var imageDiv = jQuery('<div class="image"></div>');
     var image = jQuery('<img/>');
-    image.attr('src',src);
+    image.attr('src', src);
     imageDiv.append(image);
     return imageDiv;
 }
 
-function CreateSizeItem(id, value){
-    var itemSize =  jQuery('<span class="size-item" id="'+id+'"></span>');
+function CreateSizeItem(id, value) {
+    var itemSize = jQuery('<span class="size-item" id="' + id + '"></span>');
     itemSize.append(value);
     return itemSize;
 }
 
-function CreateSizeSelected(id,value){
-    var itemSize = CreateSizeItem(id,value);
-    itemSize.add('class','size-slected');
+function CreateSizeSelected(id, value) {
+    var itemSize = CreateSizeItem(id, value);
+    itemSize.add('class', 'size-slected');
     return itemSize;
 }
 
-function CreateRowInDetail(name,value) {
+function CreateRowInDetail(name, value) {
     var row = jQuery('<li></li>');
     row.append(name + ': ' + value)
     return row;
 }
 
+function GetProductComment(id) {
+    console.log("get comment");
+    var dataJSON = {
+        sortByTime: -1,
+        ProductId: id
+    };
+    var request = jQuery.ajax({
+        type: "GET",
+        url: HOST + "comment/inproduct",
+        dataType:'json',
+        data:dataJSON
+    });
+    request.done(function (data) {
+        console.log(data);
+        CreateListComment(data);
+    });
+    request.fail(function (data) {
+        console.log("fail");
+    })
+}
+
+function CreateListComment(comments){
+    var listComments = jQuery('.list-comment');
+    comments.forEach(function (comment) {
+        listComments.append(CreateComment(comment));
+    })
+}
+
+function CreateComment(comment){
+    var div = jQuery('<div class="comment"></div>');
+    var author = jQuery('<p class="author-name"></p>');
+    author.append(comment.AuthorId);
+    var content = jQuery('<p class="comment-content"></p>');
+    content.append(comment.Content);
+    div.append(author);
+    div.append(content);
+    return div;
+}
+
 var storedAry;
-$( ".btn-add-cart" ).click(function() {
+$(".btn-add-cart").click(function () {
     var cookieValue = getCookie("snkrcrt");
     var dataJSON = {
-                        id: getUrlVars()["id"],
-                        quantity: $('.custom-select :selected').text(),
-                        size: $('.size-slected').text()
-                    }
-    if(cookieValue.length!=0){
-        storedAry = JSON.parse(cookieValue);        
-        additem(dataJSON);
-    }else{
-        storedAry=[dataJSON];
+        id: getUrlVars()["id"],
+        quantity: $('.custom-select :selected').text(),
+        size: $('.size-slected').text()
     }
-    setCookie("snkrcrt",JSON.stringify(storedAry),1);
+    if (cookieValue.length != 0) {
+        storedAry = JSON.parse(cookieValue);
+        additem(dataJSON);
+    } else {
+        storedAry = [dataJSON];
+    }
+    setCookie("snkrcrt", JSON.stringify(storedAry), 1);
     toastr.success("add to cart success");
     // alert( "add success ID: "+ getUrlVars()["id"])
 });
 
-function additem(item){
+function additem(item) {
     for (var i = 0; i < storedAry.length; i++) {
-        if(storedAry[i].id == item.id){
-            storedAry[i].quantity=0+ (+storedAry[i].quantity)+(+item.quantity);
+        if (storedAry[i].id == item.id) {
+            storedAry[i].quantity = 0 + (+storedAry[i].quantity) + (+item.quantity);
             // alert( "array length: "+ storedAry.length);
             return;
         }
@@ -154,7 +191,7 @@ function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
@@ -167,15 +204,15 @@ function getCookie(cname) {
 }
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 // move category to bottom off web when sm device
-function moveCategory(){
-    if($('body').width() < 989){
-        $('#category').each(function() {
+function moveCategory() {
+    if ($('body').width() < 989) {
+        $('#category').each(function () {
             $(this).insertAfter($(this).parent().find('.item'));
         });
     }
