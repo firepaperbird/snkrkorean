@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/cart.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script> 
     <script type="text/javascript" src="Resources/Host.js"></script>
     <script src="js/cart.js"></script>
 
@@ -34,24 +35,24 @@
                     <input type="text" class="form-control" id="copcode" placeholder="Enter your coupon code here">
                 </div>
             </div>
-            <input type="button" value="Check my coupon" class="btn-coupon">
+            <input type="button" value="Check my coupon" class="btn-coupon" onclick="checkCp()">
         </div>
         <p class="title">total</p>
         <div class="detail">
             <div class="sub-detail">
                 <span class="sub-title">Sub-total</span>
-                <span class="sub-price total-undis">$99.99</span>
+                <span class="sub-price total-undis">$00.00</span>
             </div>
             <div class="sub-detail">
                 <span class="sub-title">Discount</span>
-                <span class="sub-price">$0</span>
+                <span class="sub-price discountnum">$0</span>
             </div>
         </div>
         <div class="checkout-total">
             <span class="sub-title">Total</span>
-            <span class="sub-price">$99.99</span>
+            <span class="sub-price total-last">$00.00</span>
         </div>
-        <input type="button" value="Checkout" class="btn-checkout">
+        <input type="button" value="Checkout" class="btn-checkout" onclick="checkoutCart()">
         <p class="description">Prices and shipping costs are not confirmed until we've contacted you.<br><br> The items in your cart are saved for 7 days on this computer. We cannot guarantee availability.</p>
     </div>
 </div>

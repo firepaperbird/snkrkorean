@@ -27,8 +27,19 @@ $(document).ready(function() {
     $('#signup-link').attr("href", "#");
     $('#signup-link').css('text-decoration', 'underline');
   }
+  updateCart();
 });
 
 function getCusname(){
   return JSON.parse(sessionStorage.getItem('customer'));
+}
+function updateCart(){
+  var storedAry = JSON.parse(localStorage.getItem('cartlist'));
+  var num;
+  if (storedAry==null){
+    num=0;
+  }else{
+      num=storedAry.length;
+  }
+  $('.user-cart').text('Cart ('+num+')');
 }

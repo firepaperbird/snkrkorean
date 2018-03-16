@@ -178,6 +178,7 @@ $( ".btn-add-cart" ).click(function() {
     // setCookie("snkrcrt",JSON.stringify(storedAry),1);
     localStorage.setItem('cartlist', JSON.stringify(storedAry));
     toastr.success("add to cart success");
+    $('.user-cart').text('Cart ('+storedAry.length+')');
     // alert( "add success ID: "+ getUrlVars()["id"])
 });
 

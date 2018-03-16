@@ -1,5 +1,6 @@
 $(document).ready(function () {
     Getcart();
+    refreshbutton();
 });
 
 var storedAry
@@ -40,10 +41,11 @@ function Getcart(){
 }
 function  CreateList(thisItem) {
     var list = $("#left-site");
-    thisItem.forEach(function (item,index) {       
-        curentIdx=index;
-    	list.append(CreateItem(item));
-    });
+    if(thisItem!=null)
+        thisItem.forEach(function (item,index) {       
+            curentIdx=index;
+        	list.append(CreateItem(item));
+        });
 }
 function CreateItem(pst) {
     var item = $('<div class="item-cart item-content"></div>');
@@ -122,7 +124,11 @@ function removeItem(idx) {
         if(removeId===item.id){
             storedAry.splice(index, 1);
             // alert("arr "+storedAry.length);
-            localStorage.setItem('cartlist', JSON.stringify(storedAry));
+            if(storedAry.length>0){
+                localStorage.setItem('cartlist', JSON.stringify(storedAry));
+            }else{
+                localStorage.removeItem('cartlist');
+            }
             location.reload();
             return true;
         }
@@ -130,10 +136,10 @@ function removeItem(idx) {
 }
 
 var coupon;
-$(".btn-coupon").click(function() {
+function checkCp() {
     var couponCode= $('#copcode').val();
     var dataJSON ={
-        voucherid: couponCode,
+        voucher: couponCode,
     }
     var request = jQuery.ajax({
             type:"GET",
@@ -146,23 +152,89 @@ $(".btn-coupon").click(function() {
         request.done(function (data) {
             console.log(data);
             couponValid(data);
+            updateTotalBill();
         });
         request.fail(function (data) {
            console.log("fail roi");
         });
-});
+}
+
+var discount;
 
 function couponValid(boo){
-    if(boo==true){
+    if(boo!="fail"){
         $('.btn-coupon').attr("disabled", "disabled");
         $('.btn-coupon').addClass("btn btn-success");
+        $('.btn-coupon').attr("value", "Success");
+        // alert("check");
+        updateDiscount(boo);
+    }else{
+        $('.btn-coupon').addClass("btn btn-danger");
+        $('#copcode').attr("placeholder","Coupon not exist");
+        $('.btn-coupon').attr("value", "try another");
+        $('#copcode').val("");
+        $('.discountnum').text('$0');          
+        discount=null;
     }
+
+}
+function refreshbutton(){
+    $("#copcode").on("change paste keyup", function() {
+       // alert($(this).val()); 
+       $('.btn-coupon').prop("disabled", false);
+    $('.btn-coupon').removeClass("btn btn-success");
+    $('.btn-coupon').removeClass("btn btn-danger");
+    $('.btn-coupon').attr("value", "Check my coupon");
+
+    });
+}
+function updateDiscount(disc){
+    var type = disc.slice(0,1);
+    var disnum = disc.slice(1);
+    discount = {
+            distype:type,
+            num:disnum,
+        };
+    if(type == "$"){
+        $('.discountnum').text('-'+disnum+' vnd');           
+    }else{
+        $('.discountnum').text('-'+disnum+'%');          
+    }
+    
 }
 function updateTotalBill(){
     var total =0;
+    var lasttotal;
     storedAry.forEach(function (item,index) {
         total+= (+item.lastPrice)*(+item.quantity);
     });
+    lasttotal=total;
     $(".total-undis").text(total+" vnd");
     // alert(total);
+    if(discount!=null){
+        var type = discount.distype;
+        if(type == "$"){
+            lasttotal =  total-(+discount.num);
+        }else{
+            lasttotal =  total-(total/100*(+discount.num));
+        }
+    }
+    $(".total-last").text(lasttotal+" vnd");   
+}
+function checkoutCart(){
+    if(storedAry!=null){
+        if(checklogin()){
+
+        }else{
+            alert('please login to checkout <3 ');
+            window.location.replace("login.html");
+        }
+    }
+}
+function checklogin(){
+    var username=sessionStorage.getItem("customer");
+    if (username!=null && username!="")
+        return true;
+    else
+        return false;
 }
