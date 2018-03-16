@@ -202,6 +202,8 @@ function updateDiscount(disc){
     }
     
 }
+    
+var bill;
 function updateTotalBill(){
     var total =0;
     var lasttotal;
@@ -219,17 +221,30 @@ function updateTotalBill(){
             lasttotal =  total-(total/100*(+discount.num));
         }
     }
+    bill={
+        total:lasttotal,
+        disct:discount,
+    };
     $(".total-last").text(lasttotal+" vnd");   
 }
 function checkoutCart(){
     if(storedAry!=null){
         if(checklogin()){
-
+            createOrder();
+            window.location.replace("checkout-fill-info.html");
         }else{
             alert('please login to checkout <3 ');
             window.location.replace("login.html");
         }
     }
+}
+function createOrder(){
+    var order = {
+        username:sessionStorage.getItem("customer"),
+        productslist:storedAry,
+        orderbill:bill,
+    }
+    sessionStorage.setItem('order', JSON.stringify(order));
 }
 function checklogin(){
     var username=sessionStorage.getItem("customer");
@@ -238,3 +253,13 @@ function checklogin(){
     else
         return false;
 }
+
+$(document).ready(function () {
+    $('#copcode').keydown(function(e) {
+        if (e.keyCode == 13) {
+            $('.btn-coupon').focus();
+            checkCp();
+        }
+        // alert(e.keyCode);
+    });
+});

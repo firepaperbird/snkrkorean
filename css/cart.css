@@ -265,14 +265,22 @@
 .disPrice{
     font-size: 24px;
 }
-.stockPr{
-    
-}
+
 .form-control{
     padding: 0 auto;
     background: none;
     background-color: #2C2C2C;
     font-weight: bold;
+}
+.btn-coupon.btn-danger{
+    color: #fff !important;
+    background-color: #E74C3C !important;
+    border-color: #E74C3C !important;
+}
+
+.btn-coupon:hover,.btn-checkout:hover{
+    background-color: #5cb85c;
+    border-color: #4cae4c;
 }
 @media (max-width: 988px) {
 
