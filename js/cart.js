@@ -145,13 +145,19 @@ $(".btn-coupon").click(function() {
         });
         request.done(function (data) {
             console.log(data);
-            CreateList(data);
+            couponValid(data);
         });
         request.fail(function (data) {
            console.log("fail roi");
         });
 });
 
+function couponValid(boo){
+    if(boo==true){
+        $('.btn-coupon').attr("disabled", "disabled");
+        $('.btn-coupon').addClass("btn btn-success");
+    }
+}
 function updateTotalBill(){
     var total =0;
     storedAry.forEach(function (item,index) {
