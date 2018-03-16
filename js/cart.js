@@ -137,7 +137,7 @@ $(".btn-coupon").click(function() {
     }
     var request = jQuery.ajax({
             type:"GET",
-            url: HOST + "voucher/use",// cho nay chua co
+            url: HOST + "voucher/exist",// cho nay chua co
             dataType:'json',
             data:dataJSON,
             header: {"Access-Control-Allow-Origin":true},
