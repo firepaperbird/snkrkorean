@@ -261,6 +261,7 @@ hr{
     width: 100%;
     float: left;
     margin-bottom: 20px;
+    border-bottom: 1px solid white;
 }
 .author-name{
     font-size: 18px;

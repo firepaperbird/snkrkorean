@@ -241,7 +241,7 @@ function checkoutCart(){
 }
 function createOrder(){
     var order = {
-        username:sessionStorage.getItem("customer"),
+        username:JSON.parse(sessionStorage.getItem('customer')),
         productslist:storedAry,
         orderbill:bill,
         voucher:coupon,

@@ -31,7 +31,7 @@ function GetProductDetail(id) {
         url: HOST + "product/" + id
     });
     request.done(function (data) {
-        console.log(data);
+         
         CreateProduct(data);
     });
     request.fail(function (data) {
@@ -122,7 +122,6 @@ function CreateRowInDetail(name, value) {
 }
 
 function GetProductComment(id) {
-    console.log("get comment");
     var dataJSON = {
         sortByTime: -1,
         ProductId: id
@@ -134,17 +133,17 @@ function GetProductComment(id) {
         data:dataJSON
     });
     request.done(function (data) {
-        console.log(data);
         CreateListComment(data);
     });
     request.fail(function (data) {
         console.log("fail");
     })
+    $('.input-comment-author').text(JSON.parse(sessionStorage.getItem('customer')));
 }
 
 function CreateListComment(comments){
     var listComments = jQuery('.list-comment');
-    comments.forEach(function (comment) {
+    comments.forEach(function (comment,index) {
         listComments.append(CreateComment(comment));
     })
 }
@@ -201,4 +200,26 @@ function moveCategory() {
         });
     }
 }
-
+function submitcmnt(){
+    var cmntPack = {
+        proId: getUrlVars()["id"],
+        username:JSON.parse(sessionStorage.getItem('customer')),
+        title:'',
+        content:$('#input-comment-content').val(),
+    };
+    var request = jQuery.ajax({
+        type: "POST",
+        url: HOST + "comment/add",
+        dataType:'json',
+        data:cmntPack,
+        header: {"Access-Control-Allow-Origin":true},
+        traditional: true
+    });
+    request.done(function (data) {
+        alert('success');
+        location.reload();
+    });
+    request.fail(function (data) {
+        console.log("fail");
+    })
+}
