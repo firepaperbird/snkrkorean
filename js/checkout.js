@@ -60,7 +60,8 @@ function checkout(){
 		voucher:cart.voucher,
 	};
 	// console.log(productslist);
-	sendOrder(order);
+    console.log(cart);
+	sendOrder(cart);
 }
 function sendOrder(data){
     var request = jQuery.ajax({

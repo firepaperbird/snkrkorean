@@ -1,0 +1,99 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Snkrkorea staff page</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="assets/scss/style.css">
+    <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="css/admin-product.css">
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <script src="../Resources/Host.js"></script>
+
+</head>
+<body>
+<!--start body-->
+
+<div class="breadcrumbs">
+    <div class="col-sm-12" id="product-form">
+        <div>
+            <div class="form-group">
+                <label for="VoucherId">Voucher code: (*)</label>
+                <input type="text" class="form-control" id="VoucherId" name="VoucherId">
+            </div>
+            <div class="form-group">
+                <label for="StartTime">StartTime: (*)</label>
+                <input type="date" class="form-control" id="StartTime"  name="StartTime">
+            </div>
+            <div class="form-group">
+                <label for="Duration">Duration: (*)</label>
+                <input type="number" class="form-control" id="Duration" name="Duration" min="1" max="10000">
+            </div>
+            <div class="form-group">
+                <label for="Discount">Discount: (*)</label>
+                <input type="text" class="form-control" id="Discount" name="Discount">
+            </div>
+            <div class="form-group">
+                <label for="Type">Type: (*)</label>
+                <select class="form-control" id="Type" name="Type">
+                    <option value="0">%</option>
+                    <option value="1">VND</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <textarea type="text" class="form-control" rows="5" id="Description"
+                          name="Description">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="Quantity">Quantity: (*)</label>
+                <input type="number" class="form-control" id="Quantity" name="Quantity" min="1" max="10000000">
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="addVoucher()">Add</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!--end body-->
+<script>
+    $("#main-menu").load("import/main-menu.html");
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="js/voucher-add.js"></script>
+<script src="js/Validator.js"></script>
+
+</body>
+</html>

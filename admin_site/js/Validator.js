@@ -18,11 +18,12 @@ function IsOutRange(text,min,max){
 function IsNotValidNumber(text,min,max){
     var regex = /[1-9][0-9]{0,5}/;
     if (!regex.test(text)){
-        return false;
+        return true;
     }
+    console.log(parseInt(text));
     if (parseInt(text) < min || parseInt > max){
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
