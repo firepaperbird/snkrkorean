@@ -7,6 +7,9 @@
 
 jQuery(document).ready(function () {
     GetAllUser();
+    jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
+        removeUIDInLocalStorage();
+    })
 });
 
 function GetAllUser() {
@@ -56,13 +59,26 @@ function CreateExpiredButton(id) {
     var button = jQuery('<td></td>');
     var icon = jQuery("<button type='button' class='btn btn-danger btn-add'><i class='fa fa-ban' aria-hidden='true'></i> Block</button>");
     icon.on('click', function(){
-        expiredUser(id);
+        openConfirmDeleteModal(this)
     });
+    icon.attr('id',id);
     button.append(icon);
     return button;
 }
 
-function expiredUser(id) {
+function openConfirmDeleteModal(icon) {
+    jQuery('#confirmDelete').modal('show');
+    window.localStorage.setItem("uid",icon.id);
+}
+
+function removeUIDInLocalStorage() {
+    window.localStorage.removeItem("uid");
+    jQuery("#confirmDelete").modal('hide');
+}
+
+function expiredUser() {
+    var id = window.localStorage.getItem("uid");
+    jQuery("#confirmDelete").modal('hide');
     var dataJSON={
         username : id
     };

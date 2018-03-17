@@ -15,7 +15,6 @@ function userLogin() {
     }
     var request = jQuery.ajax({
         type:"POST",
-        // url: "https://snkrapiv2.azurewebsites.net/user/login",
         url: HOST + "/user/login",
         dataType: 'json',
         data:dataJSON,

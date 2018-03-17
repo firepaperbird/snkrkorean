@@ -6,6 +6,9 @@
  */
 jQuery(document).ready(function () {
     GetAllDeal();
+    jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
+        removeDIDInLocalStorage();
+    })
 });
 
 function GetAllDeal() {
@@ -54,16 +57,29 @@ function CreateEditButton(id) {
 
 function CreateDeleteButton(id) {
     var button = jQuery('<td class="ic-delete"></td>');
-    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='deleteDeal("+id+")'></i>");
+    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='openConfirmDeleteModal(this)'></i>");
+    icon.attr('id',id);
     button.append(icon);
     return button;
+}
+
+function openConfirmDeleteModal(icon) {
+    jQuery('#confirmDelete').modal('show');
+    window.localStorage.setItem("did",icon.id);
+}
+
+function removeDIDInLocalStorage() {
+    window.localStorage.removeItem("did");
+    jQuery("#confirmDelete").modal('hide');
 }
 
 function editDeal(id) {
     localStorage.setItem("dealId",id);
     window.location.href = 'http://localhost:63342/trunk/admin_site/deal-detail.html';
 }
-function deleteDeal(id) {
+function deleteDeal() {
+    var id = window.localStorage.getItem("did");
+    jQuery('#confirmDelete').modal('hide');
     var dataJSON={
         dealId : id
     };

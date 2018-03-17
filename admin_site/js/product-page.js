@@ -3,6 +3,9 @@
  */
 jQuery(document).ready(function () {
     GetAllProduct();
+    jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
+        removeOIDInLocalStorage();
+    })
 });
 
 function GetAllProduct() {
@@ -53,16 +56,29 @@ function CreateEditButton(productId) {
 
 function CreateDeleteButton(productId) {
     var button = jQuery('<td class="ic-delete"></td>');
-    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='deleteProduct("+productId+")'></i>");
+    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='openConfirmDeleteModal(this)'></i>");
+    icon.attr('id',productId);
     button.append(icon);
     return button;
+}
+
+function openConfirmDeleteModal(icon) {
+    jQuery('#confirmDelete').modal('show');
+    window.localStorage.setItem("pid",icon.id);
+}
+
+function removePIDInLocalStorage() {
+    window.localStorage.removeItem("pid");
+    jQuery("#confirmDelete").modal('hide');
 }
 
 function editProduct(productId) {
     localStorage.setItem("productId",productId);
     window.location.href = 'http://localhost:63342/trunk/admin_site/product-detail.html';
 }
-function deleteProduct(productId) {
+function deleteProduct() {
+    var productId = window.localStorage.getItem('pid');
+    jQuery("#confirmDelete").modal('hide');
     var dataJSON={
         productId : productId
     };

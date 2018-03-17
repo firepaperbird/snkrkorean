@@ -4,6 +4,9 @@
 
 jQuery(document).ready(function () {
     GetAllOrder();
+    jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
+        removeOIDInLocalStorage();
+    })
 });
 
 function GetAllOrder() {
@@ -83,7 +86,7 @@ function CreateCancelCell(data) {
 function CreateShippingButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Shipping Order</button>");
+    var icon = jQuery("<button type='button' class='btn btn-info btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Shipping Order</button>");
 
     button.append(icon);
     return button;
@@ -98,32 +101,40 @@ function CreateReceivedButton(id) {
     return button;
 }
 
-function CreateCancelButton(id) {
-    var button = jQuery('<td class="buttonCancel"></td>');
-    // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='cancelOrder("+id+",5)'>Cancel Order</button>");
-
-    button.append(icon);
-    return button;
-}
-
 function CreateApproveButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
     var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",2)'>Approve Order</button>");
-
     button.append(icon);
     return button;
 }
 
+function CreateCancelButton(id) {
+    var button = jQuery('<td class="buttonCancel"></td>');
+    // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
+    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='openConfirmDeleteModal(this)'><i class='fa fa-minus-circle' aria-hidden='true'></i> Cancel Order</button>");
+    icon.attr('id',id);
+    button.append(icon);
+    return button;
+}
+
+function openConfirmDeleteModal(icon) {
+    jQuery('#confirmDelete').modal('show');
+    window.localStorage.setItem("oid",icon.id);
+}
+
+function removeOIDInLocalStorage() {
+    window.localStorage.removeItem("oid");
+    jQuery("#confirmDelete").modal('hide');
+}
+
 function updateStatusOrder(id, status) {
-    console.log(id);
     var dataJSON={
-        orderId : id
+        status : status
     };
     var request = jQuery.ajax({
         type:"GET",
-        url: HOST + "order/approve",
+        url: HOST + "admin/order/"+id+"/update/status",
         dataType:'json',
         data:dataJSON
     });
@@ -159,7 +170,9 @@ function updateStatusOrder(id, status) {
     });
 }
 
-function cancelOrder(id) {
+function cancelOrder() {
+    var id = window.localStorage.getItem("oid");
+    jQuery("#confirmDelete").modal('hide');
     var dataJSON={
         orderId : id
     };

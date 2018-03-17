@@ -2,10 +2,13 @@
  * Created by ngocnt on 3/11/2018.
  */
 jQuery(document).ready(function () {
-    GetAllProduct();
+    GetAllCategory();
+    jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
+        removeCIDInLocalStorage();
+    })
 });
 
-function GetAllProduct() {
+function GetAllCategory() {
     var request = jQuery.ajax({
         type:"GET",
         url: HOST + "category/all",
@@ -19,7 +22,6 @@ function GetAllProduct() {
 }
 
 function CreateCategoryTable(categories) {
-    console.log(categories);
     var table = jQuery("#category-table");
     categories.forEach(function (category) {
         table.append(CreateProductRow(category));
@@ -49,23 +51,36 @@ function CreateEditButton(categoryId) {
     var button = jQuery('<td class="ic-edit"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
     var icon = jQuery("<i class='fa fa-pencil-square-o fa-lg' aria-hidden='true' onclick='editCategory("+categoryId+")'></i>");
-
     button.append(icon);
     return button;
 }
 
 function CreateDeleteButton(categoryId) {
     var button = jQuery('<td class="ic-delete"></td>');
-    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='deleteCategory("+categoryId+")'></i>");
+    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='openConfirmDeleteModal(this)'></i>");
+    icon.attr('id',categoryId);
     button.append(icon);
     return button;
 }
 
+function openConfirmDeleteModal(icon) {
+    jQuery('#confirmDelete').modal('show');
+    window.localStorage.setItem("cid",icon.id);
+}
+
+function removeCIDInLocalStorage() {
+    window.localStorage.removeItem("cid");
+    jQuery("#confirmDelete").modal('hide');
+}
+
+
 function editCategory(categoryId) {
-    localStorage.setItem("categoryId",categoryId);
+    window.localStorage.setItem("categoryId",categoryId);
     window.location.href = 'http://localhost:63342/trunk/admin_site/category-detail.html';
 }
-function deleteCategory(categoryId) {
+function deleteCategory() {
+    categoryId = window.localStorage.getItem("cid");
+    jQuery('#confirmDelete').modal('hide');
     var dataJSON={
         categoryId : categoryId
     };

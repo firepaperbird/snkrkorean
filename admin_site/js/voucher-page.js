@@ -3,6 +3,9 @@
  */
 jQuery(document).ready(function () {
     GetAllVoucher();
+    jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
+        removeVIDInLocalStorage();
+    })
 });
 
 function GetAllVoucher() {
@@ -30,12 +33,17 @@ function CreatetRow(item) {
     row.append(CreateACell(item.VoucherId));
     row.append(CreateACell(item.Description));
     row.append(CreateACell(item.Discount));
-    row.append(CreateACell(item.Type));
+    if (item.Type == true){
+        row.append(CreateACell("VND"));
+    }else{
+        row.append(CreateACell("%"));
+
+    }
     row.append(CreateACell(item.Duration));
     row.append(CreateACell(item.StartTime));
     row.append(CreateACell(item.Amount));
-    row.append(CreateEditButton(item.Id));
-    row.append(CreateDeleteButton(item.Id));
+    row.append(CreateEditButton(item.VoucherId));
+    row.append(CreateDeleteButton(item.VoucherId));
     return row;
 }
 function CreateACell(data) {
@@ -54,16 +62,29 @@ function CreateEditButton(id) {
 
 function CreateDeleteButton(id) {
     var button = jQuery('<td class="ic-delete"></td>');
-    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='deleteVoucher("+id+")'></i>");
+    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='openConfirmDeleteModal(this)'></i>");
+    icon.attr('id',id);
     button.append(icon);
     return button;
+}
+
+function openConfirmDeleteModal(icon) {
+    jQuery('#confirmDelete').modal('show');
+    window.localStorage.setItem("vid",icon.id);
+}
+
+function removeVIDInLocalStorage() {
+    window.localStorage.removeItem("vid");
+    jQuery("#confirmDelete").modal('hide');
 }
 
 function editVoucher(id) {
     localStorage.setItem("voucherId",id);
     window.location.href = 'http://localhost:63342/trunk/admin_site/voucher-detail.html';
 }
-function deleteVoucher(id) {
+function deleteVoucher() {
+    var id = window.localStorage.getItem("vid");
+    jQuery('#confirmDelete').modal('hide');
     var dataJSON={
         voucherId : id
     };

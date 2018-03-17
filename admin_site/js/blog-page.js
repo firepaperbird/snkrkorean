@@ -3,6 +3,9 @@
  */
 jQuery(document).ready(function () {
     GetAllPost();
+    jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
+        removeBIDInLocalStorage();
+    })
 });
 
 function GetAllPost() {
@@ -50,23 +53,35 @@ function CreateEditButton(id) {
     var button = jQuery('<td class="ic-edit"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
     var icon = jQuery("<i class='fa fa-pencil-square-o fa-lg' aria-hidden='true' onclick='editBlog("+id+")'></i>");
-
     button.append(icon);
     return button;
 }
 
 function CreateDeleteButton(id) {
     var button = jQuery('<td class="ic-delete"></td>');
-    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='deleteBlog("+id+")'></i>");
+    var icon = jQuery("<i class='fa fa-trash-o fa-lg' aria-hidden='true' onclick='openConfirmDeleteModal(this)'></i>");
+    icon.attr('id',id);
     button.append(icon);
     return button;
 }
 
+function openConfirmDeleteModal(icon) {
+    jQuery('#confirmDelete').modal('show');
+    window.localStorage.setItem("bid",icon.id);
+}
+
+function removeBIDInLocalStorage() {
+    window.localStorage.removeItem("bid");
+    jQuery("#confirmDelete").modal('hide');
+}
+
 function editBlog(id) {
-    localStorage.setItem("dealId",id);
+    localStorage.setItem("blogId",id);
     window.location.href = 'http://localhost:63342/trunk/admin_site/blog-detail.html';
 }
-function deleteBlog(id) {
+function deleteBlog() {
+    var id = window.localStorage.getItem("bid");
+    jQuery('#confirmDelete').modal('hide');
     var dataJSON={
         postId : id
     };

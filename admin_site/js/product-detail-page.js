@@ -2,7 +2,8 @@
  * Created by ngocnt on 3/10/2018.
  */
 jQuery(document).ready(function () {
-    var productId = localStorage.getItem("productId");
+    var productId = window.localStorage.getItem("productId");
+    window.localStorage.removeItem("productId");
     GetProduct(productId);
 });
 function GetProduct(productId) {

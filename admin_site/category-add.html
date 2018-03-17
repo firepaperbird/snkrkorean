@@ -1,8 +1,12 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,11 +39,33 @@
 <body>
 <!--start body-->
 
+
 <div class="breadcrumbs">
     <div class="col-sm-12" id="category-form">
+        <div>
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" id="Name" name="Name">
+            </div>
 
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <textarea type="text" class="form-control" rows="5" id="Description"
+                          name="Description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="ParentId">Parent Category:</label>
+                <select class="form-control" id="ParentId" name="Parent">
+                    <option value="0">None</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="addCategory()">Add</button>
+        </div>
     </div>
 </div>
+
 
 <!--end body-->
 <script>
@@ -49,7 +75,7 @@
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="js/category-detail.js"></script>
+<script src="js/category-add.js"></script>
 <script src="js/Validator.js"></script>
 
 </body>
