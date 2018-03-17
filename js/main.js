@@ -28,6 +28,12 @@ $(document).ready(function() {
     $('#signup-link').css('text-decoration', 'underline');
   }
   updateCart();
+  $('#signup-link').click(function(){
+    sessionStorage.removeItem('customer');
+    localStorage.removeItem('cartlist');
+    sessionStorage.removeItem('order');
+    window.location.replace('products.html');
+  });
 });
 
 function getCusname(){

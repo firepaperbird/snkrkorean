@@ -74,6 +74,7 @@
 .form-row>input{
     width: 100%;
     border-radius: 5px;
+    padding-left: 10px;
 }
 textarea{
     border-radius: 5px;
@@ -142,6 +143,10 @@ textarea{
     font-size: 16px;
     text-align: center;
     margin-top: 40px;
+}
+.btn-checkout:hover{
+    background-color: #5cb85c;
+    border-color: #4cae4c;
 }
 @media (max-width: 988px) {
 

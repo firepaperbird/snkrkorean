@@ -3,3 +3,4 @@
  */
 // var HOST = "http://www.snkrkorea.com/";
 var HOST = "http://localhost:52609/";
+var currency = "₩"

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/checkout.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js"></script> 
+    <script type="text/javascript" src="Resources/Host.js"></script>
+    <script src="js/checkout.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -39,14 +41,13 @@
                 <div class="row5 form-row">
                     Order note*<textarea rows="5" class="form-input" type="text" name="note" id="note"></textarea>
                 </div>
-                <button class="btn btn-private my-2 my-sm-0 checkout-btn" type="submit">Submit</button>
             </form>
         </div>
 
     </div>
     <div id="right-site">
         <p class="title">total</p>
-        <div class="detail">
+        <!-- <div class="detail">
             <div class="sub-detail">
                 <span class="sub-title">Sub-total</span>
                 <span class="sub-price">$87.97</span>
@@ -55,10 +56,10 @@
                 <span class="sub-title">Discount</span>
                 <span class="sub-price">$0</span>
             </div>
-        </div>
+        </div> -->
         <div class="checkout-total">
             <span class="sub-title">Total</span>
-            <span class="sub-price">$87.97</span>
+            <span class="sub-price total-last">$00.00</span>
         </div>
         <input type="button" value="Place your order" class="btn-checkout">
         <p class="description">Prices and shipping costs are not confirmed until we've contacted you.<br><br> The items in your cart are saved for 7 days on this computer. We cannot guarantee availability.</p>

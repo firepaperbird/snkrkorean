@@ -49,12 +49,12 @@ function CreateItemProduct(product) {
     var divPrice = $('<div></div>');
     var currentPice = $('<span class="price"></span>');
     var price = (product.Type == false)? (product.Price*(1-product.Discount/100)):(product.Price-product.Discount);
-    currentPice.append(price + "đ   ");
+    currentPice.append(price + currency);
 
     divPrice.append(currentPice);
     if (product.Discount != 0){
         var deletedPrice=$('<span class="delete-price"></span>');
-        deletedPrice.append(product.Price + "đ   ");
+        deletedPrice.append(product.Price + currency);
         divPrice.append(deletedPrice);
     }
 

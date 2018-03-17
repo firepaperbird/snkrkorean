@@ -59,9 +59,9 @@ function CreateItem(pst) {
     content.append(name);
 
     var prices = $('<div class="item-price"></div>');
-    var stockPrice = $('<p class="stockPr">'+pst.Price+' vnd</p>');
+    var stockPrice = $('<p class="stockPr">'+pst.Price+currency+'</p>');
     if(pst.Discount>0){
-        var discountPrice = $('<p class="disPrice">'+calDiscount(pst.Price,pst.Discount)+' vnd</p>');   
+        var discountPrice = $('<p class="disPrice">'+calDiscount(pst.Price,pst.Discount)+currency+'</p>');   
         prices.append(discountPrice);
         stockPrice.css({"text-decoration": "line-through", "font-size": "17px"});
     }
@@ -138,6 +138,7 @@ function removeItem(idx) {
 var coupon;
 function checkCp() {
     var couponCode= $('#copcode').val();
+    coupon=couponCode;
     var dataJSON ={
         voucher: couponCode,
     }
@@ -196,7 +197,7 @@ function updateDiscount(disc){
             num:disnum,
         };
     if(type == "$"){
-        $('.discountnum').text('-'+disnum+' vnd');           
+        $('.discountnum').text('-'+disnum+currency);           
     }else{
         $('.discountnum').text('-'+disnum+'%');          
     }
@@ -211,7 +212,7 @@ function updateTotalBill(){
         total+= (+item.lastPrice)*(+item.quantity);
     });
     lasttotal=total;
-    $(".total-undis").text(total+" vnd");
+    $(".total-undis").text(total+currency);
     // alert(total);
     if(discount!=null){
         var type = discount.distype;
@@ -225,7 +226,7 @@ function updateTotalBill(){
         total:lasttotal,
         disct:discount,
     };
-    $(".total-last").text(lasttotal+" vnd");   
+    $(".total-last").text(lasttotal+currency);   
 }
 function checkoutCart(){
     if(storedAry!=null){
@@ -243,11 +244,12 @@ function createOrder(){
         username:sessionStorage.getItem("customer"),
         productslist:storedAry,
         orderbill:bill,
+        voucher:coupon,
     }
     sessionStorage.setItem('order', JSON.stringify(order));
 }
 function checklogin(){
-    var username=sessionStorage.getItem("customer");
+    var username=JSON.parse(sessionStorage.getItem('customer'));
     if (username!=null && username!="")
         return true;
     else
