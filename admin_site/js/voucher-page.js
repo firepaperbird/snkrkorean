@@ -54,8 +54,10 @@ function CreateACell(data) {
 function CreateEditButton(id) {
     var button = jQuery('<td class="ic-edit"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<i class='fa fa-pencil-square-o fa-lg' aria-hidden='true' onclick='editVoucher("+id+")'></i>");
-
+    var icon = jQuery("<i class='fa fa-pencil-square-o fa-lg' aria-hidden='true''></i>");
+    icon.on('click',function () {
+       editVoucher(id);
+    });
     button.append(icon);
     return button;
 }
