@@ -46,6 +46,7 @@ function CreatetRow(item) {
 }
 function CreateACell(data) {
     var cell = jQuery('<td></td>');
+    data= data.toString().slice(0,100)+'...';
     cell.append(data);
     return cell;
 }
