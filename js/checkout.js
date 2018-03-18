@@ -1,10 +1,10 @@
 $(document).ready(function () {
-	userLoged();
-	$(function(){
-		$('.btn-checkout').click(function(){
-			checkout();
-		});
-	});
+    userLoged();
+    $(function () {
+        $('.btn-checkout').click(function () {
+            checkout();
+        });
+    });
 });
 
 function userLoged() {
@@ -12,71 +12,78 @@ function userLoged() {
         username: JSON.parse(sessionStorage.getItem('customer')),
     }
     var request = jQuery.ajax({
-        type:"GET",
+        type: "GET",
         // url: "https://snkrapiv2.azurewebsites.net/user/login",
         url: HOST + "/user/profile",
         dataType: 'json',
-        data:dataJSON,
-        header: {"Access-Control-Allow-Origin":true},
+        data: dataJSON,
+        header: {"Access-Control-Allow-Origin": true},
         traditional: true
 
     });
     request.done(function (data) {
-        if (data != null){
-        	autoFillForUser(data);
+        if (data != null) {
+            autoFillForUser(data);
         }
     });
     request.fail(function (data) {
-       console.log(data);
+        console.log(data);
     });
 
 }
-function autoFillForUser(data){
-	$('#fullname').val(data.Fullname);
-	$('#phone').val(data.Phone);
-	$('#email').val(data.Email);
-	$('#address').val(data.Address);
-	updateTotalBill();
+function autoFillForUser(data) {
+    $('#fullname').val(data.Fullname);
+    $('#phone').val(data.Phone);
+    $('#email').val(data.Email);
+    $('#address').val(data.Address);
+    updateTotalBill();
 }
-function updateTotalBill(){
-	var cart = JSON.parse(sessionStorage.getItem('order'));    
-    $(".total-last").text(cart.orderbill.total+currency);   
+function updateTotalBill() {
+    var cart = JSON.parse(sessionStorage.getItem('order'));
+    $(".total-last").text(cart.orderbill.total + currency);
 }
 
-function checkout(){
-	var cart = JSON.parse(sessionStorage.getItem('order'));	
-	var productslist = [];
-	cart.productslist.forEach(function (item,index) {
-		var newItem={
-			productId:item.id,
-			quantity:item.quantity
-		};
-		productslist.push(newItem);
-	});
-	var order = {
-		username:JSON.parse(sessionStorage.getItem('customer')),
-		totalPrice: cart.orderbill.total,
-		products:productslist,
-		voucher:cart.voucher,
-	};
-	// console.log(productslist);
-    console.log(cart);
-	sendOrder(cart);
+function checkout() {
+    var cart = JSON.parse(sessionStorage.getItem('order'));
+    var productslist = [];
+    cart.productslist.forEach(function (item, index) {
+        var newItem = {
+            productId: item.id,
+            quantity: item.quantity
+        };
+        productslist.push(newItem);
+    });
+    var username = JSON.parse(sessionStorage.getItem('customer'));
+    var totalPrice = cart.orderbill.total;
+    var products = productslist;
+    var voucher = cart.voucher;
+    sendOrder(username, totalPrice, products, voucher);
 }
-function sendOrder(data){
+function sendOrder(username, totalPrice, products, voucher) {
+    var dataJson = {
+        username: username,
+        totalPrice: totalPrice,
+        products: products,
+        voucher: voucher
+    };
     var request = jQuery.ajax({
-        type:"POST",
+        type: "POST",
         // url: "https://snkrapiv2.azurewebsites.net/user/login",
         url: HOST + "order/checkout",
         dataType: 'json',
-        data:data,
-        header: {"Access-Control-Allow-Origin":true},
-        traditional: true
+        data: dataJson,
+
 
     });
     request.done(function (data) {
-        if (data != null){
-        	alert('checkout success');
+        if (data == 'success') {
+            toastr.success("Checkout success");
+        }
+        if (data == 'fail') {
+            toastr.error("Checkout fail");
         }
     });
+    request.fail(function (data) {
+        toastr.error("Checkout fail");
+    })
 }

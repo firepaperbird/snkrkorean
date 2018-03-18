@@ -39,9 +39,9 @@ function CreatetRow(item) {
     row.append(CreateACell(item.OrderId));
     row.append(CreateACell(item.UserId));
     row.append(CreateACell(item.TotalPrice));
-    row.append(CreateACell(item.OrderDate));
-    row.append(CreateACell(item.Voucher));
+    row.append(CreateACell(item.OrderDate.replace('T',' ')));
     row.append(CreateACell(item.ApprovederId));
+    row.append(CreateACell(item.Voucher));
     if (item.OrderStatus == 1){
         row.append(CreateApproveButton(item.OrderId));
         row.append(CreateCancelButton(item.OrderId));
