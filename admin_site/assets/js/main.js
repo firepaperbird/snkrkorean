@@ -36,7 +36,20 @@ jQuery(document).ready(function($) {
 
 
 });
+
+
 function urlChange(url) {
     var site = url+'?toolbar=0&amp;navpanes=0&amp;scrollbar=0';
-    document.getElementById('main-frame').src = site;
+    window.window.location.href="../admin_site?page="+url;
+    // document.getElementById('main-frame').src = site;
+}
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
