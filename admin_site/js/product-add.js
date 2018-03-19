@@ -48,7 +48,7 @@ function checkvalid(dv){
 }
 
 function addProduct() {
-    if(validInput<6){
+    if(validInput<5){
         alert('must enter all * field');
         return;
     }
@@ -63,15 +63,15 @@ function addProduct() {
         country: jQuery('#pro-country').val(),
         description: jQuery('#pro-description').val(),
         material: jQuery('#pro-marterial').val(),
-        categoryId: jQuery('#pro-quantity').val(),
-        quantity: jQuery('#pro-name').val(),
+        categoryId: jQuery('#pro-category').val(),
+        quantity: jQuery('#pro-quantity').val(),
         tag: jQuery('#pro-tag').val(),
         images: jQuery("input[name='image']").map(function(){return jQuery(this).val();}).get(),
         sizes: sizeslist
     };
     // console.log(dataJSON.images);
     var request = jQuery.ajax({
-        type: "GET",
+        type: "POST",
         url: HOST + "product/add",
         dataType: 'json',
         data: dataJSON,
@@ -81,7 +81,8 @@ function addProduct() {
     });
     request.done(function (data) {
         if (data != null) {
-            autoFillForUser(data);
+            // autoFillForUser(data);
+            location.reload();
         }
     });
     request.fail(function (data) {

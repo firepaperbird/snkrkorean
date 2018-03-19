@@ -12,6 +12,13 @@ $(document).ready(function () {
     GetProductDetail(id);
     GetProductComment(id)
     moveCategory();
+
+    $('.list-size').on('click','.size-item', function (e) {
+        $('.size-item').removeClass('size-slected');
+         //apply jQuery's stop() method here 
+        $(this).addClass('size-slected');
+
+    });
 });
 var gobalPrice
 function getUrlVars() {
@@ -31,7 +38,7 @@ function GetProductDetail(id) {
         url: HOST + "product/" + id
     });
     request.done(function (data) {
-         
+        console.log(data);
         CreateProduct(data);
     });
     request.fail(function (data) {
@@ -75,6 +82,7 @@ function CreateProduct(item) {
     }
     if (item.Sizes != null) {
         item.Sizes.forEach(function (size, index) {
+            console.log(index);
             if (index == 0) {
                 jQuery('.list-size').append(CreateSizeSelected(size.Id, size.Name));
             } else {
@@ -111,7 +119,7 @@ function CreateSizeItem(id, value) {
 
 function CreateSizeSelected(id, value) {
     var itemSize = CreateSizeItem(id, value);
-    itemSize.add('class', 'size-slected');
+    itemSize.addClass('size-slected');
     return itemSize;
 }
 
