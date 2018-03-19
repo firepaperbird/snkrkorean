@@ -74,7 +74,8 @@ function removePIDInLocalStorage() {
 
 function editProduct(productId) {
     localStorage.setItem("productId",productId);
-    window.location.href = 'http://localhost:63342/trunk/admin_site/product-detail.html';
+    // window.location.href = 'http://localhost:63342/trunk/admin_site/product-detail.html';
+    window.location.href = '../admin_site/product-detail.html';
 }
 function deleteProduct() {
     var productId = window.localStorage.getItem('pid');

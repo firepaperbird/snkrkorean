@@ -14,7 +14,7 @@ function userLoged() {
     var request = jQuery.ajax({
         type: "GET",
         // url: "https://snkrapiv2.azurewebsites.net/user/login",
-        url: HOST + "/user/profile",
+        url: HOST + "user/profile",
         dataType: 'json',
         data: dataJSON,
         header: {"Access-Control-Allow-Origin": true},
@@ -49,7 +49,8 @@ function checkout() {
     cart.productslist.forEach(function (item, index) {
         var newItem = {
             productId: item.id,
-            quantity: item.quantity
+            quantity: item.quantity,
+            size: item.size
         };
         productslist.push(newItem);
     });
@@ -62,10 +63,16 @@ function checkout() {
 function sendOrder(username, totalPrice, products, voucher) {
     var dataJson = {
         username: username,
+        fullname: $('#fullname').val(),
+        phone: $('#phone').val(),
+        address: $('#address').val(),
+        note: $('#note').val(),
         totalPrice: totalPrice,
         products: products,
-        voucher: voucher
+        voucher: voucher,
+
     };
+    console.log(dataJson);
     var request = jQuery.ajax({
         type: "POST",
         // url: "https://snkrapiv2.azurewebsites.net/user/login",
