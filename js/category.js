@@ -33,17 +33,24 @@ function CreateListCategory(categories){
     categories.forEach(function (category,index) {
         
         var item = CreateCategory(category.Name,category.Id);
-        item.on('click',function () {
-            $(".menu li").removeClass("li-actived");
-            $(this).attr("class","li-actived");
-        });
+        // item.on('click',function () {
+        //     $(".menu li").removeClass("li-actived");
+        //     $(this).attr("class","li-actived");
+        //     window.location.href='products.html?cid='+category.Id;
+        // });
         divCategory.append(item);
     });
 }
 
 function CreateCategory(name, categoryId) {
     var category = $("<li id='"+categoryId+"' class='categoryItem'></li>");
-    category.append('<a href="products.html?cid='+categoryId+'">'+name+'</a>');
+    category.append(name);
+    category.on('click',function () {
+            $(".menu li").removeClass("li-actived");
+            $(this).attr("class","li-actived");
+            window.location.href='products.html?cid='+categoryId;
+        });
+    // category.append('<a href="products.html?cid='+categoryId+'">'+name+'</a>');
     return category;
 }
 
