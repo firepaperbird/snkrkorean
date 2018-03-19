@@ -14,7 +14,9 @@ function GetAllProduct() {
         url: HOST + "admin/product",
     });
     request.done(function (data) {
+        // console.log(data);
         CreateProductTable(data);
+
     });
     request.fail(function (data) {
         console.log("fail roi");

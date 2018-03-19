@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 
 
 function urlChange(url) {
-    var site = url+'?toolbar=0&amp;navpanes=0&amp;scrollbar=0';
+    // var site = url+'?toolbar=0&amp;navpanes=0&amp;scrollbar=0';
     window.window.location.href="../admin_site?page="+url;
     // document.getElementById('main-frame').src = site;
 }

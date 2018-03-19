@@ -82,7 +82,7 @@ function removeVIDInLocalStorage() {
 
 function editVoucher(id) {
     localStorage.setItem("voucherId",id);
-    window.location.href = 'http://localhost:63342/trunk/admin_site/voucher-detail.html';
+    window.location.href = '../admin_site/voucher-detail.html';
 }
 function deleteVoucher() {
     var id = window.localStorage.getItem("vid");
