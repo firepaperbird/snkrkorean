@@ -1,7 +1,23 @@
 $(document).ready(function () {
     Getcart();
     refreshbutton();
+    $('.edit-item').on('click',function(){
+        alert('done');
+    })
+    $('#left-site').on('click','.size-item', function (e) {
+        $('.size-item').removeClass('size-slected');
+         //apply jQuery's stop() method here 
+        $(this).addClass('size-slected');
+
+    });
+    $('#left-site').on('click','.edit-item', function (e) {
+        updateCart();
+    });
 });
+
+function updateCart(){
+
+}
 
 var storedAry
 var curentIdx
@@ -48,7 +64,7 @@ function  CreateList(thisItem) {
         });
 }
 function CreateItem(pst) {
-    var item = $('<div class="item-cart item-content"></div>');
+    var item = $('<div class="item-cart item-content" id="'+pst.ProductId+'"></div>');
 
     var imageContainer = $('<div class="item-image"></div>');
     var itemImage = CreateImage(pst.Images,pst.Name); 
@@ -71,17 +87,23 @@ function CreateItem(pst) {
     var size = $('<div class="item-size"></div>');
     size.append($('<div class="size-title">Size</div>'));
     var sizeList = $('<div class="list-size"></div>');
-    if(pst.Sizes!=null && pst.Sizes.length>0){
-        pst.Sizes.forEach(function (item,index) {
-            sizeList.append($('<span class="size-item">'+item+'</span>'));
-        });
+    if (pst.Sizes != null) {
+        pst.Sizes.forEach(function (size, index) {
+                var sizeSpan = CreateSizeItem(size.Name,size.Name);
+                if(size.Name==getCurrentSize(pst.ProductId)){
+                    sizeSpan.addClass('size-slected');
+                }
+                sizeList.append(sizeSpan);              
+            });
     }
+    size.append(sizeList);
     content.append(size);
+        // console.log(pst.Sizes);
 
     var quantity = $('<div class="item-quantity"></div>');
     quantity.append($('<div class="quantity-title">Quantity</div>'));
     var quantityValue = storedAry[curentIdx].quantity;
-    var quantityInput = $('<input type="text" class="custom-select" value="'+quantityValue+'"/>');
+    var quantityInput = $('<input type="text" class="custom-select edit-item" value="'+quantityValue+'"/>');
     quantity.append(quantityInput);
     content.append(quantity);
 
@@ -96,7 +118,20 @@ function CreateItem(pst) {
     // item.append();
     return item;
 }
-
+function getCurrentSize(id){
+    var result= 0;
+    storedAry.forEach(function(item){
+        if(item.id==id){
+            result = item.size;
+        }
+    });
+    return result;
+}
+function CreateSizeItem(id, value) {
+    var itemSize = jQuery('<span class="size-item edit-item" id="' + id + '"></span>');
+    itemSize.append(value);
+    return itemSize;
+}
 function CreateImage(src, name) {
     // var itemImage = $('<div class="item-image"></div>');
     var image = $("<img/>");
@@ -151,7 +186,7 @@ function checkCp() {
             traditional: true
         });
         request.done(function (data) {
-            console.log(data);
+            // console.log(data);
             couponValid(data);
             updateTotalBill();
         });

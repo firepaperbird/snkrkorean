@@ -167,6 +167,7 @@ function CreateComment(comment){
     return div;
 }
 
+//add to  cart btn
 var storedAry;
 $( ".btn-add-cart" ).click(function() {
     // var cookieValue = getCookie("snkrcrt");

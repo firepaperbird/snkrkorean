@@ -29,21 +29,139 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <script src="../Resources/Host.js"></script>
+    <script src="js/product-detail-page.js"></script>
+    <style type="text/css">
+        .category-select{
+            width: 260px;
+            height: 40px;
+            /*margin-left: 25px;*/
+        }
+        .upimg-Frame{
+             max-width: 500px; width: 100%; height: auto; 
+        }
+        .submit{
+            min-width: 150px;
+            /*margin: 0 auto;*/
+            border-radius: 3px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            clear: left;float: right;
+            margin-right: 40%;
+        }
+        #upImg{
+            height: auto;
+        }
+        #pro-image{
+            float: left;
+            width: 55%;
+            /*max-width: 400px;*/
+            margin-right: 0px;
+        }
+        #imgSto label{
+            float: left;
+            width: 100%;
 
+        }
+        #addimg{
+            border-radius: 2px;
+            width: 80px!important;
+            height: 38px!important;
+            padding-top: 2px;
+            padding-left: 2px;
+            clear: left;
+        }
+        #currentImg{
+            width: 100%;
+            /*border: solid;*/
+            height: auto;
+            min-height: 70px;
+        }
+        .trashImg{
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+            border: 1px solid red;
+        }
+        .itemImg{
+            height: 50px;
+            float: left;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
 <!--start body-->
 
 <div class="breadcrumbs">
     <div class="col-sm-12" id="product-form">
+        <div>
+            <div class="form-group">
+                <label for="ProductId">ProductId:</label>
+                <input type="text" class="form-control" id="ProductId" value="" name="ProductId" disabled="">
+            </div>
+            <div class="form-group">
+                <label for="Name">Name*:</label>
+                <input type="text" class="form-control" id="pro-name" name="Name" onblur="checkvalid(this)">
+            </div>
+            <div class="form-group">
+                <label for="Brand">Brand*:</label>
+                <input type="text" class="form-control" id="pro-brand"  name="Brand" onblur="checkvalid(this)">
+            </div>
+            <div class="form-group">
+                <label for="Price">Price*:</label>
+                <input type="number" min="0" step="1" placeholder="number only" class="form-control" id="pro-price" name="Price" onblur="checkvalid(this)">
+            </div>
+            <div class="form-group">
+                <label for="Country">Country*:</label>
+                <input type="text" class="form-control" id="pro-country" name="Country" placeholder="ex: Vietnam" onblur="checkvalid(this)">
+            </div>
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <textarea type="text" class="form-control" rows="5" id="pro-description" name="Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Marterial">Marterial:</label>
+                <input type="text" class="form-control" id="pro-marterial"  name="Marterial" placeholder="ex: cotton" >
+            </div>
+            <div class="form-group">
+                <label for="Category">Category:</label>
+                <select class="category-select form-control" id="pro-category"> 
+                  <option value="none">none</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Quantity">Quantity*:</label>
+                <input  type="number" min="0" step="1" placeholder="number only" class="form-control" id="pro-quantity" name="Quantity" onblur="checkvalid(this)">
+            </div>
+            <div class="form-group">
+                <label for="Tags">TAGS:</label>
+                <input  type="text" placeholder="ex: shoes, white, ..." class="form-control" id="pro-tag" name="Tags">
+            </div>
+            <div class="form-group">
+                <label for="Size">Size*:</label>
+                <input  type="text" placeholder="ex: XL, X, 42, 39 ..." class="form-control" id="pro-size" name="Size" onblur="">
+            </div>
 
+            <label for="">Chose Image To Delete:</label>
+            <div id="currentImg">
+                
+                <!-- <img src=""> -->
+            </div>
+            <div id="upImg">
+                <iframe src="UpImg.html" class="upimg-Frame" id="upimg-Frame" frameborder="0" scrolling="no" onload="resizeIframe()"></iframe>
+            </div>
+            <div id="imgSto">
+                <label for="image">put image url here:</label>
+                <input type="text" class="form-control" id="pro-image"  name="image">
+                <input type="button" value="+iamge" id="addimg" class="btn btn-primary btn-lg" onclick="addImgRow()"/>
+            </div>
+            <div class="form-group">
+                <label for="LastModified">LastModified:</label>
+                <input type="text" class="form-control" id="LastModified" value="2018-03-01T00:00:00" name="LastModified" disabled="">
+            </div>
+            <input type="button" value="Update" class="btn btn-primary btn-lg submit" onclick="UpdateProduct()"  />
+        </div>
     </div>
 </div>
-
-
-
-
-
 <!--end body-->
 <script>
     $("#main-menu").load("import/main-menu.html");
@@ -51,7 +169,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="js/product-detail-page.js"></script>
+
 
 
 </body>

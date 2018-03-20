@@ -12,59 +12,94 @@ function GetProduct(productId) {
         url:HOST + "admin/product/"+productId
     });
     request.done(function (data) {
-        jQuery('#product-form').append(CreateForm(data));
+        CreateForm(data);
+    });
+}
+var originSizes;
+function CreateForm(product) {
+    jQuery('#ProductId').val(product.ProductId);
+    jQuery('#pro-name').val(product.Name);
+    jQuery('#pro-brand').val(product.Brand);
+    jQuery('#pro-price').val(product.Price);
+    jQuery('#pro-country').val(product.Country);
+    jQuery('#pro-description').val(product.Description);
+    jQuery('#pro-marterial').val(product.Material);
+    jQuery('#pro-quantity').val(product.Quantity);
+    jQuery('#pro-tag').val(product.Tag);
+    createSize(product.Sizes);
+    GetCategories();
+    jQuery('#LastModified').val(product.LastModified);
+    createImg(product.Images);
+    originSizes=product.Sizes;
+}
+
+function createSize(sizelist){
+    var toString = '';
+    sizelist.forEach(function(item){
+        toString+=item.Name+', ';
+    });
+    jQuery('#pro-size').val(toString);
+}
+
+function GetCategories() {
+    var request=jQuery.ajax({
+        type:"GET",
+        url:HOST + "category/all"
+    });
+    request.done(function (data) {           
+        CreateListCategory(data);
+    });
+    request.fail(function (data) {
+        console.log("fail " + data);
+    })
+}
+function CreateListCategory(categories){
+    var divCategory = jQuery(".category-select");
+
+    categories.forEach(function (category,index) {
+        
+        var item = CreateCategory(category.Name,category.Id);
+        divCategory.append(item);
+    });
+}
+function CreateCategory(name, categoryId) {
+    var category = jQuery('<option value="'+categoryId+'">'+name+'</option>');
+    return category;
+}
+function createImg(imgList){
+    var itme = jQuery('#currentImg');
+    imgList.forEach(function(Image,index){
+        var imgItem = jQuery('<img src="'+Image.Url+'" id="'+Image.Id+'" class="itemImg">');
+        imgItem.on( "click", function() {
+                const index = trashBin.indexOf(Image.Id);
+                if(index<0){
+                    addImgToTrash(Image.Id);
+                }else{
+                    removeFromTrash(index,Image.Id);
+                }
+                //
+                console.log(trashBin);
+            });
+        itme.append(imgItem);
     });
 }
 
-function CreateForm(product) {
-
-    var form = jQuery('<form></form>');
-    form.append(CreateDisableInput('ProductId',product.ProductId));
-    form.append(CreateInput('Name',product.Name));
-    form.append(CreateInput('Brand',product.Brand));
-    form.append(CreateInput('Price',product.Price));
-    form.append(CreateInput('Country',product.Country));
-    form.append(CreateInputTextarea('Description',product.Description));
-    form.append(CreateInput('Marterial',product.Marterial));
-    form.append(CreateInput('Quantity',product.Quantity));
-    form.append(CreateDisableInput('LastModified',product.LastModified));
-    form.append(CreateUpdateButton());
-    return form;
+var trashBin = [];
+function addImgToTrash(id){
+    trashBin.push(id);
+    jQuery('#'+id).addClass('trashImg');
+}
+function removeFromTrash(index,imgId) {
+    jQuery('#'+imgId).removeClass('trashImg');
+    trashBin.splice(index, 1);
 }
 
-function CreateDisableInput(name,data) {
-    var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<input type='text' class='form-control' id='"+name+"' value='"+data+"' name='"+name+"' disabled>");
-    div.append(label);
-    div.append(input);
-    return div;
-}
 
-function CreateInput(name,data) {
-    var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<input type='text' class='form-control' id='"+name+"' value='"+data+"' name='"+name+"'>");
-    div.append(label);
-    div.append(input);
-    return div;
+function UpdateProduct() {
+    alert("Update product!!!");
 }
-
-function CreateInputTextarea(name, data) {
-    var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<textarea type='text' class='form-control' rows='5' id='"+name+"' name='"+name+"'></textarea>");
-    input.append(data);
-    div.append(label);
-    div.append(input);
-    return div;
-}
-
-function CreateUpdateButton() {
-    var button = jQuery('<button class="btn btn-primary btn-lg" onclick="updateProduct()">Update</button>');
-    return button;
-}
-
-function updateProduct() {
-    console.log("Update product!!!");
-}
+function resizeIframe() {
+    var obj = document.getElementById('upimg-Frame');
+    obj.style.height = ((+obj.contentWindow.document.body.scrollHeight) + 10)+'px';
+    setTimeout(resizeIframe, 3000);
+ }
