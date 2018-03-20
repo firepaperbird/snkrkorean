@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, shrink-to-fit=no">
+    <title>snkrkorea</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <script src="js/terms-page.js"></script>    
+    <script src="js/main.js"></script> 
+    <script src="../Resources/Host.js"></script>
+    <script src="js/user-page.js"></script> 
+<link rel="stylesheet" href="css/user-page.css"/>
+</head>
+<body onload="">
+    <div id="header-import"></div>
+    <div class="container-fluid" id="container">        
+        <div class="sidenav side-menu" id="mySidenav">
+            <ul>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" >My-info</a>
+                <a href="#">Order-History</a>
+            </ul>
+        </div>
+        <div class="user-main" id="main">
+            <span class="openSpan" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+            <div class="my-info">
+                <div class="row1 form-row">
+                    <div class="form-collum1">
+                        Username<input class="form-input" type="text" name="username" id="username" disabled="disabled" />
+                    </div>
+                    <div class="form-collum2">
+                        Phone number<input class="form-input" type="text" name="phone" id="phone" />
+                    </div>
+                </div>
+                <div class="row2 form-row">
+                    <div class="form-collum1">
+                        New-Password<input class="form-input" type="password" name="password" id="password" />
+                    </div>
+                    <div class="form-collum2">
+                        Re-enter password<input class="form-input" type="password" name="repassword" id="repassword" />
+                    </div>
+                </div>
+                <div class="row3 form-row">
+                    Email<input class="form-input" type="text" name="email" id="email" />
+                </div>
+                <div class="row4 form-row">
+                    Delivery address<input class="form-input" type="text" name="address" id="address" />
+                </div> 
+                <button class="btn btn-private my-2 my-sm-0" type="submit">Update</button>               
+            </div>
+            <div class="order-history">
+                <h2>Order history</h2>
+                <table class="table table-striped ">
+                    <thead class="thead-dark ">
+                    <tr>
+                        <th>OrderId</th>
+                        <th>TotalPrice</th>
+                        <th>OrderDate</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="order-table">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="clear: left;"></div>
+        </div>
+
+    </div>
+    <div id="footer-import"></div>
+<script>
+        $("#header-import").load("header.html");
+        $("#footer-import").load("footer.html");        
+</script>     
+</body>
+</html>    

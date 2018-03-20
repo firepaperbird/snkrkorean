@@ -1,0 +1,48 @@
+body{
+	padding-top: 0px!important;
+}
+.main-page{
+    background:  url(../img/index.jpg) no-repeat;
+    background-size:     cover;                     
+    /*background-repeat:   no-repeat;*/
+    background-position: center top;   
+    height: 100vh;
+    margin-top: 0px;
+    /*opacity : 0.6;*/
+}
+.header-import{
+	height: 0px;
+}
+.index-menu{
+	font-size: 30px;
+	color: #FFFFFF;
+	width: 100%;
+	/*background-color: pink;*/
+	margin: 0 auto;
+	height: auto;
+	max-width:817px;
+}
+.main-opacity{
+	padding-top: 55vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background:rgba(0, 0, 0, 0.4);
+	height: 100%;
+	width: 100%;
+}
+.imenu-Item{
+	text-align: center;
+	float: left;
+	/*width: 180px;*/
+	width: auto;
+	margin-left: 40px;
+	margin-right: 40px;
+	/*border: solid;*/
+}
+.imenu-Item:hover{
+	cursor: pointer;
+}
+.name:hover{
+	cursor: cell;
+}

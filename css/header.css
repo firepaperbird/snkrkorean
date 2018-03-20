@@ -98,7 +98,7 @@ a.nav-link:hover{
 		margin-top: 4px;
 	}
 	.navbar-brand{
-		min-width: 220px;
+		min-width: 150px;
 		font-size: 25px;
 	}
 
@@ -111,7 +111,9 @@ a.nav-link:hover{
 @media (max-width: 320px){
 	.navbar-brand{
 		margin-left: 0px;
+		width: 200px!important;
 	}
+
 	nav{
 		padding-left: 0px !important;
 	}
