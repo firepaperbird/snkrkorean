@@ -56,7 +56,7 @@ function addProduct() {
     var sizeslist = jQuery('#pro-size').val().split(",");
     sizeslist.forEach(function(si){
         si=si.trim();
-    })
+    });
     var dataJSON = {
         name: jQuery('#pro-name').val(),
         brand: jQuery('#pro-brand').val(),
