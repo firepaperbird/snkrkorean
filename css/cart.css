@@ -285,13 +285,16 @@
 @media (max-width: 988px) {
 
     #left-site, #right-site{
-        width: 92vw !important;
+        width: 100% !important;
         padding: 5px;
         padding-top: 10px;
         /*margin: 0;*/
     }
     .head-left > div{
         margin-right: 30px;
+    }
+    .head-left{
+        width: 100%;
     }
     .item-image{
         width: 40%;

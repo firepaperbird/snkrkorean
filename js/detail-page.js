@@ -82,7 +82,7 @@ function CreateProduct(item) {
     }
     if (item.Sizes != null) {
         item.Sizes.forEach(function (size, index) {
-            console.log(index);
+            // console.log(index);
             if (index == 0) {
                 jQuery('.list-size').append(CreateSizeSelected(size.Id, size.Name));
             } else {

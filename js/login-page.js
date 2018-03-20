@@ -25,7 +25,12 @@ function userLogin() {
     request.done(function (data) {
         if (data == "success"){
             writteUN(jQuery("#username").val());
-            window.location.replace("products.html");
+            if(sessionStorage.getItem('isCheckout')!=null){
+                window.location.replace("cart.html");   
+                sessionStorage.removeItem('isCheckout');
+            }else{
+                window.location.replace("products.html");   
+            }
         }
     });
     request.fail(function (data) {

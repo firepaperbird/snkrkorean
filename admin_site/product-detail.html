@@ -125,7 +125,7 @@
             <div class="form-group">
                 <label for="Category">Category:</label>
                 <select class="category-select form-control" id="pro-category"> 
-                  <option value="none">none</option>
+                  <option value="0">none</option>
                 </select>
             </div>
             <div class="form-group">
@@ -138,7 +138,7 @@
             </div>
             <div class="form-group">
                 <label for="Size">Size*:</label>
-                <input  type="text" placeholder="ex: XL, X, 42, 39 ..." class="form-control" id="pro-size" name="Size" onblur="">
+                <input  type="text" placeholder="ex: XL, X, 42, 39 ..." class="form-control" id="pro-size" name="Size" onblur="checkvalid(this)">
             </div>
 
             <label for="">Chose Image To Delete:</label>

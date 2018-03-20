@@ -40,7 +40,11 @@ function getCusname(){
   return JSON.parse(sessionStorage.getItem('customer'));
 }
 function updateCart(){
-  var storedAry = JSON.parse(localStorage.getItem('cartlist'));
+  if( localStorage.getItem('cartlist')!='undefined'){
+    var storedAry = JSON.parse(localStorage.getItem('cartlist'));
+  }else{
+    localStorage.removeItem('cartlist');
+  }
   var num;
   if (storedAry==null){
     num=0;

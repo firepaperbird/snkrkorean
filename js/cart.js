@@ -4,8 +4,8 @@ $(document).ready(function () {
     $('.edit-item').on('click',function(){
         alert('done');
     })
-    $('#left-site').on('click','.size-item', function (e) {
-        $('.size-item').removeClass('size-slected');
+    $('#left-site').on('click', '.size-item',function (e) {
+        $(this).parent().find('.size-item').removeClass('size-slected');
          //apply jQuery's stop() method here 
         $(this).addClass('size-slected');
 
@@ -15,12 +15,25 @@ $(document).ready(function () {
     });
 });
 
-function updateCart(){
-
-}
-
 var storedAry
 var curentIdx
+
+function updateCart(){
+    if(storedAry != null){
+        storedAry.forEach(function(item){
+            var quantityValue = $('#left-site #'+item.id+' .custom-select').val();
+            var sizeValue = $('#left-site #'+item.id+'  .size-slected').text();
+            item.quantity =  quantityValue;
+            item.size = sizeValue;
+            // console.log(quantityValue+'-'+item.id);
+
+        });
+        // console.log(storedAry);
+        localStorage.setItem('cartlist', JSON.stringify(storedAry));
+    } 
+    
+}
+
 function Getcart(){
     var locStg= localStorage.getItem('cartlist');
     if(locStg==null || locStg==""){
@@ -45,7 +58,7 @@ function Getcart(){
             traditional: true
         });
         request.done(function (data) {
-            console.log(data);
+            // console.log(data);
             CreateList(data);
         });
         request.fail(function (data) {
@@ -103,7 +116,7 @@ function CreateItem(pst) {
     var quantity = $('<div class="item-quantity"></div>');
     quantity.append($('<div class="quantity-title">Quantity</div>'));
     var quantityValue = storedAry[curentIdx].quantity;
-    var quantityInput = $('<input type="text" class="custom-select edit-item" value="'+quantityValue+'"/>');
+    var quantityInput = $('<input type="number" min="0" step="1" class="custom-select" onblur="updateCart()" value="'+quantityValue+'"/>');
     quantity.append(quantityInput);
     content.append(quantity);
 
@@ -270,6 +283,7 @@ function checkoutCart(){
             window.location.replace("checkout-fill-info.html");
         }else{
             alert('please login to checkout <3 ');
+            sessionStorage.setItem('isCheckout',1);
             window.location.replace("login.html");
         }
     }

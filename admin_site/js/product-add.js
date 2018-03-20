@@ -28,7 +28,6 @@ function CreateCategory(name, categoryId) {
     var category = jQuery('<option value="'+categoryId+'">'+name+'</option>');
     return category;
 }
-
 var errorInput = 0;
 var validInput=0;
 function checkvalid(dv){
