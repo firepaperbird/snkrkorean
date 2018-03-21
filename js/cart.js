@@ -186,26 +186,28 @@ function removeItem(idx) {
 var coupon;
 function checkCp() {
     var couponCode= $('#copcode').val();
-    coupon=couponCode;
-    var dataJSON ={
-        voucher: couponCode,
+    if(couponCode!=""){
+        coupon=couponCode;
+        var dataJSON ={
+            voucher: couponCode,
+        }
+        var request = jQuery.ajax({
+                type:"GET",
+                url: HOST + "voucher/exist",// cho nay chua co
+                dataType:'json',
+                data:dataJSON,
+                header: {"Access-Control-Allow-Origin":true},
+                traditional: true
+            });
+            request.done(function (data) {
+                // console.log(data);
+                couponValid(data);
+                updateTotalBill();
+            });
+            request.fail(function (data) {
+               console.log("fail roi");
+            });
     }
-    var request = jQuery.ajax({
-            type:"GET",
-            url: HOST + "voucher/exist",// cho nay chua co
-            dataType:'json',
-            data:dataJSON,
-            header: {"Access-Control-Allow-Origin":true},
-            traditional: true
-        });
-        request.done(function (data) {
-            // console.log(data);
-            couponValid(data);
-            updateTotalBill();
-        });
-        request.fail(function (data) {
-           console.log("fail roi");
-        });
 }
 
 var discount;

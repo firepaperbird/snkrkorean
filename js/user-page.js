@@ -11,8 +11,13 @@ function closeNav() {
 }
 
 $(document).ready(function (){
-	loadUserInfo();
-	loadOrder();
+	if(sessionStorage.getItem('customer')==null || sessionStorage.getItem('customer')==""){
+		window.location.replace('404.html');
+	}else{
+		loadUserInfo();
+		loadOrder();
+	}
+	
 });
 
 function loadUserInfo(){
