@@ -125,7 +125,7 @@ function UpdateProduct() {
             sizeslist.splice(i, 1);
         }
     }
-        
+   
     var dataJson = {
         id: jQuery('#ProductId').val(),
         name: jQuery('#pro-name').val(),
@@ -155,7 +155,7 @@ function UpdateProduct() {
         if (data != null) {
              DeleteImg();
             // autoFillForUser(data);
-            location.reload();
+            window.location.href="../admin_site/product.html";
         }
     });
     request.fail(function (data) {
@@ -178,10 +178,10 @@ function DeleteImg(){
         });
         request.done(function (data) {
             if (data == 'success') {
-                toastr.success("Checkout success");
+                toastr.success("Delete success");
             }
             if (data == 'fail') {
-                toastr.error("Checkout fail");
+                toastr.error("Delete fail");
             }
         });
     }
@@ -211,7 +211,7 @@ function checkvalid(dv){
 }
 function compareArrayOfSize(arr1){
     var result = false;
-    if(arr1.length!= originSizes.length){
+    if(originSizes==null || arr1.length!= originSizes.length){
         result = true;
     }else{
         for (var i = 0; i < arr1.length; i++) {

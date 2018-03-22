@@ -56,7 +56,7 @@
             <div class="form-group">
             	<label for="datetimepicker1">StartTime:</label>
                 <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="StartTime" />
+                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="StartTime"/>
                     <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
@@ -107,13 +107,15 @@
 
 
 <!--end body-->
-<script>
-    $("#main-menu").load("import/main-menu.html");
-    // $("#upImg").load("upanhtest.html");
+<script type="text/javascript">
+    $("#datetimepicker1").datetimepicker();
+    $(".datetimepicker-input").keyup(function() {
+        $(".datetimepicker-input").val('');
+    })
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
-
+<script src="../admin_site/js/deal-detail.js"></script>
 </body>
 </html>

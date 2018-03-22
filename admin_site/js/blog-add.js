@@ -30,7 +30,7 @@ function checkvalid(dv){
 
 function AddBlock(){
 	if(validInput<5){
-        alert('must enter all * field');
+        toastr.warning("you must enter Title and Cover");
         return;
     }
 	var dataJSON = {
