@@ -1,0 +1,17 @@
+#pro-start{
+    		/*min-width: 320px;*/
+	width: 180px;
+}
+.itemPro{
+	margin: 5px;
+}
+#dis-num{
+	width: 100%;
+}
+#dis-type{
+	width: 70px;
+}
+table{
+	width: 100vw;
+	overflow-wrap: all;
+}

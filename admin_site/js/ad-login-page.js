@@ -2,7 +2,7 @@ if(sessionStorage.getItem('mainUse')!=null || sessionStorage.getItem('mainUse')!
     sessionStorage.removeItem("mainUse");
 }
 function login(){
-    console.log(HOST);
+    // console.log(HOST);
     var dataJSON = {
         username: jQuery("#email").val(),
         password: jQuery("#password").val()
