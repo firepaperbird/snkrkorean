@@ -75,7 +75,7 @@ function removeDIDInLocalStorage() {
 
 function editDeal(id) {
     localStorage.setItem("dealId",id);
-    window.location.href = 'http://localhost:63342/trunk/admin_site/deal-detail.html';
+    window.location.href = '../admin_site/deal-detail.html';
 }
 function deleteDeal() {
     var id = window.localStorage.getItem("did");

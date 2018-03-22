@@ -36,12 +36,17 @@ function CreateTable(data) {
 
 function CreatetRow(item) {
     var row = jQuery("<tr id='"+item.OrderId+"'></tr>");
-    row.append(CreateACell(item.OrderId));
+    var cellId = CreateACell(jQuery('<a href="#">'+item.OrderId+'</a>'));
+    cellId.on('click',function(){
+        window.localStorage.setItem('orderId',item.OrderId);
+        window.location.href = 'order-detail.html';
+    });
+    row.append(cellId);
     row.append(CreateACell(item.UserId));
     row.append(CreateACell(item.TotalPrice));
     row.append(CreateACell(item.OrderDate.replace('T',' ')));
-    row.append(CreateACell(item.ApprovederId));
     row.append(CreateACell(item.Voucher));
+    row.append(CreateACell(item.ApprovederId));
     if (item.OrderStatus == 1){
         row.append(CreateApproveButton(item.OrderId));
         row.append(CreateCancelButton(item.OrderId));
@@ -62,7 +67,6 @@ function CreatetRow(item) {
         row.append(CreateACell(''));
         row.append(CreateCancelCell('Canceled'));
     }
-
     return row;
 }
 
@@ -74,19 +78,21 @@ function CreateACell(data) {
 }
 function CreateSuccessCell(data) {
     var cell = CreateACell(data);
-    cell.css('color','greed');
+    cell.css('color','green');
+    cell.css('font-weight','bold');
     return cell;
 }
 
 function CreateCancelCell(data) {
     var cell = CreateACell(data);
     cell.css('color','red');
+    cell.css('font-weight','bold');
     return cell;
 }
 function CreateShippingButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-info btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Shipping Order</button>");
+    var icon = jQuery("<button type='button' class='btn btn-info btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Shipping</button>");
 
     button.append(icon);
     return button;
@@ -104,7 +110,7 @@ function CreateReceivedButton(id) {
 function CreateApproveButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",2)'>Approve Order</button>");
+    var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",2)'>Approve</button>");
     button.append(icon);
     return button;
 }
@@ -112,7 +118,7 @@ function CreateApproveButton(id) {
 function CreateCancelButton(id) {
     var button = jQuery('<td class="buttonCancel"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='openConfirmDeleteModal(this)'><i class='fa fa-minus-circle' aria-hidden='true'></i> Cancel Order</button>");
+    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='openConfirmDeleteModal(this)'><i class='fa fa-minus-circle' aria-hidden='true'></i> Cancel</button>");
     icon.attr('id',id);
     button.append(icon);
     return button;

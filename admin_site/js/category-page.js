@@ -76,7 +76,7 @@ function removeCIDInLocalStorage() {
 
 function editCategory(categoryId) {
     window.localStorage.setItem("categoryId",categoryId);
-    window.location.href = 'http://localhost:63342/trunk/admin_site/category-detail.html';
+    window.location.href = '../admin_site/category-detail.html';
 }
 function deleteCategory() {
     categoryId = window.localStorage.getItem("cid");

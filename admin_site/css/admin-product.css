@@ -14,7 +14,10 @@ i:hover{
     padding-right: 50px;
 }
 .table{
-	width: 100%!important;table-layout:fixed;
+	width: 100%!important;table-layout: fixed;
+}
+.fa-times-circle:hover{
+	color:red;
 }
 @media (max-width: 988px) {
 	table{

@@ -22,45 +22,21 @@
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="assets/scss/style.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/admin-product.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="css/admin-product.css">
+
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <script src="../Resources/Host.js"></script>
-    <script src="../admin_site/js/security.js"></script>
 
 </head>
 <body>
 <!--start body-->
-<div class="breadcrumbs">
-    <div class="col-sm-12 div-add">
-        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='user-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Add Staff</button>
-    </div>
-</div>
-<div class="breadcrumbs">
 
-    <div class="col-sm-12">
-        <table class="table table-striped ">
-            <thead class="thead-dark ">
-            <tr>
-                <th>Username</th>
-                <th>Fullname</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>RegisterDate</th>
-                <th>Role</th>
-                <th>Block</th>
-            </tr>
-            </thead>
-            <tbody id="user-table">
-
-            </tbody>
-        </table>
+<div class="breadcrumbs">
+    <div class="col-sm-12" id="order-form">
     </div>
 
     <!-- Modal -->
@@ -69,15 +45,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure to block this user?
+                    Are you sure to cancel this?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="expiredUser()">Yes</button>
+                    <button type="button" class="btn btn-primary" onclick="cancelOrder()">Yes</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" >No</button>
                 </div>
             </div>
@@ -85,19 +61,20 @@
     </div>
 </div>
 
+
+
+
+
 <!--end body-->
 <script>
     $("#main-menu").load("import/main-menu.html");
 </script>
-<script src="assets/js/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="js/order-detail.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="js/user-page.js"></script>
-<script>
-
-</script>
 
 </body>
 </html>

@@ -70,6 +70,9 @@ function CreateSelectInput(name,valueSelected) {
         select.append('<option value="0" selected="selected">%</option>');
         select.append('<option value="1">VND</option>');
     }
+    div.append(label);
+    div.append(select);
+    return div;
 }
 
 function CreateNumberInput(name,data){
