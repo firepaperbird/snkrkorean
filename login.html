@@ -13,9 +13,19 @@
     <link rel="stylesheet" id="style" type="text/css" href="">
     <script src="Resources/Host.js"></script>
     <script src="js/main.js"></script> 
-<!-- <link rel="stylesheet" href="css/login.css"/> -->
+    <link rel="stylesheet" href="css/login.css"/>
+    <!-- <script src="http://connect.facebook.net/en_US/all.js"></script> -->
 </head>
 <body onload="addstyle('login.css')">
+    <!-- <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=194207037848523&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script> -->
+
     <div id="header-import"></div>
     <div class="container-fluid" id="container">
         <div class="" id="main-logo">
@@ -24,7 +34,9 @@
             </a>
         </div>
         <div class="" id="main-fbtext">
-            <a href="#"><img src="img/social/fb_login_default.png" target="popup" onclick="window.open('https://www.facebook.com','popup','width=400,height=400'); return false;"></a>            
+            <!-- <a href="#"><img src="img/social/fb_login_default.png" target="popup" onclick="window.open('https://www.facebook.com','popup','width=400,height=400'); return false;"></a>    -->     
+            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
             <div id="lg-text">
                 <div><span>OR</span></div>                
             </div>

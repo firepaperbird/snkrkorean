@@ -14,8 +14,9 @@ function GetCategories() {
         url:HOST + "category/all"
     });
     request.done(function (data) {
-           
-        CreateListCategory(data);
+        if(data!=null){
+            CreateListCategory(data);
+        }
     });
     request.fail(function (data) {
         console.log("fail " + data);

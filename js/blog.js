@@ -16,7 +16,9 @@ function GetAllPost(){
     });
     request.done(function (data) {
         // console.log(data);
-        CreateListItem(data);
+        if(data!=null){
+            CreateListItem(data);
+        }
     });
     request.fail(function (data) {
        console.log("fail roi");
