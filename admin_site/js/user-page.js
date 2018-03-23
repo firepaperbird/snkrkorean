@@ -41,7 +41,6 @@ function CreatetRow(item) {
     var row = jQuery("<tr id='"+item.Username+"'></tr>");
     row.append(CreateACell(item.Username));
     row.append(CreateACell(item.Fullname));
-    row.append(CreateACell(item.GenderName));
     row.append(CreateACell(item.Email));
     row.append(CreateACell(item.Phone));
     row.append(CreateACell(item.Address));

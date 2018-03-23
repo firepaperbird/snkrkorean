@@ -64,7 +64,7 @@ function CreateTopPost(pst) {
     title.append(pst.Title);    
     content.append(title);
     var description = $('<div class="post-description"></div>');
-    description.append(pst.Content.substring(0,150)+'...');
+    description.append($(pst.Content.substring(0,150)).text()+'...');
     content.append(description);
     var readmoreLink = $('<div class="link-readmore"><a href="blog-detail.html?id='+pst.Id+'">R E A D M O R E</a></div>');
     content.append(readmoreLink);
@@ -87,7 +87,7 @@ function CreateBelowPost(pst,pos) {
     title.append(pst.Title);    
     content.append(title);
     var description = $('<div class="post-description"></div>');
-    description.append(pst.Content.substring(0,150)+'...');
+    description.append($(pst.Content.substring(0,150)).text()+'...');
     content.append(description);
     var readmoreLink = $('<div class="link-readmore"><a href="blog-detail.html?id='+pst.Id+'">R E A D M O R E</a></div>');
     content.append(readmoreLink);
@@ -104,7 +104,7 @@ function CreateItemPost(pst) {
     title.append(pst.Title);    
     content.append(title);
     var description = $('<div class="post-description"></div>');
-    description.append(pst.Content.substring(0,150)+'...');
+    description.append($(pst.Content.substring(0,150)).text()+'...');
     content.append(description);
     var readmoreLink = $('<div class="link-readmore"><a href="blog-detail.html?id='+pst.Id+'">R E A D M O R E</a></div>');
     content.append(readmoreLink);

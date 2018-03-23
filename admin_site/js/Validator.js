@@ -27,3 +27,7 @@ function IsNotValidNumber(text,min,max){
     return false;
 }
 
+function IsNotMatch(text,regex){
+    return !regex.test(text);
+}
+

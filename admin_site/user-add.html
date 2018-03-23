@@ -67,11 +67,8 @@
                 <input type="tel" class="form-control" id="Phone" name="Phone">
             </div>
             <div class="form-group">
-                <label for="Role">Role: (*)</label>
-                <select class="form-control" id="Role" name="Role">
-                    <option value="2">Staff</option>
-                    <option value="1">Admin</option>
-                </select>
+                <label for="Role">Role:</label>
+                <input type="text" class="form-control" id="Role" value="Staff" disabled="disabled">
             </div>
             <button class="btn btn-primary btn-lg" onclick="addStaff()">Add</button>
         </div>
@@ -88,8 +85,8 @@
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="js/user-add.js"></script>
 <script src="js/Validator.js"></script>
+<script src="../admin_site/js/user-add.js"></script>
 
 </body>
 </html>
