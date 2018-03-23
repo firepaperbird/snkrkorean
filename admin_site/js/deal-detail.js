@@ -4,6 +4,11 @@ $(document).ready(function () {
 });
 var errorInput = 0;
 var validInput=0;
+
+var tableRowCount = 0;
+var dealProList = [];
+var StockList = [];
+
 function checkvalid(dv){
     var strleg = dv.value.length;
     jQuery(dv).removeClass('is-invalid');
@@ -109,7 +114,7 @@ function CreateListItem(itemList){
         var proItem = $('<button id="'+item.ProductId+'" class="itemPro btn btn-default">'+item.ProductId+' - '+ item.Name+'</button>');
             proItem.on( "click", function() {
                 if(findIdIntable(item.ProductId)==false){
-                    addItemToList(item.ProductId,item.Name);
+                    addNewItemToList(item.ProductId,item.Name);
                 }else{
                     alert('item: '+item.ProductId+' is exist');
                 }
@@ -118,9 +123,7 @@ function CreateListItem(itemList){
     });
     contain.append(iList);
 }
-var tableRowCount = 0;
-var dealProList = [];
-function addItemToList(itemId,name){
+function addNewItemToList(itemId,name){
     var row = $('<tr class="'+itemId+'"></tr>');
     row.append('<th scope="row">'+(++tableRowCount)+'</th>');
     row.append('<td>'+itemId+'</td>');
@@ -143,13 +146,6 @@ function findIdIntable(id)
 {
     return ($('tbody .'+id).val()!=null);
 }
-function delPro(id){
-    var i = dealProList.indexOf(id);
-    if(i != -1) {
-        dealProList.splice(i, 1);
-        $('.'+id).remove();
-    }
-}
 
 function loadDeal(){
     var request = $.ajax({
@@ -161,6 +157,12 @@ function loadDeal(){
         createDealDetail(data);
         data.Products.forEach(function(item){
         	addItemToList(item.ProductId,item.Name,item.Discount,item.Type);
+        	var data = {
+		    	productId: item.ProductId,
+		    	discount: item.Discount.toString(),
+		    	type: item.Type.toString()
+		    }
+        	StockList.push(data);
         })
     });
     request.fail(function (data) {
@@ -174,23 +176,24 @@ function createDealDetail(Deal){
 	$('#pro-duration').val(Deal.Duration);
 	$('#StartTime').val(Deal.StartTime);
 }
-var tableRowCount = 0;
-var dealProList = [];
+
 function addItemToList(itemId,name,dis,type){
-    var row = $('<tr class="'+itemId+'"></tr>');
+        	// console.log(type);
+    var row = $('<tr class="'+itemId+'" onclick=""></tr>');
     row.append('<th scope="row">'+(++tableRowCount)+'</th>');
     row.append('<td>'+itemId+'</td>');
     row.append('<td>'+name+'</td>');
     row.append('<td><input type="number" value="'+dis+'" min="0" class="form-control" id="dis-num" onblur="emptyDiscount(this)"></td>');
-    var selectTag = $('<select class="category-select form-control custom-select" id="dis-type" ><option value="false">%</option><option value="true">₩</option></select>');
-    selectTag.removeAttr('selected');      selectTag.filter('[value='+type+']').attr('selected', true);
-    row.append('<td>'+selectTag+'</td>');
+    var selectTag = $('<select class="form-control custom-select" id="dis-type" ><option value="false">%</option><option value="true">₩</option></select>');
+    selectTag.val(type.toString()).prop('selected', true);//filter('[value="'+type+'"]').attr('selected', true);
+    row.append($('<td></td>').append(selectTag));
     var del = $('<td><i class="fa fa-times-circle fa-lg" id="del-button" aria-hidden="true"></i></td>');
     del.on("click", function() {
         delPro(itemId);
     });
     row.append(del);
     $('.table tbody').append(row);
+    
     dealProList.push(itemId);
 }
 function emptyDiscount(dv){
@@ -207,24 +210,24 @@ function delPro(id){
         dealProList.splice(i, 1);
         $('.'+id).remove();
     }
+    deleteSend(id);
 }
-function getProList(){
-    var data = [];
 
-    dealProList.forEach(function(i, v){
-        item = {
-            productId: i,
-            discount: $('tr #dis-num').eq(v).val(),
-            type: ($('tr #dis-type').eq(v).val()==1),
-        };
-        // console.log(item);
-        data.push(item);
-    })
-    return data;
-    // console.log($('tr #dis-num').eq(1).val());
+function deleteSend(id){
+	var dataJSON = {
+		proId: id,
+		dealId:localStorage.getItem("dealId")
+	}
+	var request = $.ajax({
+        type:"GET",
+        url: HOST + "deal/delete/product",
+        dataType: 'json',
+        data:dataJSON,
+    });
 }
+
 function UpdateDeal(){
-	if(validInput<3){
+	if(errorInput>0){
         alert('must enter all field');
         return;
     }
@@ -244,11 +247,60 @@ function UpdateDeal(){
     });
     request.done(function (data) {
         //kiem tra xem có thay doi danh sach products, Co thi gui len API
-        //
+        updateProduct();
         alert('add success');
-        location.reload();
+        // location.reload();
     });
     request.fail(function (data) {
         console.log(data);
     });
+}
+function updateProduct(){
+	if(isNeedToUpdate(StockList)){
+		getProList(StockList).forEach(function(item, v){
+			//deal/product/update
+			var data = {
+				dealId: localStorage.getItem("dealId"),
+				productId: item,
+				discount: $('tr #dis-num').eq(v).val(),
+				type:$('tr #dis-type').eq(v).val()
+			}
+			var request = $.ajax({
+		        type:"POST",
+		        url: HOST + "deal/product/update",
+		        dataType: 'json',
+		        data:dataJSON,
+		    });
+		    request.done(function (data) {
+		        return true;
+		    });
+		    request.fail(function (data) {
+		        console.log(data);
+		    });
+		});
+		 
+	}
+	return false;
+}
+function getProList(ProList){
+    var data = [];
+
+    ProList.forEach(function(i, v){
+        item = {
+            productId: i,
+            discount: $('tr #dis-num').eq(v).val(),
+            type: $('tr #dis-type').eq(v).val(),
+        };
+        console.log(item);
+        data.push(item);
+    })
+    return data;
+    // console.log($('tr #dis-num').eq(1).val());
+}
+function isEdited(id){
+	console.log('edited');
+}
+function isNeedToUpdate(obj1){
+	obj2 = getProList(dealProList).slice(0,obj1.length);
+	return !(JSON.stringify(obj1) == JSON.stringify(obj2));
 }
