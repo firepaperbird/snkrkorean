@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
 
 function urlChange(url) {
     // var site = url+'?toolbar=0&amp;navpanes=0&amp;scrollbar=0';
-    window.window.location.href="../admin_site/main.html?page="+url;
+    window.window.location.href="../admin_site/?page="+url;
     // document.getElementById('main-frame').src = site;
 }
 function getUrlVars() {
