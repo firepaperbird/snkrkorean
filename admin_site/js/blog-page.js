@@ -84,7 +84,7 @@ function removeBIDInLocalStorage() {
 
 function editBlog(id) {
     localStorage.setItem("blogId",id);
-    window.location.href = 'http://localhost:63342/trunk/admin_site/blog-detail.html';
+    window.location.href = '../admin_site/blog-detail.html';
 }
 function deleteBlog() {
     var id = window.localStorage.getItem("bid");

@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="form-group">
-                <input type="text" placeholder="copy url image to here !!!" id="cover" name="cover" class="form-control" onblur="checkvalid(this)">
+                <input type="text" placeholder="copy url image to here !!!" id="cover" name="cover" class="form-control" onblur="checkvalid(this)" onchange="changeCover()">
         </div>
         <div class="form-group">
             <label for="summernote">Content:</label>
@@ -70,7 +70,7 @@
             </script>
         </div>
        
-        <button type="button" class="btn btn-primary" onclick="AddBlog()">Add Blog</button>
+        <button type="button" class="btn btn-primary" onclick="UpdateBlog()">Update</button>
         <button type="button" class="btn btn-outline-secondary" onclick="Preview()" id="btn-preview">Preview</button>
         <div class="form-group" id="preview">
         </div>
@@ -85,7 +85,7 @@
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="js/blog-add.js"></script>
+<script src="js/blog-detail.js"></script>
 <script src="js/Validator.js"></script>
 
 </body>

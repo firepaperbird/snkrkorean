@@ -1,12 +1,26 @@
-function Preview(){
-	jQuery('#preview').empty();
-	jQuery('#preview').append(jQuery('#summernote').summernote('code'));
-	jQuery('#preview').css('display','block');
+
+$(document).ready(function(){
+	var blogId = window.localStorage.getItem("blogId");
+	GetBlog(blogId);
+});
+
+function GetBlog(blogId){
+	var request = $.ajax({
+		type:'GET',
+		url:  HOST + 'post/'+blogId
+	});
+	request.done(function(data){
+		LoadDataToForm(data);
+	});
+	request.fail(function(data){
+		console.log(data);
+	});	
 }
-function resizeIframe() {
-	var obj = document.getElementById('upimg-Frame');
-    obj.style.height = ((+obj.contentWindow.document.body.scrollHeight) + 10)+'px';
-    setTimeout(resizeIframe, 3000);
+
+function LoadDataToForm(blog){
+	$("#title").val(blog.Title);
+	$("#cover").val(blog.Image);
+	$("#summernote").summernote('code',blog.Content);
 }
 
 var errorInput = 0;
@@ -28,20 +42,27 @@ function checkvalid(dv){
     validInput= jQuery('body').find('.is-valid').length;
 }
 
-function AddBlog(){
-	if(validInput<2){
+var isChangeCover = false;
+function changeCover(){
+	isChangeCover = true;
+}
+
+function UpdateBlog(){
+	if(errorInput>0){
         toastr.warning("you must enter Title and Cover");
         return;
     }
 	var dataJSON = {
+		postId:window.localStorage.getItem("blogId"),
         title:jQuery('#title').val(),
         content:jQuery('#summernote').summernote('code'),
         username:sessionStorage.getItem('mainUse'),
-        cover:jQuery('#cover').val()
+        cover:jQuery('#cover').val(),
+        isChangeCover:isChangeCover
     };
     var request = jQuery.ajax({
         type:'POST',
-        url: HOST+'post/add',
+        url: HOST+'post/update',
         dataType:'json',
         data:dataJSON
     });
@@ -57,3 +78,14 @@ function AddBlog(){
         toastr.error('Add fail!');
     })
 } 
+
+function resizeIframe() {
+    var obj = document.getElementById('upimg-Frame');
+    obj.style.height = ((+obj.contentWindow.document.body.scrollHeight) + 10)+'px';
+    setTimeout(resizeIframe, 3000);
+}
+function Preview(){
+	jQuery('#preview').empty();
+	jQuery('#preview').append(jQuery('#summernote').summernote('code'));
+	jQuery('#preview').css('display','block');
+}
