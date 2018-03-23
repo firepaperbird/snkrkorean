@@ -20,7 +20,7 @@ function login(){
     request.done(function (data) {
         if (data === "admin" || data === "staff"){
             sessionStorage.setItem("mainUse", jQuery("#email").val());
-            window.location.replace("../admin_site/main.html");
+            window.location.replace("../admin_site/");
         }
     });
 }

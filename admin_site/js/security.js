@@ -1,10 +1,10 @@
 if(sessionStorage.getItem('mainUse')==null || sessionStorage.getItem('mainUse')==""){
-	window.location.replace("../admin_site");
+	window.location.replace("../admin_site/login.html");
 }
 function logout(){
 	sessionStorage.removeItem("mainUse");
 	localStorage.removeItem('cartlist');
 	localStorage.removeItem('dealId');
 	localStorage.removeItem('blogId');
-	window.location.replace("../admin_site");
+	window.location.replace("../admin_site/login.html");
 }

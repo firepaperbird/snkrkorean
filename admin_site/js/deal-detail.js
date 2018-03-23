@@ -129,7 +129,7 @@ function addNewItemToList(itemId,name){
     row.append('<td>'+itemId+'</td>');
     row.append('<td>'+name+'</td>');
     row.append('<td><input type="number" value="0" min="0" class="form-control" id="dis-num" onblur="emptyDiscount(this)"></td>');
-    row.append('<td><select class="category-select form-control custom-select" id="dis-type" ><option value="0">%</option><option value="1">₩</option></select></td>');
+    row.append('<td><select class="category-select form-control custom-select" id="dis-type" ><option value="false">%</option><option value="true">₩</option></select></td>');
     var del = $('<td><i class="fa fa-times-circle fa-lg" id="del-button" aria-hidden="true"></i></td>');
     del.on("click", function() {
         delPro(itemId);
@@ -157,12 +157,12 @@ function loadDeal(){
         createDealDetail(data);
         data.Products.forEach(function(item){
         	addItemToList(item.ProductId,item.Name,item.Discount,item.Type);
-        	var data = {
-		    	productId: item.ProductId,
-		    	discount: item.Discount.toString(),
-		    	type: item.Type.toString()
-		    }
-        	StockList.push(data);
+      //   	var data = {
+		    // 	productId: item.ProductId,
+		    // 	discount: item.Discount.toString(),
+		    // 	type: item.Type.toString()
+		    // }
+        	StockList.push(item.ProductId);
         })
     });
     request.fail(function (data) {
@@ -247,9 +247,13 @@ function UpdateDeal(){
     });
     request.done(function (data) {
         //kiem tra xem có thay doi danh sach products, Co thi gui len API
-        updateProduct();
-        alert('add success');
-        // location.reload();
+        if(updateProduct()){
+        	alert('success');
+        }
+        else{
+        	alert('Error');
+        }
+        location.reload();
     });
     request.fail(function (data) {
         console.log(data);
@@ -261,15 +265,15 @@ function updateProduct(){
 			//deal/product/update
 			var data = {
 				dealId: localStorage.getItem("dealId"),
-				productId: item,
-				discount: $('tr #dis-num').eq(v).val(),
-				type:$('tr #dis-type').eq(v).val()
+				productId: item.productId,
+				discount: item.discount,
+				type: (item.type=="true")
 			}
 			var request = $.ajax({
 		        type:"POST",
 		        url: HOST + "deal/product/update",
 		        dataType: 'json',
-		        data:dataJSON,
+		        data:data,
 		    });
 		    request.done(function (data) {
 		        return true;
@@ -279,6 +283,31 @@ function updateProduct(){
 		    });
 		});
 		 
+	}
+	if(StockList.length < dealProList.length){
+		getProList(dealProList).forEach(function(item, v){
+			//deal/product/update
+			if(v>=StockList.length){
+				var data = {
+					dealId: localStorage.getItem("dealId"),
+					productId: item.productId,
+					discount: item.discount,
+					type: (item.type=="true")
+				}
+				var request = $.ajax({
+			        type:"POST",
+			        url: HOST + "deal/product/add",
+			        dataType: 'json',
+			        data:data,
+			    });
+			    request.done(function (data) {
+			        return true;
+			    });
+			    request.fail(function (data) {
+			        console.log(data);
+			    });
+			}
+		});
 	}
 	return false;
 }

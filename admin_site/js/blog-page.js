@@ -37,7 +37,7 @@ function CreatetRow(item) {
     var row = jQuery("<tr id='"+item.Id+"'></tr>");
     row.append(CreateACell(item.Id));
     row.append(CreateACell(item.Title));
-    row.append(CreateACell(item.Content));
+    row.append(CreateACellContent(item.Content));
     row.append(CreateACell(item.PostTime));
     row.append(CreateACell(item.UserId));
     row.append(CreateEditButton(item.Id));
@@ -45,6 +45,12 @@ function CreatetRow(item) {
     return row;
 }
 function CreateACell(data) {
+    var cell = jQuery('<td></td>');
+    // data= data.toString().slice(0,100)+'...';
+    cell.append(data);
+    return cell;
+}
+function CreateACellContent(data) {
     var cell = jQuery('<td></td>');
     data= data.toString().slice(0,100)+'...';
     cell.append(data);
