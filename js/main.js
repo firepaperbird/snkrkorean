@@ -91,6 +91,27 @@ $(document).on(
         if (response.status === 'connected') {
           FB.api('/me',{ access_token : response.authResponse.accessToken }, {fields:"id,name,email"}, function(response) {
             console.log(response);
+            console.log(response.authResponse.accessToken);
+            
+            var dataJson = {
+              id:response.id,
+              accessToken:response.authResponse.accessToken,
+              name:response.name
+            }
+            var request = $.ajax({
+              type:'POST',
+              url:HOST + 'user/login/facebook',
+              dataType:'json',
+              data:dataJson
+            });
+
+            request.done({
+              window.location.href = '../products.html';
+            });
+            request.fail({
+              toastr.error("Login facebook fail!");
+            })
+
             //response.id lam id
             //cho nay lay accessToken lam pass
             //kiem tra xem user ton tai chua, ton tai thi login, ko ton tai thi` register cho user nay
@@ -100,3 +121,4 @@ $(document).on(
       }
     }
 );
+
