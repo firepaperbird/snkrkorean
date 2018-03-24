@@ -4,22 +4,35 @@
 $(document).ready(function () {
     AddListenerForMenu();
     var id = getUrlVars()["cid"];
-    if (id!=null & id >0){
-        GetProductByCategory(id,0);//chua sort
-    }else{
-        GetAllProduct(0);        
-    }
+    
     GetCategories();
-
+    controller(id,0);
     $('.custom-select').change(function(){
         var sr = $('.custom-select').val();
-        if (id!=null & id >0){
+        controller(id,sr);
+    });
+
+    $('.deal-menu li').click(function(e){
+        window.location.href='products.html?cid='+$(this).attr('value');
+
+    })
+});
+
+function controller(id, sr){
+    if (id!=null & id > 0){
             GetProductByCategory(id,sr);//chua sort
         }else{
-            GetAllProduct(sr);        
+            if(id==0){
+                GetAllProduct(0);
+            }
+            if(id == -1){
+                getDealingPro(sr);
+            }   
+            if(id == -2){
+                getUpcomingPro(sr);
+            }             
         }
-    });
-});
+}
 
 function GetAllProduct(sort){
     var dataJSON ={
@@ -137,4 +150,44 @@ function editCateName(cate){
     $('.category-title').append('<p>'+cateName+'</p>');
     $('.category-description').empty();
     $('.category-description').append('<p>'+categoryDes.find(x => x.id == cate).des+'</p>');
+}
+
+function getDealingPro(sr){
+    var dataJSON ={
+        sortByPrice:sort, //1= low to high
+    };
+    var request = jQuery.ajax({
+        type:"GET",
+        url: HOST + "product/dealing",
+        dataType:'json',
+        data:dataJSON,
+        header: {"Access-Control-Allow-Origin":true},
+        traditional: true
+    });
+    request.done(function (data) {
+        CreateListItem(data);
+    });
+    request.fail(function (data) {
+       console.log("fail roi");
+    });
+}
+
+function getUpcomingPro(sr){
+    var dataJSON ={
+        sortByPrice:sort, //1= low to high
+    };
+    var request = jQuery.ajax({
+        type:"GET",
+        url: HOST + "product/upcomming",
+        dataType:'json',
+        data:dataJSON,
+        header: {"Access-Control-Allow-Origin":true},
+        traditional: true
+    });
+    request.done(function (data) {
+        CreateListItem(data);
+    });
+    request.fail(function (data) {
+       console.log("fail roi");
+    });
 }
