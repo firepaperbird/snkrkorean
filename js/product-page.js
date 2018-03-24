@@ -5,16 +5,25 @@ $(document).ready(function () {
     AddListenerForMenu();
     var id = getUrlVars()["cid"];
     if (id!=null & id >0){
-        GetProductByCategory(id);
+        GetProductByCategory(id,0);//chua sort
     }else{
-        GetAllProduct();        
+        GetAllProduct(0);        
     }
     GetCategories();
+
+    $('.custom-select').change(function(){
+        var sr = $('.custom-select').val();
+        if (id!=null & id >0){
+            GetProductByCategory(id,sr);//chua sort
+        }else{
+            GetAllProduct(sr);        
+        }
+    });
 });
 
-function GetAllProduct(){
+function GetAllProduct(sort){
     var dataJSON ={
-        sortByPrice:-1, //sort from newest to oldest
+        sortByPrice:sort, //1= low to high
         sortById:0
     };
     var request = jQuery.ajax({
@@ -26,7 +35,7 @@ function GetAllProduct(){
         traditional: true
     });
     request.done(function (data) {
-        console.log(data);
+        // console.log(data);
         CreateListItem(data);
     });
     request.fail(function (data) {
@@ -36,14 +45,15 @@ function GetAllProduct(){
 
 function  CreateListItem(products) {
     var list = $("#list-item-product");
+    list.empty();
     products.forEach(function (product,index) {
-        console.log(product);
+        // console.log(product);
         list.append(CreateItemProduct(product));
     });
 }
 
 function CreateItemProduct(product) {
-    console.log(product.ProductId);
+    // console.log(product.ProductId);
     var item = $("<div class='item' id='"+product.ProductId+"' onclick='GoToDetailPage("+product.ProductId+")'></div>");
     var itemImage = CreateImage(product.Url,product.Name);
     var description = $('<div class="item-description"></div>');
@@ -96,4 +106,28 @@ function getUrlVars() {
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+
+function GetProductByCategory(cate,sort){
+    var dataJSON ={
+        categoryId:cate, 
+        sortByPrice:sort
+    };
+    // alert(cate);
+    var request = jQuery.ajax({
+        type:"GET",
+        url: HOST + "product/get/category",
+        dataType:'json',
+        data:dataJSON,
+        header: {"Access-Control-Allow-Origin":true},
+        traditional: true
+    });
+    request.done(function (data) {
+           
+        CreateListItem(data);
+    });
+    request.fail(function (data) {
+       console.log("fail roi");
+    });
 }

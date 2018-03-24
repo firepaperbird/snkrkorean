@@ -55,24 +55,3 @@ function CreateCategory(name, categoryId) {
     return category;
 }
 
-function GetProductByCategory(cate){
-    var dataJSON ={
-        categoryId:cate, 
-    };
-    // alert(cate);
-    var request = jQuery.ajax({
-        type:"GET",
-        url: HOST + "product/get/category",
-        dataType:'json',
-        data:dataJSON,
-        header: {"Access-Control-Allow-Origin":true},
-        traditional: true
-    });
-    request.done(function (data) {
-           
-        CreateListItem(data);
-    });
-    request.fail(function (data) {
-       console.log("fail roi");
-    });
-}
