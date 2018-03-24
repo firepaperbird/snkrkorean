@@ -124,10 +124,17 @@ function GetProductByCategory(cate,sort){
         traditional: true
     });
     request.done(function (data) {
-           
         CreateListItem(data);
+        editCateName(cate);
     });
     request.fail(function (data) {
        console.log("fail roi");
     });
+}
+function editCateName(cate){
+    var cateName = $('#categories #'+cate).text();
+    $('.category-title').empty();
+    $('.category-title').append('<p>'+cateName+'</p>');
+    $('.category-description').empty();
+    $('.category-description').append('<p>'+categoryDes.find(x => x.id == cate).des+'</p>');
 }
