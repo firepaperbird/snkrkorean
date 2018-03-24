@@ -105,10 +105,10 @@ $(document).on(
               data:dataJson
             });
 
-            request.done({
+            request.done(function(){
               window.location.href = '../products.html';
             });
-            request.fail({
+            request.fail(function(){
               toastr.error("Login facebook fail!");
             })
 
