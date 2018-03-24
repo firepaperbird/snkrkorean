@@ -9,6 +9,9 @@ jQuery(document).ready(function () {
 });
 
 function GetAllVoucher() {
+    var dataJson = {
+        token:
+    }
     var request = jQuery.ajax({
         type:"GET",
         url: HOST + "voucher/all"

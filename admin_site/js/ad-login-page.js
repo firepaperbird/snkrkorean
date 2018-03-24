@@ -11,16 +11,23 @@ function login(){
         type:"POST",
         // url: "https://snkrapiv2.azurewebsites.net/user/login",
         url: HOST + "/admin/login",
-        dataType: 'json',
         data:dataJSON,
         header: {"Access-Control-Allow-Origin":true},
         traditional: true
 
     });
     request.done(function (data) {
-        if (data === "admin" || data === "staff"){
-            sessionStorage.setItem("mainUse", jQuery("#email").val());
-            window.location.replace("../admin_site/");
+        console.log(data);
+        document.cookie = "token="+data;
+        if (data != "fail"){
+                sessionStorage.setItem("mainUse", jQuery("#email").val());
+        window.location.replace("../admin_site/");
+        }else{
+            toastr.error("Login fail!");
         }
+    });
+    
+    request.fail(function(data){
+        toastr.error("Login fail!");
     });
 }
