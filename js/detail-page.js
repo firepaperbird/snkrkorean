@@ -55,7 +55,12 @@ function CreateProduct(item) {
             if (index == 0) {
                 jQuery('.item-image-big img').attr('src', image.Url);
             }
-            jQuery('.item-image-small').append(CreateImage(image.Url));
+            var smallImage =CreateImage(image.Url);
+            smallImage.on('click',function(e){
+                    jQuery('.item-image-big img').attr('src', image.Url);
+                });
+            
+            jQuery('.item-image-small').append(smallImage);
         });
     }
 
