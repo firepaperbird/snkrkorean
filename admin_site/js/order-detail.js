@@ -7,9 +7,14 @@ jQuery(document).ready(function(){
 });
 
 function GetOrderDetail(orderId){
+    var dataJson = {
+        token:getCookie('token')
+    }
 	var request = jQuery.ajax({
 		type: 'GET',
 		url: HOST + 'admin/order/'+orderId,
+        dataType:'json',
+        data:dataJson
 	});
 	request.done(function(data){
 		jQuery('#order-form').append(CreateForm(data));

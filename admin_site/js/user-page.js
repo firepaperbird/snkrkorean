@@ -13,10 +13,14 @@ jQuery(document).ready(function () {
 });
 
 function GetAllUser() {
-
+    var dataJson = {
+        token:getCookie('token')
+    }
     var request = jQuery.ajax({
         type:"GET",
         url: HOST + "user/all",
+        dataType:'json',
+        data:dataJson
 
     });
     request.done(function (data) {
@@ -79,7 +83,8 @@ function expiredUser() {
     var id = window.localStorage.getItem("uid");
     jQuery("#confirmDelete").modal('hide');
     var dataJSON={
-        username : id
+        username : id,
+        token:getCookie('token')
     };
     console.log(dataJSON);
     var request = jQuery.ajax({

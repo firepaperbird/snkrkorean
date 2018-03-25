@@ -11,7 +11,8 @@ jQuery(document).ready(function () {
 
 function GetAllOrder() {
     var dataJSON = {
-      sortByTime : -1
+      sortByTime : -1,
+      token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",
@@ -136,7 +137,8 @@ function removeOIDInLocalStorage() {
 
 function updateStatusOrder(id, status) {
     var dataJSON={
-        status : status
+        status : status,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",
@@ -180,7 +182,8 @@ function cancelOrder() {
     var id = window.localStorage.getItem("oid");
     jQuery("#confirmDelete").modal('hide');
     var dataJSON={
-        orderId : id
+        orderId : id,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",

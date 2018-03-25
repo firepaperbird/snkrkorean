@@ -6,6 +6,7 @@ function addStaff(){
 			fullname:jQuery("#FullName").val(),
 			phone:jQuery("#Email").val(),
 			email:jQuery("#Phone").val(),
+			token:getCookie('token')
 		}
 		var request = jQuery.ajax({
 			type:'POST',
@@ -15,7 +16,7 @@ function addStaff(){
 		});
 		request.done(function(data){
 			if (data == "success"){
-				window.location.href="../admin_stie/user.html";
+				window.location.href="../admin_site/user.html";
 			}else{
 				toastr.error("Add fail!! Please try again!")
 			}
