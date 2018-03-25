@@ -122,3 +122,12 @@ $(document).on(
     }
 );
 
+function search(t,event){
+  var k = event.which || event.keyCode;;
+  if(k!=13){
+    return;
+  }
+  window.location.href = 'products.html?cid=-3&search='+$(t).val();
+  // alert($(t).val());
+  
+}

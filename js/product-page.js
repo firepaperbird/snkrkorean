@@ -30,7 +30,11 @@ function controller(id, sr){
             }   
             if(id == -2){
                 getUpcomingPro(sr);
-            }             
+            }   
+            if(id == -3){
+                var str = getUrlVars()["search"];
+                showSearch(str);
+            }          
         }
 }
 
@@ -185,6 +189,26 @@ function getUpcomingPro(sr){
         traditional: true
     });
     request.done(function (data) {
+        CreateListItem(data);
+    });
+    request.fail(function (data) {
+       console.log("fail roi");
+    });
+}
+function showSearch(str){
+    var dataJSON ={
+        searchString:str, 
+    };
+    var request = jQuery.ajax({
+        type:"GET",
+        url: HOST + "product/search",
+        dataType:'json',
+        data:dataJSON,
+        header: {"Access-Control-Allow-Origin":true},
+        traditional: true
+    });
+    request.done(function (data) {
+        // console.log(data);
         CreateListItem(data);
     });
     request.fail(function (data) {
