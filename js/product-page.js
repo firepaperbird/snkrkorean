@@ -23,7 +23,7 @@ function controller(id, sr){
             GetProductByCategory(id,sr);//chua sort
         }else{
             if(id==0){
-                GetAllProduct(0);
+                GetAllProduct(sr);
             }
             if(id == -1){
                 getDealingPro(sr);
