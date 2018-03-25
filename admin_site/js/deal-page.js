@@ -12,9 +12,14 @@ jQuery(document).ready(function () {
 });
 
 function GetAllDeal() {
+    var dataJSON ={
+        token:getCookie('token')
+    }
     var request = jQuery.ajax({
         type:"GET",
         url: HOST + "deal/all",
+        dataType:'json',
+        data:dataJSON
     });
     request.done(function (data) {
         CreateTable(data);
@@ -81,7 +86,8 @@ function deleteDeal() {
     var id = window.localStorage.getItem("did");
     jQuery('#confirmDelete').modal('hide');
     var dataJSON={
-        dealId : id
+        dealId : id,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",

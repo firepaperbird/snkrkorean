@@ -61,7 +61,8 @@ function addVoucher(){
         description: description,
         startTime: startTime,
         duration: duration,
-        quantity: quantity
+        quantity: quantity,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:'POST',
@@ -76,8 +77,13 @@ function addVoucher(){
         if (data == 'fail'){
             toastr.error('Add fail!');
         }
+        if (data == 'duplicate'){
+            toastr.error('Voucher code is exists!Please change another');
+            jQuery('#VoucherId').focus();
+        }
     });
     request.fail(function () {
+        console.log('fail');
         toastr.error('Add fail!');
     })
     

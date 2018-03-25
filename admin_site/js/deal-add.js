@@ -73,7 +73,7 @@ function CreateItemList(){
         if(selectedCategory > 0){//product/add
             var request = jQuery.ajax({
                 type:"GET",
-                url: HOST + "product/get/category",
+                url: HOST + "product/endTime",
                 dataType:'json',
                 data:dataJSON,
                 header: {"Access-Control-Allow-Origin":true},
@@ -112,7 +112,8 @@ function CreateListItem(itemList){
                 if(findIdIntable(item.ProductId)==false){
                     addItemToList(item.ProductId,item.Name);
                 }else{
-                    alert('item: '+item.ProductId+' is exist');
+                    // alert('item: '+item.ProductId+' is exist');
+                    toastr.error('item: '+item.ProductId+' is exist')
                 }
             });
         iList.append( proItem );
@@ -153,15 +154,26 @@ function delPro(id){
 }
 function addDeal(){
     if(validInput<3){
-        alert('must enter all field');
+        // alert('must enter all field');
+        toastr.error('You must enter all field');
         return;
     }
     var proList = getProList();//JSON.stringify(getProList());
-    var dataJSON = {
+    var isError = false;
+    proList.forEach(function(item){
+        if (item.discount <= 0){
+            isError = true;
+        }
+    });
+    if (isError){
+        toastr.error('Please change disount for product')
+    }else{
+        var dataJSON = {
         products:proList,
         content:$('#pro-content').val(),
         startTime:$('#StartTime').val(),
         Duration:$('#pro-duration').val(),
+        token:getCookie('token')
     }
     console.log(dataJSON);
     var request = $.ajax({
@@ -171,12 +183,15 @@ function addDeal(){
         data:dataJSON,
     });
     request.done(function (data) {
-        alert('add success');
+        // alert('add success');
         location.reload();
     });
     request.fail(function (data) {
         console.log(data);
     });
+    }
+
+    
 }
 function getProList(){
     var data = [];

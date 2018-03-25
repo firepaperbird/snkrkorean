@@ -58,7 +58,8 @@ function UpdateBlog(){
         content:jQuery('#summernote').summernote('code'),
         username:sessionStorage.getItem('mainUse'),
         cover:jQuery('#cover').val(),
-        isChangeCover:isChangeCover
+        isChangeCover:isChangeCover,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:'POST',
@@ -70,7 +71,7 @@ function UpdateBlog(){
         if (data == 'success'){
             window.location.href = '../admin_site/blog.html';
         }
-        if (data == 'fail'){
+        else{
             toastr.error('Add fail!');
         }
     });

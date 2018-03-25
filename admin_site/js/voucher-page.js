@@ -10,11 +10,13 @@ jQuery(document).ready(function () {
 
 function GetAllVoucher() {
     var dataJson = {
-        token:
+        token: getCookie('token')
     }
     var request = jQuery.ajax({
         type:"GET",
-        url: HOST + "voucher/all"
+        url: HOST + "voucher/all",
+        dataType:'json',
+        data:dataJson
     });
     request.done(function (data) {
         CreateTable(data);
@@ -91,7 +93,8 @@ function deleteVoucher() {
     var id = window.localStorage.getItem("vid");
     jQuery('#confirmDelete').modal('hide');
     var dataJSON={
-        voucherId : id
+        voucherId : id,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",

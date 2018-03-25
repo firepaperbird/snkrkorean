@@ -90,7 +90,8 @@ function deleteBlog() {
     var id = window.localStorage.getItem("bid");
     jQuery('#confirmDelete').modal('hide');
     var dataJSON={
-        postId : id
+        postId : id,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",

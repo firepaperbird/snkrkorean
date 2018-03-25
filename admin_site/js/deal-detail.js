@@ -77,11 +77,18 @@ function CreateItemList(){
         if(selectedCategory > 0){//product/add
             var request = jQuery.ajax({
                 type:"GET",
-                url: HOST + "product/get/category",
+                url: HOST + "product/endTime",
                 dataType:'json',
                 data:dataJSON,
                 header: {"Access-Control-Allow-Origin":true},
                 traditional: true
+            });
+            request.done(function (data) {
+               
+            CreateListItem(data);
+            });
+            request.fail(function (data) {
+               toastr.error('')
             });
         }else{
             dataJSON ={
@@ -96,15 +103,17 @@ function CreateItemList(){
                 header: {"Access-Control-Allow-Origin":true},
                 traditional: true
             });
-        }
+            request.done(function (data) {
+                           
+                CreateListItem(data);
+            });
+            request.fail(function (data) {
+               toastr.error('Get product fail!')
+            });
+
+            }
+                    
         
-        request.done(function (data) {
-               
-            CreateListItem(data);
-        });
-        request.fail(function (data) {
-           console.log("fail roi");
-        });
     }
 }
 function CreateListItem(itemList){
@@ -116,7 +125,8 @@ function CreateListItem(itemList){
                 if(findIdIntable(item.ProductId)==false){
                     addNewItemToList(item.ProductId,item.Name);
                 }else{
-                    alert('item: '+item.ProductId+' is exist');
+                    // alert('item: '+item.ProductId+' is exist');
+                    toastr.eror('item: '+item.ProductId+' is exist');
                 }
             });
         iList.append( proItem );
@@ -148,10 +158,14 @@ function findIdIntable(id)
 }
 
 function loadDeal(){
+    var dataJson ={
+        token:getCookie('token')
+    }
     var request = $.ajax({
         type:"Get",
         url: HOST + "deal/"+localStorage.getItem("dealId"),
         dataType: 'json',
+        data:dataJson
     });
     request.done(function (data) {
         createDealDetail(data);
@@ -166,7 +180,7 @@ function loadDeal(){
         })
     });
     request.fail(function (data) {
-        console.log(data);
+        toastr.error('Load fail!Check your network connection')
     });
 
 }
@@ -216,7 +230,8 @@ function delPro(id){
 function deleteSend(id){
 	var dataJSON = {
 		proId: id,
-		dealId:localStorage.getItem("dealId")
+		dealId:localStorage.getItem("dealId"),
+        token:getCookie('token')
 	}
 	var request = $.ajax({
         type:"GET",
@@ -228,7 +243,8 @@ function deleteSend(id){
 
 function UpdateDeal(){
 	if(errorInput>0){
-        alert('must enter all field');
+        // alert('must enter all field');
+        toastr.error('You must enter all field (*)')
         return;
     }
     // var proList = getProList();//JSON.stringify(getProList());
@@ -237,6 +253,7 @@ function UpdateDeal(){
         content:$('#pro-content').val(),
         startTime:$('#StartTime').val(),
         Duration:$('#pro-duration').val(),
+        token:getCookie('token')
     }
     console.log(dataJSON);
     var request = $.ajax({
@@ -248,40 +265,53 @@ function UpdateDeal(){
     request.done(function (data) {
         //kiem tra xem có thay doi danh sach products, Co thi gui len API
         if(updateProduct()){
-        	alert('success');
+        	window.location.href="../admin_site/deal.html";
         }
         else{
-        	alert('Error');
+        	toastr.error('Update fail!')
         }
-        location.reload();
     });
     request.fail(function (data) {
         console.log(data);
     });
 }
+
+function updateProductAjax(item){
+    var isSuccess = false;
+    var data = {
+                dealId: localStorage.getItem("dealId"),
+                productId: item.productId,
+                discount: item.discount,
+                type: (item.type=="true"),
+                token:getCookie('token')
+            }
+    var request = $.ajax({
+        type:"POST",
+        url: HOST + "deal/product/update",
+        dataType: 'json',
+        data:data,
+        });
+        request.done(function (data) {
+            isSuccess = true;
+        });
+        request.fail(function (data) {
+            console.log(data);
+        });
+        return isSuccess;
+}
 function updateProduct(){
+    var isSuccess = false;
 	if(isNeedToUpdate(StockList)){
-		getProList(StockList).forEach(function(item, v){
-			//deal/product/update
-			var data = {
-				dealId: localStorage.getItem("dealId"),
-				productId: item.productId,
-				discount: item.discount,
-				type: (item.type=="true")
-			}
-			var request = $.ajax({
-		        type:"POST",
-		        url: HOST + "deal/product/update",
-		        dataType: 'json',
-		        data:data,
-		    });
-		    request.done(function (data) {
-		        return true;
-		    });
-		    request.fail(function (data) {
-		        console.log(data);
-		    });
-		});
+        var stockListArray = getProList(StockList);
+        if (stockListArray.length == 1){
+            isSuccess = updateProductAjax(stockListArray[0]);
+        }else{
+            getProList(StockList).forEach(function(item, v){
+            //deal/product/update
+            isSuccess = updateProductAjax(item);
+        });
+        }
+		
 		 
 	}
 	if(StockList.length < dealProList.length){
@@ -292,7 +322,8 @@ function updateProduct(){
 					dealId: localStorage.getItem("dealId"),
 					productId: item.productId,
 					discount: item.discount,
-					type: (item.type=="true")
+					type: (item.type=="true"),
+                    token:getCookie('token')
 				}
 				var request = $.ajax({
 			        type:"POST",
@@ -301,15 +332,15 @@ function updateProduct(){
 			        data:data,
 			    });
 			    request.done(function (data) {
-			        return true;
+			        isSuccess = true;
 			    });
 			    request.fail(function (data) {
-			        console.log(data);
+			        // console.log(data);
 			    });
 			}
 		});
 	}
-	return false;
+	return isSuccess;
 }
 function getProList(ProList){
     var data = [];

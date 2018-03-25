@@ -8,9 +8,14 @@ jQuery(document).ready(function () {
     GetVoucher(voucherId);
 });
 function GetVoucher(voucherId) {
+    var dataJson = {
+        token:getCookie('token')
+    }
     var request = jQuery.ajax({
         type:"GET",
-        url:HOST + "voucher/"+voucherId
+        url:HOST + "voucher/"+voucherId,
+        dataType:'json',
+        data:dataJson
     });
     request.done(function (data) {
         jQuery('#voucher-form').append(CreateForm(data));
@@ -157,7 +162,8 @@ function updateVoucher() {
         description: description,
         startTime: startTime,
         duration: duration,
-        quantity: quantity
+        quantity: quantity,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:'POST',
