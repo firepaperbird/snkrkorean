@@ -65,6 +65,9 @@
     float: left;
     background-color: #222222;
     margin-bottom: 20px;
+    /*margin-left: 20px;*/
+    padding-left: 30px;
+    padding-top: 20px;
 
 }
 .item-image{
@@ -94,6 +97,10 @@
     width: 100px;
     height: 100px;
 
+}
+.item-image-small img{
+        width: 100%;
+        height: auto;
 }
 
 .item-description{
@@ -336,11 +343,28 @@ hr{
         height: 0px;
     }
     .item{
-        padding-left: 10px;
+        padding-left: 0px;
         width: 100% !important;
     }
     .item-image, .item-description{
         width: 100%;
-        padding-left: 10px;
+        padding-left: 5px;
+    }
+    .item-image-small{
+        padding-top: 10px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .item-image-small .image{
+        float: left;
+        width: 80px;
+    }
+    .item-image-small img{
+        width: 100%;
+        height: auto;
+        padding: 3px;
+    }
+    .item-image-big{
+        width: 100%;
     }
 }
