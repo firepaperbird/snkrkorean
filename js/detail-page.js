@@ -175,6 +175,10 @@ function CreateComment(comment){
 //add to  cart btn
 var storedAry;
 $( ".btn-add-cart" ).click(function() {
+    if (!$('.list-size').children().has('.size-slected')){
+        toastr.warning('Please choose size of product');
+        return;
+    }
     // var cookieValue = getCookie("snkrcrt");
     storedAry = JSON.parse(localStorage.getItem('cartlist'));
     var item = {

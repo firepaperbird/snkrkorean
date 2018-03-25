@@ -126,7 +126,7 @@ function CreateListItem(itemList){
                     addNewItemToList(item.ProductId,item.Name);
                 }else{
                     // alert('item: '+item.ProductId+' is exist');
-                    toastr.eror('item: '+item.ProductId+' is exist');
+                    toastr.error('item: '+item.ProductId+' is exist');
                 }
             });
         iList.append( proItem );

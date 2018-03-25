@@ -144,7 +144,8 @@ function updateCategory() {
         id: id,
         name: name,
         description: description,
-        parentId: parentId
+        parentId: parentId,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:'POST',
