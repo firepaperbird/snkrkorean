@@ -227,3 +227,8 @@ function compareArrayOfSize(arr1){
     }
     return result;
 }
+
+function addImgRow(){
+    jQuery('#imgSto').append('<input type="text" class="form-control" id="pro-image"  name="image" >');
+    jQuery('#imgSto').append('<div style="clear: both"></div>');
+}

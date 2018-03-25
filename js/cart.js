@@ -1,5 +1,6 @@
 $(document).ready(function () {
     Getcart();
+    updateCartNav();
     refreshbutton();
     $('.edit-item').on('click',function(){
         alert('done');
@@ -32,6 +33,20 @@ function updateCart(){
         localStorage.setItem('cartlist', JSON.stringify(storedAry));
     } 
     
+}
+function updateCartNav(){
+  if( localStorage.getItem('cartlist')!='undefined'){
+    var storedAry = JSON.parse(localStorage.getItem('cartlist'));
+  }else{
+    localStorage.removeItem('cartlist');
+  }
+  var num;
+  if (storedAry==null){
+    num=0;
+  }else{
+      num=storedAry.length;
+  }
+  $('.user-cart').text('Cart ('+num+')');
 }
 
 function Getcart(){

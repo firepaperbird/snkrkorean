@@ -66,7 +66,7 @@
         }
         #imgSto label{
             float: left;
-            width: 100%;
+            width: 100%;height: auto;
 
         }
         #addimg{
@@ -160,12 +160,15 @@
                 <label for="image">put image url here:</label>
                 <input type="text" class="form-control" id="pro-image"  name="image">
                 <input type="button" value="+iamge" id="addimg" class="btn btn-primary btn-lg" onclick="addImgRow()"/>
+                
             </div>
+            <br>
             <div class="form-group">
                 <label for="LastModified">LastModified:</label>
                 <input type="text" class="form-control" id="LastModified" value="2018-03-01T00:00:00" name="LastModified" disabled="">
             </div>
             <input type="button" value="Update" class="btn btn-primary btn-lg submit" onclick="UpdateProduct()"  />
+            <div style="clear: left;"></div>
         </div>
     </div>
 </div>
