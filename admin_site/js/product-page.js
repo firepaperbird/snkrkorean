@@ -88,7 +88,8 @@ function deleteProduct() {
     var productId = window.localStorage.getItem('pid');
     jQuery("#confirmDelete").modal('hide');
     var dataJSON={
-        productId : productId
+        productId : productId,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",
