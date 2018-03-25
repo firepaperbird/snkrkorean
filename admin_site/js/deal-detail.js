@@ -306,10 +306,12 @@ function updateProduct(){
         if (stockListArray.length == 1){
             isSuccess = updateProductAjax(stockListArray[0]);
         }else{
-            getProList(StockList).forEach(function(item, v){
-            //deal/product/update
-            isSuccess = updateProductAjax(item);
-        });
+            isSuccess = true;
+            stockListArray.forEach(function(item, v){
+                if(!updateProductAjax(item)){
+                    isSuccess = false;
+                }
+            });
         }
 		
 		 
