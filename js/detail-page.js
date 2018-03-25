@@ -215,11 +215,17 @@ function moveCategory() {
     }
 }
 function submitcmnt(){
+    if (!checklogin()){
+        toastr.error("Please login before comment!");
+        return;
+    }
+
     var cmntPack = {
         proId: getUrlVars()["id"],
         username:JSON.parse(sessionStorage.getItem('customer')),
         title:'',
         content:$('#input-comment-content').val(),
+        token:getCookie("token")
     };
     var request = jQuery.ajax({
         type: "POST",
@@ -230,10 +236,17 @@ function submitcmnt(){
         traditional: true
     });
     request.done(function (data) {
-        alert('success');
         location.reload();
     });
     request.fail(function (data) {
-        console.log("fail");
+        toastr.error("Comment fail!");
     })
+}
+
+function checklogin(){
+    var username=JSON.parse(sessionStorage.getItem('customer'));
+    if (username!=null && username!="")
+        return true;
+    else
+        return false;
 }

@@ -22,7 +22,7 @@ function controller(id, sr){
     if (id!=null & id > 0){
             GetProductByCategory(id,sr);//chua sort
         }else{
-            if(id==0){
+            if(id==0 || id == null){
                 GetAllProduct(sr);
             }
             if(id == -1){
@@ -156,7 +156,7 @@ function editCateName(cate){
     $('.category-description').append('<p>'+categoryDes.find(x => x.id == cate).des+'</p>');
 }
 
-function getDealingPro(sr){
+function getDealingPro(sort){
     var dataJSON ={
         sortByPrice:sort, //1= low to high
     };
@@ -176,7 +176,7 @@ function getDealingPro(sr){
     });
 }
 
-function getUpcomingPro(sr){
+function getUpcomingPro(sort){
     var dataJSON ={
         sortByPrice:sort, //1= low to high
     };

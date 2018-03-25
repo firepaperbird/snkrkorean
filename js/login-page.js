@@ -23,7 +23,8 @@ function userLogin() {
 
     });
     request.done(function (data) {
-        if (data == "success"){
+        if (data != "fail"){
+            document.cookie = "token="+data;
             writteUN(jQuery("#username").val());
             if(sessionStorage.getItem('isCheckout')!=null){
                 window.location.replace("cart.html");   

@@ -10,6 +10,7 @@ $(document).ready(function () {
 function userLoged() {
     var dataJSON = {
         username: JSON.parse(sessionStorage.getItem('customer')),
+        token:getCookie("token")
     }
     var request = jQuery.ajax({
         type: "GET",
@@ -45,8 +46,9 @@ function updateTotalBill() {
 
 function checkout() {
     var cart = JSON.parse(sessionStorage.getItem('order'));
-    var productslist = [];
-    cart.productslist.forEach(function (item, index) {
+    if (cart != null){
+        var productslist = [];
+        cart.productslist.forEach(function (item, index) {
         var newItem = {
             productId: item.id,
             quantity: item.quantity,
@@ -58,7 +60,12 @@ function checkout() {
     var totalPrice = cart.orderbill.total;
     var products = productslist;
     var voucher = cart.voucher;
+
     sendOrder(username, totalPrice, products, voucher);
+    }else{
+        toastr.warning("You should buy something before checkout");
+    }
+    
 }
 function sendOrder(username, totalPrice, products, voucher) {
     var dataJson = {
@@ -70,7 +77,7 @@ function sendOrder(username, totalPrice, products, voucher) {
         totalPrice: totalPrice,
         products: products,
         voucher: voucher,
-
+        token:getCookie("token")
     };
     console.log(dataJson);
     var request = jQuery.ajax({
@@ -85,6 +92,9 @@ function sendOrder(username, totalPrice, products, voucher) {
     request.done(function (data) {
         if (data == 'success') {
             toastr.success("Checkout success");
+            window.location.href="../";
+            localStorage.removeItem("cartlist");
+            sessionStorage.removeItem("order");
         }
         if (data == 'fail') {
             toastr.error("Checkout fail");

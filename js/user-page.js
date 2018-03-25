@@ -21,9 +21,15 @@ $(document).ready(function (){
 });
 
 function loadUserInfo(){
+    var dataJson = {
+        username:JSON.parse(sessionStorage.getItem('customer')),
+        token:getCookie("token")
+    }
 	var request = jQuery.ajax({
         type:"GET",
-        url:HOST + "user/profile?username="+JSON.parse(sessionStorage.getItem('customer'))
+        url:HOST + "user/profile",
+        dataType:'json',
+        data:dataJson
     });
     request.done(function (data) {
         CreateForm(data);
@@ -37,9 +43,15 @@ function CreateForm(user){
 }
 
 function loadOrder(){
+    var dataJson = {
+        userId:sessionStorage.getItem('customer'),
+        token:getCookie('token')
+    }
 	var request = jQuery.ajax({
         type:"GET",
-        url:HOST + "order/history?userId="+JSON.parse(sessionStorage.getItem('customer'))
+        url:HOST + "order/history",
+        dataType:'json',
+        data:dataJson
     });
     request.done(function (data) {
         CreateOrderHistory(data);
