@@ -9,7 +9,6 @@ function login(){
     }
     var request = jQuery.ajax({
         type:"POST",
-        // url: "https://snkrapiv2.azurewebsites.net/user/login",
         url: HOST + "/admin/login",
         data:dataJSON,
         header: {"Access-Control-Allow-Origin":true},
@@ -18,10 +17,11 @@ function login(){
     });
     request.done(function (data) {
         console.log(data);
-        document.cookie = "token="+data;
+        
         if (data != "fail"){
-                sessionStorage.setItem("mainUse", jQuery("#email").val());
-        window.location.replace("../admin_site/");
+            document.cookie = "token="+data;
+            sessionStorage.setItem("mainUse", jQuery("#email").val());
+            window.location.replace("../admin_site/");
         }else{
             toastr.error("Login fail!");
         }
