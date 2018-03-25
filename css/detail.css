@@ -70,6 +70,7 @@
 .item-image{
     width: 50%;
     float: left;
+    margin-right: 15px;
 }
 .item-image-big{
     width: 70%;
@@ -98,6 +99,7 @@
 .item-description{
     width: 40%;
     float: left;
+    /*margin left: 15px;*/
 }
 
 .item-name{
@@ -339,5 +341,6 @@ hr{
     }
     .item-image, .item-description{
         width: 100%;
+        padding-left: 10px;
     }
 }
