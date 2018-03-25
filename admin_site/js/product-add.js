@@ -67,7 +67,8 @@ function addProduct() {
         quantity: jQuery('#pro-quantity').val(),
         tag: jQuery('#pro-tag').val(),
         images: jQuery("input[name='image']").map(function(){return jQuery(this).val();}).get(),
-        sizes: sizeslist
+        sizes: sizeslist,
+        token:getCookie('token')
     };
     // console.log(dataJSON.images);
     var request = jQuery.ajax({
@@ -86,7 +87,7 @@ function addProduct() {
         }
     });
     request.fail(function (data) {
-        console.log(data);
+        toastr.error("Add fail!")
     });
 
 }

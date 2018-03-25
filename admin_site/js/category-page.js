@@ -82,7 +82,8 @@ function deleteCategory() {
     categoryId = window.localStorage.getItem("cid");
     jQuery('#confirmDelete').modal('hide');
     var dataJSON={
-        categoryId : categoryId
+        categoryId : categoryId,
+        token:getCookie("token")
     };
     var request = jQuery.ajax({
         type:"GET",

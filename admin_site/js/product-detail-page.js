@@ -14,9 +14,14 @@ jQuery(document).ready(function () {
 });
 
 function GetProduct(productId) {
+    var dataJson={
+        token:getCookie('token')
+    }
     var request = jQuery.ajax({
         type:"GET",
-        url:HOST + "admin/product/"+productId
+        url:HOST + "admin/product/"+productId,
+        dataType:'json',
+        data:dataJson
     });
     request.done(function (data) {
         CreateForm(data);
@@ -116,7 +121,6 @@ function UpdateProduct() {
         alert('must enter red field (' +errorInput+ ')');
         return;
     }
-    alert("Update product!!!");
     var sizeslist = jQuery('#pro-size').val().split(",");
     // sizeslist.forEach(function(si,idx){
     for (var i = 0; i < sizeslist.length; i++) {
@@ -139,7 +143,8 @@ function UpdateProduct() {
         tag: jQuery('#pro-tag').val(),
         images: jQuery("input[name='image']").map(function(){return jQuery(this).val();}).get(),
         sizes: sizeslist,
-        isChangeSize: compareArrayOfSize(sizeslist)
+        isChangeSize: compareArrayOfSize(sizeslist),
+        token:getCookie("token")
     };
     console.log(dataJson);
     var request = jQuery.ajax({
@@ -154,12 +159,11 @@ function UpdateProduct() {
     request.done(function (data) {
         if (data != null) {
              DeleteImg();
-            // autoFillForUser(data);
             window.location.href="../admin_site/product.html";
         }
     });
     request.fail(function (data) {
-        console.log(data);
+        toastr.error("Update fail!")
     });
 
 }
@@ -168,6 +172,7 @@ function DeleteImg(){
     if(trashBin.length>0){
         var dataJson = {
             imageId:trashBin,
+            token:getCookie("token")
         }
         var request = jQuery.ajax({
             type: "GET",
