@@ -208,7 +208,7 @@ function showSearch(str){
         traditional: true
     });
     request.done(function (data) {
-        // console.log(data);
+        console.log(data);
         CreateListItem(data);
     });
     request.fail(function (data) {
