@@ -61,12 +61,12 @@ function CreatetRow(item) {
         row.append(CreateCancelButton(item.OrderId));
     }
     if (item.OrderStatus == 4){
-        row.append(CreateSuccessCell('Success'));
+        row.append(CreateSuccessCell('Thành công'));
         row.append(CreateACell(''));
     }
     if(item.OrderStatus == 5){
         row.append(CreateACell(''));
-        row.append(CreateCancelCell('Canceled'));
+        row.append(CreateCancelCell('Đã hủy'));
     }
     return row;
 }
@@ -93,7 +93,7 @@ function CreateCancelCell(data) {
 function CreateShippingButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-info btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Shipping</button>");
+    var icon = jQuery("<button type='button' class='btn btn-info btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Giao hàng</button>");
 
     button.append(icon);
     return button;
@@ -102,7 +102,7 @@ function CreateShippingButton(id) {
 function CreateReceivedButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-success btn-add' onclick='updateStatusOrder("+id+",4)'><i class='fa fa-check-square-o' aria-hidden='true'></i> Received</button>");
+    var icon = jQuery("<button type='button' class='btn btn-success btn-add' onclick='updateStatusOrder("+id+",4)'><i class='fa fa-check-square-o' aria-hidden='true'></i> Nhân hàng</button>");
 
     button.append(icon);
     return button;
@@ -111,7 +111,7 @@ function CreateReceivedButton(id) {
 function CreateApproveButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",2)'>Approve</button>");
+    var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",2)'>Duyệt</button>");
     button.append(icon);
     return button;
 }
@@ -119,7 +119,7 @@ function CreateApproveButton(id) {
 function CreateCancelButton(id) {
     var button = jQuery('<td class="buttonCancel"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='openConfirmDeleteModal(this)'><i class='fa fa-minus-circle' aria-hidden='true'></i> Cancel</button>");
+    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='openConfirmDeleteModal(this)'><i class='fa fa-minus-circle' aria-hidden='true'></i> Hủy</button>");
     icon.attr('id',id);
     button.append(icon);
     return button;

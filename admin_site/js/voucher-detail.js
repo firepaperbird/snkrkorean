@@ -25,13 +25,13 @@ function GetVoucher(voucherId) {
 function CreateForm(voucher) {
 
     var form = jQuery('<div></div>');
-    form.append(CreateDisableInput('VoucherId',voucher.VoucherId));
-    form.append(CreateDateTimeInput('StartTime',voucher.StartTime));
-    form.append(CreateNumberInput('Duration',voucher.Duration));
-    form.append(CreateNumberInput('Discount',voucher.Discount));
-    form.append(CreateSelectInput('Type',voucher.Type));
-    form.append(CreateInputTextarea('Description',voucher.Description));
-    form.append(CreateNumberInput('Quantity',voucher.Amount));
+    form.append(CreateDisableInput('Mã giảm giá',voucher.VoucherId));
+    form.append(CreateDateTimeInput('Bắt đầu',voucher.StartTime));
+    form.append(CreateNumberInput('Diễn ra trong (giờ)',voucher.Duration));
+    form.append(CreateNumberInput('Giảm giá',voucher.Discount));
+    form.append(CreateSelectInput('Loại',voucher.Type));
+    form.append(CreateInputTextarea('Mô tả',voucher.Description));
+    form.append(CreateNumberInput('Số lượng',voucher.Amount));
     form.append(CreateUpdateButton());
     return form;
 }
@@ -100,7 +100,7 @@ function CreateDateTimeInput(name,data){
 }
 
 function CreateUpdateButton() {
-    var button = jQuery('<button class="btn btn-primary btn-lg" onclick="updateVoucher()">Update</button>');
+    var button = jQuery('<button class="btn btn-primary btn-lg" onclick="updateVoucher()">Cập nhật</button>');
     return button;
 }
 

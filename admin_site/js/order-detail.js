@@ -27,13 +27,13 @@ function GetOrderDetail(orderId){
 function CreateForm(order) {
 
     var form = jQuery('<div></div>');
-    form.append(CreateDisableInput('OrderId',order.OrderId));
-    form.append(CreateDisableInput('UserId',order.UserId));
-    form.append(CreateDisableInput('Fullname',order.Fullname));
-    form.append(CreateDisableInput('Address',order.Address));
-    form.append(CreateDisableInput('Phone',order.Phone));
-    form.append(CreateDisableInput('Order date',order.OrderDate.replace('T',' ')));
-    form.append(CreateDisabledInputTextarea('Note',order.Description));
+    form.append(CreateDisableInput('Mã đơn',order.OrderId));
+    form.append(CreateDisableInput('Khách hàng',order.UserId));
+    form.append(CreateDisableInput('Họ tên',order.Fullname));
+    form.append(CreateDisableInput('Địa chỉ',order.Address));
+    form.append(CreateDisableInput('Điện thoại',order.Phone));
+    form.append(CreateDisableInput('Ngày đặt hàng',order.OrderDate.replace('T',' ')));
+    form.append(CreateDisabledInputTextarea('Ghi chú',order.Description));
     if (order.Products != null){
     form.append(CreateTable(order.Products,order.TotalPrice));
     }
@@ -82,9 +82,9 @@ function CreateTable(products,total,voucherId) {
 
 function CreateHeader() {
     var row = jQuery("<tr class='bg-primary'></tr>");
-    row.append('<th>ProductId</th>');
-    row.append('<th>Size</th>');
-    row.append('<th>Quantity</th>');
+    row.append('<th>Mã sản phẩm</th>');
+    row.append('<th>Kích thước</th>');
+    row.append('<th>Số lượng</th>');
     return row;
 }
 
@@ -130,14 +130,14 @@ function CreateButton(status,orderId){
     }
     if (status == 'received'){
     	var success = jQuery('<p></p>');
-    	success.append('Success');
+    	success.append('Thành công');
     	success.css('font-weight','bold');
     	success.css('color','green');
         row.append(success);
     }
     if(status == 'cancel'){
         var cancel = jQuery('<p></p>');
-    	cancel.append('Canceled');
+    	cancel.append('Đã hủy');
     	cancel.css('font-weight','bold');
     	cancel.css('color','red');
         row.append(cancel);
@@ -146,22 +146,22 @@ function CreateButton(status,orderId){
 }
 
 function CreateShippingButton(id) {
-    var icon = jQuery("<button type='button' class='btn btn-info btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Shipping</button>");
+    var icon = jQuery("<button type='button' class='btn btn-info btn-add' onclick='updateStatusOrder("+id+",3)'><i class='fa fa-truck' aria-hidden='true'></i> Giao hàng</button>");
     return icon;
 }
 
 function CreateReceivedButton(id) {
-    var icon = jQuery("<button type='button' class='btn btn-success btn-add' onclick='updateStatusOrder("+id+",4)'><i class='fa fa-check-square-o' aria-hidden='true'></i> Received</button>");
+    var icon = jQuery("<button type='button' class='btn btn-success btn-add' onclick='updateStatusOrder("+id+",4)'><i class='fa fa-check-square-o' aria-hidden='true'></i> Nhận hàng</button>");
     return icon;
 }
 
 function CreateApproveButton(id) {
-    var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",2)'>Approve</button>");
+    var icon = jQuery("<button type='button' class='btn btn-primary btn-add' onclick='updateStatusOrder("+id+",2)'>Duyệt</button>");
     return icon;
 }
 
 function CreateCancelButton(id) {
-    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='openConfirmDeleteModal(this)'><i class='fa fa-minus-circle' aria-hidden='true'></i> Cancel</button>");
+    var icon = jQuery("<button type='button' class='btn btn-danger btn-add' onclick='openConfirmDeleteModal(this)'><i class='fa fa-minus-circle' aria-hidden='true'></i> Hủy</button>");
     icon.attr('id',id);
     return icon;
 }
@@ -215,7 +215,6 @@ function cancelOrder() {
         data:dataJSON
     });
     request.done(function (data) {
-        console.log("thanh cong roi");
         if (data == 'success'){
            window.location.href='order.html';
        }
@@ -225,7 +224,6 @@ function cancelOrder() {
 
     });
     request.fail(function (data) {
-        console.log("fail roi");
         toastr.error("Cancel fail!!!");
     });
 }

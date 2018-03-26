@@ -19,10 +19,10 @@ function GetCategory(categoryId) {
 function CreateForm(item) {
 
     var form = jQuery('<div></div>');
-    form.append(CreateDisableInput('Id', item.Id));
-    form.append(CreateInput('Name', item.Name));
-    form.append(CreateInputTextarea('Description', item.Description));
-    form.append(CreateSelect('ParentId', GetListCategory(), item.ParentId));
+    form.append(CreateDisableInput('Mã', item.Id));
+    form.append(CreateInput('Tên', item.Name));
+    form.append(CreateInputTextarea('Mô tả', item.Description));
+    form.append(CreateSelect('Danh mục cha', GetListCategory(), item.ParentId));
     form.append(CreateUpdateButton());
     return form;
 }
@@ -111,7 +111,7 @@ function CreateOptionSelected(value, data) {
 }
 
 function CreateUpdateButton() {
-    var button = jQuery('<button class="btn btn-primary btn-lg" onclick="updateCategory()">Update</button>');
+    var button = jQuery('<button class="btn btn-primary btn-lg" onclick="updateCategory()">Cập nhật</button>');
     return button;
 }
 
