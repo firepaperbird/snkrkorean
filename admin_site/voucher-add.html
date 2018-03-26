@@ -48,41 +48,41 @@
     <div class="col-sm-12" id="product-form">
         <div>
             <div class="form-group">
-                <label for="VoucherId">Voucher code: (*)</label>
+                <label for="VoucherId">Mã giảm giá: (*)</label>
                 <input type="text" class="form-control" id="VoucherId" name="VoucherId">
             </div>
             <div class="form-group">
-                <label for="StartTime">StartTime: (*)</label>
+                <label for="StartTime">Bắt đầu: (*)</label>
                 <input type="date" class="form-control" id="StartTime"  name="StartTime">
             </div>
             <div class="form-group">
-                <label for="Duration">Duration: (*)</label>
+                <label for="Duration">Diễn ra trong (giờ): (*)</label>
                 <input type="number" class="form-control" id="Duration" name="Duration" min="1" max="10000">
             </div>
             <div class="form-group">
-                <label for="Discount">Discount: (*)</label>
+                <label for="Discount">Giảm giá: (*)</label>
                 <input type="text" class="form-control" id="Discount" name="Discount">
             </div>
             <div class="form-group">
-                <label for="Type">Type: (*)</label>
+                <label for="Type">Loại: (*)</label>
                 <select class="form-control" id="Type" name="Type">
                     <option value="0">%</option>
                     <option value="1">VND</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="Description">Description:</label>
+                <label for="Description">Mô tả:</label>
                 <textarea type="text" class="form-control" rows="5" id="Description"
                           name="Description">
                 </textarea>
             </div>
 
             <div class="form-group">
-                <label for="Quantity">Quantity: (*)</label>
+                <label for="Quantity">Số lượng: (*)</label>
                 <input type="number" class="form-control" id="Quantity" name="Quantity" min="1" max="10000000">
             </div>
 
-            <button class="btn btn-primary btn-lg" onclick="addVoucher()">Add</button>
+            <button class="btn btn-primary btn-lg" onclick="addVoucher()">Thêm</button>
         </div>
     </div>
 </div>

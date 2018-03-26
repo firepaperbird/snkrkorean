@@ -36,11 +36,11 @@
 <div class="container-fluid">
 	<div>
 		<div class="form-group">
-            <label for="Name">Content:</label>
+            <label for="Name">Nội dung:</label>
             <input type="text" class="form-control" id="pro-content" name="content" onblur="checkvalid(this)">
         </div>
         <div class="form-group">
-            <label for="Name">StartTime:</label>
+            <label for="Name">Bắt đầu:</label>
 			<div class="input-group date" id="datetimepicker11" data-target-input="nearest">
                     <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker11" id="StartTime" onblur="checkvalid2(this)"/>
                     <div class="input-group-append" data-target="#datetimepicker11" data-toggle="datetimepicker">
@@ -49,35 +49,35 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="duration">Duration:</label>
+            <label for="duration">Thời gian diễn ra (giờ):</label>
             <input type="number" min="0" step="1" class="form-control" id="pro-duration" name="duration" placeholder="count by hour. ex: 122 (122 hour)" onblur="checkvalid(this)">
 
         </div>
         <div class="form-group apply-list">
-            <label for="Category">Category:</label>
+            <label for="Category">Danh mục:</label>
             <select class="category-select form-control custom-select" id="pro-category" onchange="CreateItemList()"> 
-                <option value="-1">none</option>
-                <option value="0">All</option>
+                <option value="-1">Không</option>
+                <option value="0">Tất cả</option>
             </select> 
         </div>
         <div class="form-group" style="overflow-x:auto;">
-            <label for="">Product List:</label>
+            <label for="">Danh sách sản phẩm:</label>
         	<table class="table">
             	<thead>
             		<tr class="table-primary">
             			<th>#</th>
-            			<th>ProductId</th>
-            			<th>Name</th>
-            			<th>Discount</th>
-            			<th>Type</th>
-            			<th>Delete</th>
+            			<th>Mã sản phẩm</th>
+            			<th>Tên</th>
+            			<th>Giá giảm</th>
+            			<th>Loại</th>
+            			<th>Xóa</th>
             		</tr>
             	</thead>
             	<tbody>
             	</tbody>
             </table>
         </div>
-        <input type="button" value="Create Deal" class="btn btn-primary btn-lg submit" onclick="addDeal()"  />
+        <input type="button" value="Tạo giảm giá" class="btn btn-primary btn-lg submit" onclick="addDeal()"  />
 	</div>
 </div>
 <script type="text/javascript">

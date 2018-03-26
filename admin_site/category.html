@@ -37,7 +37,7 @@
 <body>
 <div class="breadcrumbs">
     <div class="col-sm-12 div-add">
-        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='category-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Add Category</button>
+        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='category-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Thêm danh mục</button>
     </div>
 </div>
 <div class="breadcrumbs">
@@ -47,11 +47,11 @@
             <thead class="thead-dark ">
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Parent</th>
-                <th class="ic-edit">Edit</th>
-                <th class="ic-delete">Delete</th>
+                <th>Tên</th>
+                <th>Mô tả</th>
+                <th>Danh mục cha</th>
+                <th class="ic-edit">Sửa</th>
+                <th class="ic-delete">Xóa</th>
             </tr>
             </thead>
             <tbody id="category-table">
@@ -64,17 +64,17 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Xác nhật</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        Are you sure to delete this?
+                        Bạn có muốn xóa nó không?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="deleteCategory()">Yes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >No</button>
+                        <button type="button" class="btn btn-primary" onclick="deleteCategory()">Có</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Không</button>
                     </div>
                 </div>
             </div>

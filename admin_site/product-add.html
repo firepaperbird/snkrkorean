@@ -91,56 +91,56 @@
     <div class="col-sm-12" id="product-form">
         <div>
             <div class="form-group">
-                <label for="Name">Name*:</label>
+                <label for="Name">Tên sản phẩm*:</label>
                 <input type="text" class="form-control" id="pro-name" name="Name" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Brand">Brand*:</label>
+                <label for="Brand">Nhãn hiệu*:</label>
                 <input type="text" class="form-control" id="pro-brand"  name="Brand" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Price">Price*:</label>
+                <label for="Price">Giá*:</label>
                 <input type="number" min="0" step="1" placeholder="number only" class="form-control" id="pro-price" name="Price" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Country">Country*:</label>
+                <label for="Country">Nơi sản xuất*:</label>
                 <input type="text" class="form-control" id="pro-country" name="Country" placeholder="ex: Vietnam" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Description">Description:</label>
+                <label for="Description">Mô tả:</label>
                 <textarea type="text" class="form-control" rows="5" id="pro-description" name="Description"></textarea>
             </div>
             <div class="form-group">
-                <label for="Marterial">Marterial:</label>
+                <label for="Marterial">Chất liệu:</label>
                 <input type="text" class="form-control" id="pro-marterial"  name="Marterial" placeholder="ex: cotton" >
             </div>
             <div class="form-group">
-                <label for="Category">Category:</label>
+                <label for="Category">Danh mục:</label>
                 <select class="category-select form-control" id="pro-category"> 
-                  <option value="0">none</option>
+                  <option value="0">Không</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="Quantity">Quantity*:</label>
-                <input  type="number" min="0" step="1" placeholder="number only" class="form-control" id="pro-quantity" name="Quantity" onblur="checkvalid(this)">
+                <label for="Quantity">Số lượng*:</label>
+                <input  type="number" min="0" step="1" placeholder="Chỉ nhập số" class="form-control" id="pro-quantity" name="Quantity" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Tags">TAGS:</label>
-                <input  type="text" placeholder="ex: shoes, white, ..." class="form-control" id="pro-tag" name="Tags">
+                <label for="Tags">Thẻ:</label>
+                <input  type="text" placeholder="ex: giày,trắng,..." class="form-control" id="pro-tag" name="Tags">
             </div>
             <div class="form-group">
-                <label for="Size">Size*:</label>
+                <label for="Size">Kích thước*:</label>
                 <input  type="text" placeholder="ex: XL, X, 42, 39 ..." class="form-control" id="pro-size" name="Size" onblur="">
             </div>
             <div id="upImg">
                 <iframe src="UpImg.html" class="upimg-Frame" id="upimg-Frame" frameborder="0" scrolling="no" onload="resizeIframe()"></iframe>
             </div>
             <div id="imgSto">
-                <label for="image">put image url here:</label>
+                <label for="image">Nhập link ảnh ở đây:</label>
                 <input type="text" class="form-control" id="pro-image"  name="image">
-                <input type="button" value="+iamge" id="addimg" class="btn btn-primary btn-lg" onclick="addImgRow()"/>
+                <input type="button" value="+ảnh" id="addimg" class="btn btn-primary btn-lg" onclick="addImgRow()"/>
             </div>
-            <input type="button" value="Add" class="btn btn-primary btn-lg submit" onclick="addProduct()"  />
+            <input type="button" value="Thêm" class="btn btn-primary btn-lg submit" onclick="addProduct()"  />
         </div>
     </div>
 </div>

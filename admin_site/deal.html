@@ -39,7 +39,7 @@
 
 <div class="breadcrumbs">
     <div class="col-sm-12 div-add">
-        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='deal-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Add Deal</button>
+        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='deal-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Thêm Giảm giá</button>
     </div>
 </div>
 
@@ -49,12 +49,12 @@
         <table class="table table-striped ">
             <thead class="thead-dark ">
             <tr>
-                <th>Id</th>
-                <th>Content</th>
-                <th>Duration</th>
-                <th>StartTime</th>
-                <th class="ic-edit">Edit</th>
-                <th class="ic-delete">Delete</th>
+                <th>Mã</th>
+                <th>Nội dung</th>
+                <th>Diễn ra trong(giờ)</th>
+                <th>Bắt đầu</th>
+                <th class="ic-edit">Sửa</th>
+                <th class="ic-delete">Xóa</th>
             </tr>
             </thead>
             <tbody id="deal-table">
@@ -68,17 +68,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Xác nhật</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure to delete this?
+                    Bạn có muốn xóa nó không?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="deleteDeal()">Yes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >No</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteDeal()">Có</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Không</button>
                 </div>
             </div>
         </div>

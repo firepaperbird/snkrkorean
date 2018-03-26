@@ -38,7 +38,7 @@
 <!--start body-->
 <div class="breadcrumbs">
     <div class="col-sm-12 div-add">
-        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='user-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Add Staff</button>
+        <button type="button" class="btn btn-primary btn-add" onclick="window.location.href='user-add.html'" ><i class="fa fa-plus" aria-hidden="true"></i> Thêm nhân viên</button>
     </div>
 </div>
 <div class="breadcrumbs">
@@ -47,13 +47,13 @@
         <table class="table table-striped ">
             <thead class="thead-dark ">
             <tr>
-                <th>Username</th>
-                <th>Fullname</th>
+                <th>Tên đăng nhập</th>
+                <th>Họ tên</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>RegisterDate</th>
-                <th>Role</th>
+                <th>Điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Ngày đăng ký</th>
+                <th>Vai trò</th>
                 <th>Block</th>
             </tr>
             </thead>
@@ -68,17 +68,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Confirm</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure to block this user?
+                    Bạn có muốn block người dùng này không?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="expiredUser()">Yes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >No</button>
+                    <button type="button" class="btn btn-primary" onclick="expiredUser()">Có</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Không</button>
                 </div>
             </div>
         </div>
