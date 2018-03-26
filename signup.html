@@ -9,8 +9,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/header.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
+
+<!-- TOASTR -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
     <script src="js/login-page.js"></script>    
     <script src="js/main.js"></script> 
+    <script src="js/signup.js"></script> 
+    <script src="Resources/Host.js"></script>
     <link rel="stylesheet" id="style" type="text/css" href="">
 <!-- <link rel="stylesheet" href="css/login.css"/> -->
 </head>
@@ -27,7 +34,7 @@
             <div style="font-size: 16px;">Please fill in all the fields below</div>
         </div>
         <div class="signup-form" id="">
-            <form class="reset-pass-form">
+            <div class="reset-pass-form">
                 <div class="row1 form-row">
                     <div class="form-collum1">
                         Username<input class="form-input" type="text" name="username" id="username" />
@@ -44,6 +51,7 @@
                         Re-enter password<input class="form-input" type="password" name="repassword" id="repassword" />
                     </div>
                 </div>
+                
                 <div class="row3 form-row">
                     Full Name<input class="form-input" type="text" name="fullname" id="fullname" />
                 </div>
@@ -53,8 +61,8 @@
                 <div class="row4 form-row">
                     Delivery address<input class="form-input" type="text" name="address" id="address" />
                 </div>
-                  <button class="btn btn-private my-2 my-sm-0" type="submit">Submit</button>
-            </form>
+                  <button class="btn btn-private my-2 my-sm-0" type="button" onclick="SignUp()">Submit</button>
+            </div>
         </div>
     </div>
     <div id="footer-import"></div>
