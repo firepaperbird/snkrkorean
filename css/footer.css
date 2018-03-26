@@ -5,6 +5,9 @@
  	height: auto;*/
     /*bottom: 0;
  }*/
+ .goog-te-banner-frame{
+ 	height: 0px!important;
+ }
  .social-bar{
  	height: 60px;
  	width: 100%;
