@@ -158,6 +158,10 @@ function addDeal(){
         toastr.error('You must enter all field');
         return;
     }
+    if(isCategoryNone()){
+        alert('Xin hãy chọn category cho product');
+        return;
+    }
     var proList = getProList();//JSON.stringify(getProList());
     var isError = false;
     proList.forEach(function(item){
@@ -184,7 +188,7 @@ function addDeal(){
     });
     request.done(function (data) {
         // alert('add success');
-        location.reload();
+        window.location.href = "../admin_site/deal-add.html";
     });
     request.fail(function (data) {
         console.log(data);
@@ -207,4 +211,7 @@ function getProList(){
     })
     return data;
     // console.log($('tr #dis-num').eq(1).val());
+}
+function isCategoryNone(){
+    return jQuery('#pro-category').val()==0;
 }
