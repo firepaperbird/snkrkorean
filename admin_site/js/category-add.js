@@ -11,7 +11,8 @@ function GetListCategory() {
         url: HOST + "category/all",
     });
     request.done(function (data) {
-        CreateOptionParentCategory(data);
+        if(data!=null)
+            CreateOptionParentCategory(data);
     });
     request.fail(function (data) {
         console.log("fail roi");

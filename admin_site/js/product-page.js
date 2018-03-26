@@ -20,7 +20,8 @@ function GetAllProduct() {
     });
     request.done(function (data) {
         // console.log(data);
-        CreateProductTable(data);
+        if(data!=null)
+            CreateProductTable(data);
 
     });
     request.fail(function (data) {

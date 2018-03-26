@@ -9,8 +9,13 @@ function GetCategories() {
         type:"GET",
         url:HOST + "category/all"
     });
-    request.done(function (data) {           
-        CreateListCategory(data);
+    request.done(function (data) { 
+        if(data!=null){
+            CreateListCategory(data);
+        }else{
+            alert ("không có category, xin add category trước.")
+            window.location.href = "../admin_site/category-add.html";
+        }   
     });
     request.fail(function (data) {
         console.log("fail " + data);
@@ -38,19 +43,57 @@ function checkvalid(dv){
     jQuery(dv).next('.invalid-feedback').remove();
     jQuery(dv).next('.valid-feedback').remove();
     if(strleg<1 || strleg >50){
-        jQuery(dv).after( '<div class="invalid-feedback">invalid this field. Length must more than 0 and less than 51 character</div>' );
+        jQuery(dv).after( '<div class="invalid-feedback">không hợp lệ. không được để trống và không vượt quá 50 ký tự</div>' );
         jQuery(dv).addClass('is-invalid');
     }else{
-        jQuery(dv).after( '<div class="valid-feedback">Great!</div>' );
+        jQuery(dv).after( '<div class="valid-feedback">Chuẩn!</div>' );
         jQuery(dv).addClass('is-valid');
     }
     errorInput= jQuery('body').find('.is-invalid').length;
     validInput= jQuery('body').find('.is-valid').length;
 }
 
+function checkValidNum(dv){
+    var str = dv.value;
+    jQuery(dv).removeClass('is-invalid');
+    jQuery(dv).removeClass('is-valid');
+    jQuery(dv).next('.invalid-feedback').remove();
+    jQuery(dv).next('.valid-feedback').remove();
+    if(IsNotValidNumber(str,0)){
+        jQuery(dv).after( '<div class="invalid-feedback">không hợp lệ. Chỉ được nhập số từ 0 đến 9 </div>' );
+        jQuery(dv).addClass('is-invalid');
+    }else{
+        jQuery(dv).after( '<div class="valid-feedback">Chuẩn!</div>' );
+        jQuery(dv).addClass('is-valid');
+    }
+    errorInput= jQuery('body').find('.is-invalid').length;
+    validInput= jQuery('body').find('.is-valid').length;
+}
+
+function IsNotValidNumber(text,min){
+    var regex = /[1-9][0-9]{0,5}/;
+    if (!regex.test(text)){
+        return true;
+    }
+    console.log(parseInt(text));
+    if (parseInt(text) < min ){
+        return true;
+    }
+    return false;
+}
+
+
+function isCategoryNone(){
+    return jQuery('#pro-category').val()==0;
+}
+
 function addProduct() {
     if(validInput<5){
-        alert('must enter all * field');
+        alert('Xin nhập đủ các ô');
+        return;
+    }
+    if(isCategoryNone()){
+        alert('Xin hãy chọn category cho product');
         return;
     }
     var sizeslist = jQuery('#pro-size').val().split(",");
@@ -84,7 +127,7 @@ function addProduct() {
     request.done(function (data) {
         if (data != null) {
             // autoFillForUser(data);
-            location.reload();
+            window.location.href = "../admin_site/product.html";
         }
     });
     request.fail(function (data) {
