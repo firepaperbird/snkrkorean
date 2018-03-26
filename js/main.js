@@ -47,6 +47,9 @@ window.fbAsyncInit = function() {
     $('#signup-link').click(function(){
       sessionStorage.removeItem('customer');
       localStorage.removeItem('cartlist');
+      localStorage.removeItem('blogId');
+      localStorage.removeItem('dealId');
+      localStorage.removeItem('pid');
       sessionStorage.removeItem('order');
       window.location.replace('products.html');
     });

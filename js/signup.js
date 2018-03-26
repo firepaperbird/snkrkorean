@@ -2,8 +2,8 @@ function SignUp(){
 	var isError = false;
 	var username  = jQuery('#username').val();
 	var phone  = jQuery('#phone').val();
-	// var fullname  = jQuery('#fullname').val();
-	var fullname = '';
+	var fullname  = jQuery('#fullname').val();
+	// var fullname = '';
 	var password  = jQuery('#password').val();
 	var repassword  = jQuery('#repassword').val();
 	var email  = jQuery('#email').val();
