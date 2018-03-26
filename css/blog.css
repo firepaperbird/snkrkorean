@@ -123,6 +123,9 @@ nav{
 }
 /*mobile*/
 @media (max-width: 988px) {
+	img{
+		max-width: 100vw;
+	}
 	.container{
 		/*width: inherit !important;*/
 		width: 100vw !important;

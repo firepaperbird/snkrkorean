@@ -53,3 +53,6 @@ nav{
 	color: gray;
 	float: right;
 }
+img{
+		max-width: 100%;
+}

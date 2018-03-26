@@ -264,12 +264,13 @@ function UpdateDeal(){
     });
     request.done(function (data) {
         //kiem tra xem có thay doi danh sach products, Co thi gui len API
-        if(updateProduct()){
+        // if(updateProduct()){
+            updateProduct();
         	window.location.href="../admin_site/deal.html";
-        }
-        else{
-        	toastr.error('Update fail!')
-        }
+        // }
+        // else{
+        // 	toastr.error('Update fail!')
+        // }
     });
     request.fail(function (data) {
         console.log(data);
