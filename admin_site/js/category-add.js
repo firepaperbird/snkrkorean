@@ -20,7 +20,7 @@ function GetListCategory() {
 
 function CreateOptionParentCategory(categories) {
     categories.forEach(function (category) {
-        jQuery('#Parent').append('<option value="'+category.Id+'">'+category.Name+'</option>')
+        jQuery('#ParentId').append('<option value="'+category.Id+'">'+category.Name+'</option>')
     });
 }
 
@@ -50,7 +50,8 @@ function addCategory() {
     var dataJSON = {
         name: name,
         description: description,
-        parentId: parentId
+        parentId: parentId,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:'POST',
