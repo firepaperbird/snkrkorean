@@ -50,19 +50,20 @@ $(document).ready(function() {
         window.history.back();
     }
 
-    checkFbLoop();
+    // $('.fb-login-button').on('click',function(){
+    //     checkFbLoop();
+    // });
 });
 
-function checkFbLoop(){
-            setTimeout(function() {checkFbLoop();}, 5000);
-            // $('.btn-private').trigger('fload');
-            console.log('loop ' + (new Date()).getTime()); 
-            checkFbLoged();
-        }
+// function checkFbLoop(){
+//             setTimeout(function() {checkFbLoop();}, 5000);
+//             // $('.btn-private').trigger('fload');
+//             console.log('loop ' + (new Date()).getTime()); 
+//             checkFbLoged();
+//         }
 
-function checkFbLoged(){
-  FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
+function checkFbLoged(response){
+
           var token = response.authResponse.accessToken;
           FB.api('/me',{ access_token : token }, {fields:"id,name,email"}, function(response) {
             console.log(response);
@@ -92,6 +93,15 @@ function checkFbLoged(){
             //cho nay lay accessToken lam pass
             //kiem tra xem user ton tai chua, ton tai thi login, ko ton tai thi` register cho user nay
           });
-        }
-      }); 
+ 
 }        
+function makeFbLogin(){
+    FB.login(function(response) {
+        if (response.authResponse) {
+         console.log('Welcome!  Fetching your information.... ');
+         checkFbLoged(response);
+        } else {
+         console.log('User cancelled login or did not fully authorize.');
+        }
+    });
+}
