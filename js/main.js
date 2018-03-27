@@ -17,13 +17,18 @@ window.fbAsyncInit = function() {
     var lastScrollTop = 0;
     $(window).scroll(function(event){
        var st = $(this).scrollTop();
-       if (st > lastScrollTop){
-           // downscroll code
-           $('.navbar').fadeOut();
-       } else {
-          // upscroll code
-           $('.navbar').fadeIn();
-       }
+       var bottopScroll = $(document).height()-$(window).height(); 
+       var moveDistant = Math.abs(lastScrollTop- st) ;
+       if(lastScrollTop>=0 && lastScrollTop <=  bottopScroll && moveDistant > 4){
+        if (st > lastScrollTop){
+             // downscroll code
+             $('.navbar').fadeOut();//show nav
+         } else {
+            // upscroll code
+             $('.navbar').fadeIn();
+         }
+       }       
+       // alert(lastScrollTop);
        lastScrollTop = st;
     });
 
