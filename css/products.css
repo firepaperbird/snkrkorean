@@ -3,6 +3,7 @@
     padding : 0px;
     height: 100%;
     width: 100%;
+    min-height: 90vh;
     padding-right:  5px;
     padding-left:  7px;
 
@@ -102,10 +103,11 @@
 }
 .item{
     width: 28%;
-    float: left;
-    margin-bottom: 5%;
+    height: auto;
+    float: left;    
     margin: 20px;
-    height: 300px;
+    margin-bottom: 5%px;
+    min-height: 300px;
 }
 .item-image{
     width: 100%;
