@@ -38,7 +38,7 @@ function CreatetRow(item) {
     row.append(CreateACell(item.Id));
     row.append(CreateACell(item.Title));
     row.append(CreateACellContent(item.Content));
-    row.append(CreateACell(item.PostTime));
+    row.append(CreateACell(item.PostTime.replace('T',' ')));
     row.append(CreateACell(item.UserId));
     row.append(CreateEditButton(item.Id));
     row.append(CreateDeleteButton(item.Id));

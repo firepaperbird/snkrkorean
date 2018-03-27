@@ -45,7 +45,7 @@ function CreatetRow(item) {
 
     }
     row.append(CreateACell(item.Duration));
-    row.append(CreateACell(item.StartTime));
+    row.append(CreateACell(item.StartTime.replace('T',' ')));
     row.append(CreateACell(item.Amount));
     row.append(CreateEditButton(item.VoucherId));
     row.append(CreateDeleteButton(item.VoucherId));

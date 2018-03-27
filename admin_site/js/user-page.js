@@ -48,7 +48,7 @@ function CreatetRow(item) {
     row.append(CreateACell(item.Email));
     row.append(CreateACell(item.Phone));
     row.append(CreateACell(item.Address));
-    row.append(CreateACell(item.RegisterDate));
+    row.append(CreateACell(item.RegisterDate.replace('T',' ')));
     row.append(CreateACell(item.Role));
     row.append(CreateExpiredButton(item.Username));
     return row;

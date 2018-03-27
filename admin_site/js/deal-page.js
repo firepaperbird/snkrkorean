@@ -41,7 +41,7 @@ function CreatetRow(item) {
     row.append(CreateACell(item.Id));
     row.append(CreateACell(item.Content));
     row.append(CreateACell(item.Duration));
-    row.append(CreateACell(item.StartTime));
+    row.append(CreateACell(item.StartTime.replace('T',' ')));
     row.append(CreateEditButton(item.Id));
     row.append(CreateDeleteButton(item.Id));
     return row;

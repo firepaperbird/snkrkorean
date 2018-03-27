@@ -54,7 +54,7 @@ function getUrlVars() {
         vars[hash[0]] = hash[1];
     }
     if(vars['page']==undefined){
-    	vars['page']='Dashboard';
+    	vars['page']='order'; // first page open when open admin
     }
     return vars;
 }

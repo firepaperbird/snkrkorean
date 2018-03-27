@@ -102,7 +102,7 @@ function CreateShippingButton(id) {
 function CreateReceivedButton(id) {
     var button = jQuery('<td class="buttonCell"></td>');
     // var icon = jQuery('<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" onclick="editProduct()" id=""></i>');
-    var icon = jQuery("<button type='button' class='btn btn-success btn-add' onclick='updateStatusOrder("+id+",4)'><i class='fa fa-check-square-o' aria-hidden='true'></i> Nhân hàng</button>");
+    var icon = jQuery("<button type='button' class='btn btn-success btn-add' onclick='updateStatusOrder("+id+",4)'><i class='fa fa-check-square-o' aria-hidden='true'></i> Nhận hàng</button>");
 
     button.append(icon);
     return button;
@@ -158,12 +158,12 @@ function updateStatusOrder(id, status) {
                     jQuery("#"+id+" .buttonCell").replaceWith(CreateReceivedButton(id));
                     break;
                 case 4:
-                    jQuery("#"+id+" .buttonCell").replaceWith(CreateSuccessCell('Success'));
+                    jQuery("#"+id+" .buttonCell").replaceWith(CreateSuccessCell('Thành công'));
                     jQuery("#"+id+" .buttonCancel").replaceWith(CreateACell(''));
                     break;
                 case 5:
                     jQuery("#"+id+" .buttonCell").replaceWith(CreateACell(''));
-                    jQuery("#"+id+" .buttonCancel").replaceWith(CreateCancelCell('Canceled'));
+                    jQuery("#"+id+" .buttonCancel").replaceWith(CreateCancelCell('Đã hủy'));
                     break;
             }
 
@@ -192,19 +192,17 @@ function cancelOrder() {
         data:dataJSON
     });
     request.done(function (data) {
-        console.log("thanh cong roi");
         if (data == 'success'){
             toastr.success("Cancel success");
             jQuery("#"+id+" .buttonCell").replaceWith(CreateACell(''));
-            jQuery("#"+id+" .buttonCancel").replaceWith(CreateCancelCell('Canceled'));
+            jQuery("#"+id+" .buttonCancel").replaceWith(CreateCancelCell('Đã hủy'));
         }
         if (data == 'fail'){
-            toastr.error('Cancel fail');
+            toastr.error('Lỗi xảy ra khi hủy');
         }
 
     });
     request.fail(function (data) {
-        console.log("fail roi");
-        toastr.error("Cancel fail!!!");
+        toastr.error("Lỗi xảy ra khi hủy");
     });
 }

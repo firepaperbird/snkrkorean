@@ -178,7 +178,8 @@ function removeOIDInLocalStorage() {
 
 function updateStatusOrder(id, status) {
     var dataJSON={
-        status : status
+        status : status,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",
@@ -187,18 +188,16 @@ function updateStatusOrder(id, status) {
         data:dataJSON
     });
     request.done(function (data) {
-        console.log("thanh cong roi");
         if (data == 'success'){
             window.location.href='order.html';
 
         }
         if (data == 'fail'){
-            toastr.error("Approve fail");
+            toastr.error("Xảy ra lỗi khi Duyệt");
         }
     });
     request.fail(function (data) {
-        console.log("fail roi");
-        toastr.error("Approve fail!!!");
+        toastr.error("Xảy ra lỗi khi Duyệt");
     });
 }
 
@@ -206,7 +205,8 @@ function cancelOrder() {
     var id = window.localStorage.getItem("oid");
     jQuery("#confirmDelete").modal('hide');
     var dataJSON={
-        orderId : id
+        orderId : id,
+        token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:"GET",
@@ -219,11 +219,11 @@ function cancelOrder() {
            window.location.href='order.html';
        }
         if (data == 'fail'){
-            toastr.error('Cancel fail');
+            toastr.error('Xảy ra lỗi khi hủy');
         }
 
     });
     request.fail(function (data) {
-        toastr.error("Cancel fail!!!");
+        toastr.error("Xảy ra lỗi khi hủy");
     });
 }

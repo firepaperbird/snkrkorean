@@ -43,7 +43,7 @@ function CreateProductRow(product) {
     row.append(CreateACell(product.Price));
     row.append(CreateACell(product.Category));
     row.append(CreateACell(product.Quantity));
-    row.append(CreateACell(product.LastModified));
+    row.append(CreateACell(product.LastModified.replace('T',' ')));
     row.append(CreateEditButton(product.ProductId));
     row.append(CreateDeleteButton(product.ProductId));
     return row;
