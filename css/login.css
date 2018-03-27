@@ -10,7 +10,7 @@
 	padding: 0;
 }
 #main-logo{
-	width: 12.5% !important;
+	width: 226px;
 	/*width: 261px;*/
 }
 #main-fbtext{
@@ -19,7 +19,7 @@
 	text-align: center;
 }
 #main-fbtext>a>img{
-	width: 260px;
+	width: 100%;
 
 }
 #lg-text{
@@ -67,11 +67,15 @@
 	#main-fbtext, .login-form{
 		width: 100% !important;
 	}
-	#main-logo{
+	/*#main-logo{
 	width: 60% !important;
-	}
+	}*/
 	#container{
 		height: 650px;
+	}
+	#main-fbtext>a>img{
+		max-width: 260px;
+
 	}
 }
 /*nav{
