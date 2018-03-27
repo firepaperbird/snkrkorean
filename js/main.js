@@ -5,17 +5,10 @@ window.fbAsyncInit = function() {
       xfbml      : true,
       version    : 'v2.12'
     });
-    $(document).trigger('fbload');  
-    // FB.AppEvents.logPageView();         
+    // FB.AppEvents.logPageView();     $(document).trigger('fbload');     
 };
-(function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) return;
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
 
+    
 
 (function ($) {
   $(document).ready(function(){
@@ -44,6 +37,7 @@ window.fbAsyncInit = function() {
       $('#signup-link').css('text-decoration', 'underline');
     }
     updateCart();
+    //logout
     $('#signup-link').click(function(){
       sessionStorage.removeItem('customer');
       localStorage.removeItem('cartlist');
@@ -51,20 +45,17 @@ window.fbAsyncInit = function() {
       localStorage.removeItem('dealId');
       localStorage.removeItem('pid');
       sessionStorage.removeItem('order');
+      FB.logout(function(response) {
+        // user is now logged out
+      });
       window.location.replace('products.html');
     });
-
     
-    checkFbLoop();
 
 });
   }(jQuery));
 
-function checkFbLoop(){
-            // console.log('loop');  //
-            setTimeout(function() {checkFbLoop();}, 4000);
-            $(document).trigger('fbload');
-        }
+
 
 function getCusname(){
   return JSON.parse(sessionStorage.getItem('customer'));
@@ -84,47 +75,6 @@ function updateCart(){
   $('.user-cart').text('Cart ('+num+')');
 }
  
-
-
-$(document).on(
-    'fbload',  //  <---- HERE'S OUR CUSTOM EVENT BEING LISTENED FOR
-    function(){
-      if(getCusname()==null){
-        FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-          FB.api('/me',{ access_token : response.authResponse.accessToken }, {fields:"id,name,email"}, function(response) {
-            console.log(response);
-            console.log(response.authResponse.accessToken);
-            
-            var dataJson = {
-              id:response.id,
-              accessToken:response.authResponse.accessToken,
-              name:response.name
-            }
-            var request = $.ajax({
-              type:'POST',
-              url:HOST + 'user/login/facebook',
-              dataType:'json',
-              data:dataJson
-            });
-
-            request.done(function(){
-              window.location.href = '../products.html';
-            });
-            request.fail(function(){
-              toastr.error("Login facebook fail!");
-            })
-
-            //response.id lam id
-            //cho nay lay accessToken lam pass
-            //kiem tra xem user ton tai chua, ton tai thi login, ko ton tai thi` register cho user nay
-          });
-        }
-      }); 
-      }
-    }
-);
-
 function search(t,event){
   var k = event.which || event.keyCode;;
   if(k!=13){
@@ -134,3 +84,4 @@ function search(t,event){
   // alert($(t).val());
   
 }
+

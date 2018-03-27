@@ -49,4 +49,49 @@ $(document).ready(function() {
     if(getCusname()!=null){
         window.history.back();
     }
+
+    checkFbLoop();
 });
+
+function checkFbLoop(){
+            setTimeout(function() {checkFbLoop();}, 5000);
+            // $('.btn-private').trigger('fload');
+            console.log('loop ' + (new Date()).getTime()); 
+            checkFbLoged();
+        }
+
+function checkFbLoged(){
+  FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          var token = response.authResponse.accessToken;
+          FB.api('/me',{ access_token : token }, {fields:"id,name,email"}, function(response) {
+            console.log(response);
+            console.log(token);
+            
+            var dataJson = {
+              id:response.id,
+              accessToken:token,
+              name:response.name
+            }
+            var request = $.ajax({
+              type:'POST',
+              url:HOST + 'user/login/facebook',
+              dataType:'json',
+              data:dataJson
+            });
+
+            request.done(function(){
+              writteUN(response.name);
+              window.location.href = '../products.html';
+            });
+            request.fail(function(){
+              toastr.error("Login facebook fail!");
+            })
+
+            //response.id lam id
+            //cho nay lay accessToken lam pass
+            //kiem tra xem user ton tai chua, ton tai thi login, ko ton tai thi` register cho user nay
+          });
+        }
+      }); 
+}        
