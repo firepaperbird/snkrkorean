@@ -4,9 +4,11 @@
 }
 .itemPro{
 	margin: 5px;
+	border: solid;
 }
 #dis-num{
 	width: 100%;
+	min-width: 70px;
 }
 #dis-type{
 	width: 70px;
