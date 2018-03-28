@@ -127,8 +127,31 @@ function addItemToList(itemId,name){
     row.append('<th scope="row">'+(++tableRowCount)+'</th>');
     row.append('<td>'+itemId+'</td>');
     row.append('<td>'+name+'</td>');
-    row.append('<td><input type="number" value="0" min="0" class="form-control" id="dis-num" onblur="emptyDiscount(this)"></td>');
-    row.append('<td><select class="category-select form-control custom-select" id="dis-type" ><option value="0">%</option><option value="1">₩</option></select></td>');
+    var amountBox = $('<input type="number" value="0" min="0" max="100" class="form-control" id="dis-num" onblur="emptyDiscount(this)"/>');
+    amountBox.on('keyup',function(){
+        var max = parseInt($(this).attr('max'));
+          var min = parseInt($(this).attr('min'));
+          if (max != null && $(this).val() > max)
+          {
+              $(this).val(max);
+          }
+          else if ($(this).val() < min)
+          {
+              $(this).val(min);
+          }
+    });
+    var typeBox = $('<select class="category-select form-control custom-select" id="dis-type" ><option value="0">%</option><option value="1">₩</option></select>');
+    typeBox.on( "change",function(){
+        amountBox.val('0');
+        if(typeBox.val()=='0'){
+            amountBox.attr('max',100);
+              
+        }else{
+            amountBox.removeAttr('max');
+        }
+    });
+    row.append($('<td></td>').append(amountBox));
+    row.append($('<td></td>').append(typeBox));
     var del = $('<td><i class="fa fa-times-circle fa-lg" id="del-button" aria-hidden="true"></i></td>');
     del.on("click", function() {
         delPro(itemId);
