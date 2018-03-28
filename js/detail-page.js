@@ -19,6 +19,10 @@ $(document).ready(function () {
         $(this).addClass('size-slected');
 
     });
+    $('.item-image-big img').on('click', function(){
+        zoomImg();
+    });
+
 });
 var gobalPrice
 function getUrlVars() {
@@ -253,4 +257,32 @@ function checklogin(){
         return true;
     else
         return false;
+}
+function zoomImg(){
+
+    var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+        modal.style.display = "none";
+    }
+    var flag = false;
+    $('.modal').on('click', function(e) {
+        if (e.target !== this)
+            return;
+        modal.style.display = "none";
+    });
 }
