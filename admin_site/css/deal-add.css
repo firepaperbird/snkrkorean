@@ -11,7 +11,7 @@
 	min-width: 70px;
 }
 #dis-type{
-	width: 70px;
+	min-width: 60px;
 }
 table{
 	width: 100vw;

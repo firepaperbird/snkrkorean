@@ -152,7 +152,6 @@
     margin-top: 10px;
 }
 .item-quantity > select{
-    background: url(../img/icon/ic_arrow_drop_down_white_24dp_1x.png) no-repeat scroll 99% 46%;
     width: 60%;
     max-width: 313px;
     height: 45px;
@@ -164,7 +163,8 @@
     text-align-last: right;
     text-indent: 10px;
 }
-.custom-select>option{
+.custom-select{
+    /*background: rgb(255,255,255);*/
 }
 .item-quantity > select option{
     background-color: transparent;

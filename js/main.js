@@ -37,11 +37,11 @@ window.fbAsyncInit = function() {
       $('#login-link').text('Hello, '+us);
       $('#login-link').attr("href", "user.html");
       $('#login-link').css('text-decoration', 'underline');
-      $('#signup-link').text('Sigout');
+      $('#signup-link').text('Signout');
       $('#signup-link').attr("href", "#");
       $('#signup-link').css('text-decoration', 'underline');
     }
-    updateCart();
+    updateCartNav();
     //logout
     $('#signup-link').click(function(){
       sessionStorage.removeItem('customer');
@@ -65,7 +65,7 @@ window.fbAsyncInit = function() {
 function getCusname(){
   return JSON.parse(sessionStorage.getItem('customer'));
 }
-function updateCart(){
+function updateCartNav(){
   if( localStorage.getItem('cartlist')!='undefined'){
     var storedAry = JSON.parse(localStorage.getItem('cartlist'));
   }else{

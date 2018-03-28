@@ -34,20 +34,20 @@ function updateCart(){
     } 
     
 }
-function updateCartNav(){
-  if( localStorage.getItem('cartlist')!='undefined'){
-    var storedAry = JSON.parse(localStorage.getItem('cartlist'));
-  }else{
-    localStorage.removeItem('cartlist');
-  }
-  var num;
-  if (storedAry==null){
-    num=0;
-  }else{
-      num=storedAry.length;
-  }
-  $('.user-cart').text('Cart ('+num+')');
-}
+// function updateCartNav(){
+//   if( localStorage.getItem('cartlist')!='undefined'){
+//     var storedAry = JSON.parse(localStorage.getItem('cartlist'));
+//   }else{
+//     localStorage.removeItem('cartlist');
+//   }
+//   var num;
+//   if (storedAry==null){
+//     num=0;
+//   }else{
+//       num=storedAry.length;
+//   }
+//   $('.user-cart').text('Cart ('+num+')');
+// }
 
 function Getcart(){
     var locStg= localStorage.getItem('cartlist');
@@ -131,7 +131,7 @@ function CreateItem(pst) {
     var quantity = $('<div class="item-quantity"></div>');
     quantity.append($('<div class="quantity-title">Quantity</div>'));
     var quantityValue = storedAry[curentIdx].quantity;
-    var quantityInput = $('<input type="number" min="0" step="1" class="custom-select" onblur="updateCart()" value="'+quantityValue+'"/>');
+    var quantityInput = $('<input type="number" min="1" step="1" class="custom-select" onblur="updateCart()" value="'+quantityValue+'"/>');
     quantity.append(quantityInput);
     content.append(quantity);
 
