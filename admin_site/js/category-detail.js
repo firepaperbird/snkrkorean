@@ -19,10 +19,10 @@ function GetCategory(categoryId) {
 function CreateForm(item) {
 
     var form = jQuery('<div></div>');
-    form.append(CreateDisableInput('Mã', item.Id));
-    form.append(CreateInput('Tên', item.Name));
-    form.append(CreateInputTextarea('Mô tả', item.Description));
-    form.append(CreateSelect('Danh mục cha', GetListCategory(), item.ParentId));
+    form.append(CreateDisableInput('Mã', "Id", item.Id));
+    form.append(CreateInput('Tên', "Name", item.Name));
+    form.append(CreateInputTextarea('Mô tả', "Description", item.Description));
+    form.append(CreateSelect('Danh mục cha', "ParentId" GetListCategory(), item.ParentId));
     form.append(CreateUpdateButton());
     return form;
 }
@@ -31,38 +31,38 @@ function GetListCategory() {
 
 }
 
-function CreateDisableInput(name, data) {
+function CreateDisableInput(name, id, data) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='" + name + "'>" + name + ":</label>");
-    var input = jQuery("<input type='text' class='form-control' id='" + name + "' value='" + data + "' name='" + name + "' disabled>");
+    var label = jQuery("<label for='" + id + "'>" + name + ":</label>");
+    var input = jQuery("<input type='text' class='form-control' id='" + id + "' value='" + data + "' name='" + id + "' disabled>");
     div.append(label);
     div.append(input);
     return div;
 }
 
-function CreateInput(name, data) {
+function CreateInput(name, id, data) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='" + name + "'>" + name + ":</label>");
-    var input = jQuery("<input type='text' class='form-control' id='" + name + "' value='" + data + "' name='" + name + "'>");
+    var label = jQuery("<label for='" + id + "'>" + name + ":</label>");
+    var input = jQuery("<input type='text' class='form-control' id='" + id + "' value='" + data + "' name='" + id + "'>");
     div.append(label);
     div.append(input);
     return div;
 }
 
-function CreateInputTextarea(name, data) {
+function CreateInputTextarea(name, id, data) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='" + name + "'>" + name + ":</label>");
-    var input = jQuery("<textarea type='text' class='form-control' rows='5' id='" + name + "' name='" + name + "'></textarea>");
+    var label = jQuery("<label for='" + id + "'>" + name + ":</label>");
+    var input = jQuery("<textarea type='text' class='form-control' rows='5' id='" + id + "' name='" + id + "'></textarea>");
     input.append(data);
     div.append(label);
     div.append(input);
     return div;
 }
 
-function CreateSelect(name, data, selectedItemValue) {
+function CreateSelect(name, id, data, selectedItemValue) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='" + name + "'>" + name + ":</label>");
-    var select = jQuery("<select class='form-control' id='" + name + "' name='" + name + "'>");
+    var label = jQuery("<label for='" + id + "'>" + name + ":</label>");
+    var select = jQuery("<select class='form-control' id='" + id + "' name='" + id + "'>");
 
     var isSelected = false;
     var request = jQuery.ajax({
