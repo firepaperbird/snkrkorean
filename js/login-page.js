@@ -81,8 +81,9 @@ function checkFbLoged(response){
               data:dataJson
             });
 
-            request.done(function(){
+            request.done(function(data){
               writteUN(response.name);
+              document.cookie = "token="+data;
               window.location.href = '../products.html';
             });
             request.fail(function(){
