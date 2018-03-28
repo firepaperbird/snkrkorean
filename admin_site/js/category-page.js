@@ -33,11 +33,11 @@ function CreateProductRow(category) {
     row.append(CreateACell(category.Id));
     row.append(CreateACell(category.Name));
     row.append(CreateACell(category.Description ));
-    if (category.ParentId == 0){
-        row.append(CreateACell('None'));
-    }else{
-        row.append(CreateACell(category.ParentId));
-    }
+    // if (category.ParentId == 0){
+    //     row.append(CreateACell('None'));
+    // }else{
+    //     row.append(CreateACell(category.ParentId));
+    // }
     row.append(CreateEditButton(category.Id));
     row.append(CreateDeleteButton(category.Id));
     return row;

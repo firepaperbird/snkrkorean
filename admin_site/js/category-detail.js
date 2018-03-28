@@ -22,7 +22,7 @@ function CreateForm(item) {
     form.append(CreateDisableInput('Mã', "Id", item.Id));
     form.append(CreateInput('Tên', "Name", item.Name));
     form.append(CreateInputTextarea('Mô tả', "Description", item.Description));
-    form.append(CreateSelect('Danh mục cha', "ParentId", GetListCategory(), item.ParentId));
+    // form.append(CreateSelect('Danh mục cha', "ParentId", GetListCategory(), item.ParentId));
     form.append(CreateUpdateButton());
     return form;
 }

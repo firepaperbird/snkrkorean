@@ -25,49 +25,49 @@ function GetVoucher(voucherId) {
 function CreateForm(voucher) {
 
     var form = jQuery('<div></div>');
-    form.append(CreateDisableInput('Mã giảm giá',voucher.VoucherId));
-    form.append(CreateDateTimeInput('Bắt đầu',voucher.StartTime));
-    form.append(CreateNumberInput('Diễn ra trong (giờ)',voucher.Duration));
-    form.append(CreateNumberInput('Giảm giá',voucher.Discount));
-    form.append(CreateSelectInput('Loại',voucher.Type));
-    form.append(CreateInputTextarea('Mô tả',voucher.Description));
-    form.append(CreateNumberInput('Số lượng',voucher.Amount));
+    form.append(CreateDisableInput('Mã giảm giá', "VoucherId",voucher.VoucherId));
+    form.append(CreateDateTimeInput('Bắt đầu',"StartTime", voucher.StartTime));
+    form.append(CreateNumberInput('Diễn ra trong (giờ)',"Duration", voucher.Duration));
+    form.append(CreateNumberInput('Giảm giá',"Discount", voucher.Discount));
+    form.append(CreateSelectInput('Loại',"Type", voucher.Type));
+    form.append(CreateInputTextarea('Mô tả',"Description", voucher.Description));
+    form.append(CreateNumberInput('Số lượng',"Quantity", voucher.Amount));
     form.append(CreateUpdateButton());
     return form;
 }
 
-function CreateDisableInput(name,data) {
+function CreateDisableInput(name, id, data) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<input type='text' class='form-control' id='"+name+"' value='"+data+"' name='"+name+"' disabled>");
+    var label = jQuery("<label for='"+id+"'>"+name+":</label>");
+    var input = jQuery("<input type='text' class='form-control' id='"+id+"' value='"+data+"' name='"+id+"' disabled>");
     div.append(label);
     div.append(input);
     return div;
 }
 
-function CreateInput(name,data) {
+function CreateInput(name, id, data) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<input type='text' class='form-control' id='"+name+"' value='"+data+"' name='"+name+"'>");
+    var label = jQuery("<label for='"+id+"'>"+name+":</label>");
+    var input = jQuery("<input type='text' class='form-control' id='"+id+"' value='"+data+"' name='"+id+"'>");
     div.append(label);
     div.append(input);
     return div;
 }
 
-function CreateInputTextarea(name, data) {
+function CreateInputTextarea(name, id,  data) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<textarea type='text' class='form-control' rows='5' id='"+name+"' name='"+name+"'></textarea>");
+    var label = jQuery("<label for='"+id+"'>"+name+":</label>");
+    var input = jQuery("<textarea type='text' class='form-control' rows='5' id='"+id+"' name='"+id+"'></textarea>");
     input.append(data);
     div.append(label);
     div.append(input);
     return div;
 }
 
-function CreateSelectInput(name,valueSelected) {
+function CreateSelectInput(name, id, valueSelected) {
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var select = jQuery('<select class="form-control" id="'+name+'" name="'+name+'">');
+    var label = jQuery("<label for='"+id+"'>"+name+":</label>");
+    var select = jQuery('<select class="form-control" id="'+id+'" name="'+id+'">');
     if (valueSelected == true){
         select.append('<option value="0">%</option>');
         select.append('<option value="1" selected="selected">VND</option>');
@@ -80,20 +80,20 @@ function CreateSelectInput(name,valueSelected) {
     return div;
 }
 
-function CreateNumberInput(name,data){
+function CreateNumberInput(name, id, data){
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<input type='number' class='form-control' id='"+name+"' value='"+data+"' name='"+name+"'>");
+    var label = jQuery("<label for='"+id+"'>"+name+":</label>");
+    var input = jQuery("<input type='number' class='form-control' id='"+id+"' value='"+data+"' name='"+id+"'>");
     div.append(label);
     div.append(input);
     return div;
 }
 
-function CreateDateTimeInput(name,data){
+function CreateDateTimeInput(name, id, data){
     var date = data.substring(0,data.indexOf('T'));
     var div = jQuery('<div class="form-group"></div>');
-    var label = jQuery("<label for='"+name+"'>"+name+":</label>");
-    var input = jQuery("<input type='date' class='form-control' id='"+name+"' value='"+date+"' name='"+name+"'>");
+    var label = jQuery("<label for='"+id+"'>"+name+":</label>");
+    var input = jQuery("<input type='date' class='form-control' id='"+id+"' value='"+date+"' name='"+id+"'>");
     div.append(label);
     div.append(input);
     return div;
