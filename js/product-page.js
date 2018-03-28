@@ -4,8 +4,8 @@
 $(document).ready(function () {
     AddListenerForMenu();
     var id = getUrlVars()["cid"];
-    $("#"+id+"").attr("class","li-actived");
-    GetCategories();
+
+    GetCategories(id);
     controller(id,0);
     $('.custom-select').change(function(){
         var sr = $('.custom-select').val();
