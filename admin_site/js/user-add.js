@@ -56,7 +56,7 @@ function validateField(){
 			jQuery("#Confirm").parent().append(CreateErrorMessage('Confirm must match with password'))
 		}
 	}
-	if (fullname != "" && IsOutRange(fullname, 2,50)){
+	if (IsOutRange(fullname, 2,50)){
 		isError = true;
 		jQuery('#FullName').parent().append(CreateErrorMessage('Fullname must have 2-50 characters'));
 	}
