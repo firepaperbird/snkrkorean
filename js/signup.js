@@ -8,9 +8,14 @@ function SignUp(){
 	var repassword  = jQuery('#repassword').val();
 	var email  = jQuery('#email').val();
 	var address  = jQuery('#address').val();
-	if (IsEmpty(username)){
+	if (IsOutRange(username,6,50)){
 		isError = true;
-		toastr.error('Username cant be empty');
+		toastr.error('Username must have 6 to 50 character');
+		return;
+	}
+	if (IsEmpty(fullname)){
+		isError = true;
+		toastr.error('fullname cant be empty');
 		return;
 	}
 	if (IsEmpty(password) || IsOutRange(password,8,50)){
@@ -23,7 +28,7 @@ function SignUp(){
 		toastr.error('RePassword must same with password');
 		return;
 	}
-	if (!validateEmail(email) && email != ''){
+	if (!validateEmail(email) && email == ''){
 		isError = true;
 		toastr.error('Email not valid');
 		return;
