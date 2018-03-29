@@ -47,11 +47,11 @@
 <div class="breadcrumbs">
     <div class="col-sm-12" id="blog-form">
         <div class="form-group">
-            <label for="title">Tiêu đề: (*)</label>
+            <label for="title">Tiêu đề - 제목: (*)</label>
             <input type="text" class="form-control" id="title" name="Title" onblur="checkvalid(this)">
         </div>
         <div class="form-group">
-            <label for="upImg">Ảnh bìa:</label>
+            <label for="upImg">Ảnh bìa - 표지사진:</label>
             <div id="upImg">
                 <iframe src="UpImg.html" class="upimg-Frame" id="upimg-Frame" frameborder="0" scrolling="no" onload="resizeIframe()"></iframe>
             </div>
@@ -60,7 +60,7 @@
                 <input type="text" placeholder="copy url image to here !!!" id="cover" name="cover" class="form-control" onblur="checkvalid(this)" onchange="changeCover()">
         </div>
         <div class="form-group">
-            <label for="summernote">Nội dung:</label>
+            <label for="summernote">Nội dung - 내용:</label>
             <div id="summernote"></div>
             <script>
               $('#summernote').summernote({
@@ -71,8 +71,8 @@
             </script>
         </div>
        
-        <button type="button" class="btn btn-primary" onclick="UpdateBlog()">Cập nhật</button>
-        <button type="button" class="btn btn-outline-secondary" onclick="Preview()" id="btn-preview">Xem trước</button>
+        <button type="button" class="btn btn-primary" onclick="UpdateBlog()">Cập nhật - 최신정보</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="Preview()" id="btn-preview">Xem trước - 리뷰</button>
         <div class="form-group" id="preview">
         </div>
     </div>

@@ -25,13 +25,13 @@ function GetVoucher(voucherId) {
 function CreateForm(voucher) {
 
     var form = jQuery('<div></div>');
-    form.append(CreateDisableInput('Mã giảm giá', "VoucherId",voucher.VoucherId));
-    form.append(CreateDateTimeInput('Bắt đầu',"StartTime", voucher.StartTime));
-    form.append(CreateNumberInput('Diễn ra trong (giờ)',"Duration", voucher.Duration));
-    form.append(CreateNumberInput('Giảm giá',"Discount", voucher.Discount));
-    form.append(CreateSelectInput('Loại',"Type", voucher.Type));
-    form.append(CreateInputTextarea('Mô tả',"Description", voucher.Description));
-    form.append(CreateNumberInput('Số lượng',"Quantity", voucher.Amount));
+    form.append(CreateDisableInput('Mã giảm giá 할인코드', "VoucherId",voucher.VoucherId));
+    form.append(CreateDateTimeInput('Bắt đầu 시작',"StartTime", voucher.StartTime));
+    form.append(CreateNumberInput('Diễn ra trong (giờ) 시간',"Duration", voucher.Duration));
+    form.append(CreateNumberInput('Giảm giá 할인',"Discount", voucher.Discount));
+    form.append(CreateSelectInput('Loại 유형',"Type", voucher.Type));
+    form.append(CreateInputTextarea('Mô tả 설명',"Description", voucher.Description));
+    form.append(CreateNumberInput('Số lượng 수량',"Quantity", voucher.Amount));
     form.append(CreateUpdateButton());
     return form;
 }

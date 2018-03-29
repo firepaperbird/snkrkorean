@@ -91,45 +91,45 @@
     <div class="col-sm-12" id="product-form">
         <div>
             <div class="form-group">
-                <label for="Name">Tên sản phẩm*:</label>
+                <label for="Name">Tên sản phẩm* 상품이름:</label>
                 <input type="text" class="form-control" id="pro-name" name="Name" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Brand">Nhãn hiệu*:</label>
+                <label for="Brand">Nhãn hiệu* 상표:</label>
                 <input type="text" class="form-control" id="pro-brand"  name="Brand" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Price">Giá*:</label>
+                <label for="Price">Giá* 가격:</label>
                 <input type="number" min="0" step="1" placeholder="number only" class="form-control" id="pro-price" name="Price" onblur="checkValidNum(this)">
             </div>
             <div class="form-group">
-                <label for="Country">Nơi sản xuất*:</label>
+                <label for="Country">Made in*:</label>
                 <input type="text" class="form-control" id="pro-country" name="Country" placeholder="ex: Vietnam" onblur="checkvalid(this)">
             </div>
             <div class="form-group">
-                <label for="Description">Mô tả:</label>
+                <label for="Description">Mô tả 설명:</label>
                 <textarea type="text" class="form-control" rows="5" id="pro-description" name="Description"></textarea>
             </div>
             <div class="form-group">
-                <label for="Marterial">Chất liệu:</label>
+                <label for="Marterial">Chất liệu 자료:</label>
                 <input type="text" class="form-control" id="pro-marterial"  name="Marterial" placeholder="ex: cotton" >
             </div>
             <div class="form-group">
-                <label for="Category">Danh mục:</label>
+                <label for="Category">Danh mục 카테고리:</label>
                 <select class="category-select form-control" id="pro-category"> 
-                  <option value="0">Không</option>
+                  <option value="0">--</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="Quantity">Số lượng*:</label>
+                <label for="Quantity">Số lượng* 수량:</label>
                 <input  type="number" min="0" step="1" placeholder="Chỉ nhập số" class="form-control" id="pro-quantity" name="Quantity" onblur="checkValidNum(this)">
             </div>
             <div class="form-group">
-                <label for="Tags">Thẻ:</label>
+                <label for="Tags">tag:</label>
                 <input  type="text" placeholder="ex: giày,trắng,..." class="form-control" id="pro-tag" name="Tags">
             </div>
             <div class="form-group">
-                <label for="Size">Kích thước*:</label>
+                <label for="Size">size*:</label>
                 <input  type="text" placeholder="ex: XL, X, 42, 39 ..." class="form-control" id="pro-size" name="Size" onblur="">
             </div>
             <div id="upImg">

@@ -19,9 +19,9 @@ function GetCategory(categoryId) {
 function CreateForm(item) {
 
     var form = jQuery('<div></div>');
-    form.append(CreateDisableInput('Mã', "Id", item.Id));
-    form.append(CreateInput('Tên', "Name", item.Name));
-    form.append(CreateInputTextarea('Mô tả', "Description", item.Description));
+    form.append(CreateDisableInput('Mã-코드', "Id", item.Id));
+    form.append(CreateInput('Tên-상품이름', "Name", item.Name));
+    form.append(CreateInputTextarea('Mô tả-설명', "Description", item.Description));
     // form.append(CreateSelect('Danh mục cha', "ParentId", GetListCategory(), item.ParentId));
     form.append(CreateUpdateButton());
     return form;

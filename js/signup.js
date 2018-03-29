@@ -15,7 +15,7 @@ function SignUp(){
 	}
 	if (IsEmpty(fullname)){
 		isError = true;
-		toastr.error('fullname cant be empty');
+		toastr.error('fullname can\'t be empty');
 		return;
 	}
 	if (IsEmpty(password) || IsOutRange(password,8,50)){

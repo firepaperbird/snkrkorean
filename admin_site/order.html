@@ -43,14 +43,14 @@
         <table class="table table-striped ">
             <thead class="thead-dark ">
             <tr>
-                <th>Mã đơn hàng</th>
-                <th>Khách hàng</th>
-                <th>Tổng tiền</th>
-                <th>Ngày đặt hàng</th>
-                <th>Mã giảm giá</th>
-                <th>Người duyệt</th>
-                <th>Duyệt</th>
-                <th>Hủy</th>
+                <th>Mã đơn 코드</th>
+                <th>Khách hàng 고객</th>
+                <th>Tổng tiền 합계</th>
+                <th>Ngày đặt hàng 주문날짜</th>
+                <th>Mã giảm giá 할인코드</th>
+                <th>Người duyệt 확인 사용자</th>
+                <th>Duyệt 확인</th>
+                <th>Hủy 취소</th>
             </tr>
             </thead>
             <tbody id="order-table">
@@ -70,11 +70,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                   Bạn có muốn hủy đơn này không?
+                   Bạn có muốn hủy đơn này không? <br/>삭제하겠습니까?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="cancelOrder()">Có</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Không</button>
+                    <button type="button" class="btn btn-primary" onclick="cancelOrder()">Có - 네</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Không - 아니요</button>
                 </div>
             </div>
         </div>
