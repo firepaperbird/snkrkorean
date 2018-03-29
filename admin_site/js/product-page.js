@@ -4,7 +4,7 @@
 jQuery(document).ready(function () {
     GetAllProduct();
     jQuery('#confirmDelete').on('hidden.bs.modal', function (e) {
-        removeOIDInLocalStorage();
+        removePIDInLocalStorage();
     })
 });
 
@@ -25,7 +25,7 @@ function GetAllProduct() {
 
     });
     request.fail(function (data) {
-        console.log("fail roi");
+        toastr.error("Load fail")
     });
 }
 
@@ -99,12 +99,12 @@ function deleteProduct() {
         data:dataJSON
     });
     request.done(function (data) {
-        console.log("thanh cong roi");
+        // console.log("thanh cong roi");
         jQuery("#"+productId+"").remove();
         toastr.success("Delete success");
     });
     request.fail(function (data) {
-        console.log("fail roi");
+        // console.log("fail roi");
         toastr.error("Delete fail!!!");
     });
 }
