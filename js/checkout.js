@@ -9,8 +9,8 @@ $(document).ready(function () {
 
 function userLoged() {
     var dataJSON = {
-        username: JSON.parse(sessionStorage.getItem('customer')),
-        token:getCookie("token")
+        username: JSON.parse(sessionStorage.getItem('customer'))
+        // token:getCookie("token")
     }
     var request = jQuery.ajax({
         type: "GET",
@@ -76,8 +76,8 @@ function sendOrder(username, totalPrice, products, voucher) {
         note: $('#note').val(),
         totalPrice: totalPrice,
         products: products,
-        voucher: voucher,
-        token:getCookie("token")
+        voucher: voucher
+        // token:getCookie("token")
     };
     console.log(dataJson);
     var request = jQuery.ajax({

@@ -19,7 +19,7 @@ function login(){
         console.log(data);
         
         if (data != "fail"){
-            document.cookie = "token="+data;
+            // document.cookie = "token="+data;
             sessionStorage.setItem("mainUse", jQuery("#email").val());
             window.location.replace("../admin_site/");
         }else{

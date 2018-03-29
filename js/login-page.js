@@ -24,7 +24,7 @@ function userLogin() {
     });
     request.done(function (data) {
         if (data != "fail"){
-            document.cookie = "token="+data;
+            // document.cookie = "token="+data;
             writteUN(jQuery("#username").val());
             if(sessionStorage.getItem('isCheckout')!=null){
                 window.location.replace("cart.html");   
@@ -83,7 +83,7 @@ function checkFbLoged(response){
 
             request.done(function(data){
               writteUN(response.name);
-              document.cookie = "token="+data;
+              // document.cookie = "token="+data;
               window.location.href = '../products.html';
             });
             request.fail(function(){

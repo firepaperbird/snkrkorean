@@ -22,8 +22,8 @@ $(document).ready(function (){
 
 function loadUserInfo(){
     var dataJson = {
-        username:JSON.parse(sessionStorage.getItem('customer')),
-        token:getCookie("token")
+        username:JSON.parse(sessionStorage.getItem('customer'))
+        // token:getCookie("token")
     }
 	var request = jQuery.ajax({
         type:"GET",
@@ -44,8 +44,8 @@ function CreateForm(user){
 
 function loadOrder(){
     var dataJson = {
-        userId:sessionStorage.getItem('customer'),
-        token:getCookie('token')
+        userId:sessionStorage.getItem('customer')
+        // token:getCookie('token')
     }
 	var request = jQuery.ajax({
         type:"GET",

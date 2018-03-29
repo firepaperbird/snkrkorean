@@ -37,8 +37,8 @@ function AddBlog(){
         title:jQuery('#title').val(),
         content:jQuery('#summernote').summernote('code'),
         username:sessionStorage.getItem('mainUse'),
-        cover:jQuery('#cover').val(),
-        token:getCookie('token')
+        cover:jQuery('#cover').val()
+        // token:getCookie('token')
     };
     var request = jQuery.ajax({
         type:'POST',
