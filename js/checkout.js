@@ -28,7 +28,7 @@ function userLoged() {
         }
     });
     request.fail(function (data) {
-        console.log(data);
+        console.log('fail');
     });
 
 }
