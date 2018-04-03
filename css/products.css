@@ -34,7 +34,7 @@
     margin: auto;
     padding-left: 10%;
 }
-.menu > li{
+.menu li{
     border-left: 3px solid white;
     margin: 5px;
     padding-left: 2%;
@@ -43,8 +43,10 @@
     font-family: segoeui;
     text-transform: uppercase;
 }
-
-.menu >li:hover{
+.menu ul{
+    list-style-type: none;
+}
+.menu li:hover{
     background-color: white;
     color: black;
     cursor: pointer;
@@ -53,7 +55,7 @@
     background-color: white;
     color: black;
     font-weight: 700;
-    text-align: right;
+    text-align: center;
     transition: all 0.1s;
 
 }

@@ -75,17 +75,18 @@ function CreateProduct(item) {
     if (item.Discount == 0) {
         gobalPrice=item.Price;
         jQuery('.item-price-current').append(gobalPrice);
+        jQuery('.item-price-current').append(currency);
         jQuery('.item-price-delete').css('display', 'none');
     } else {
         if (item.Type == true) {
             gobalPrice=(item.Price - item.Discount);
             jQuery('.item-price-current').append(gobalPrice);
-            jQuery('.item-price-current').append("đ");
+            jQuery('.item-price-current').append(currency);
             jQuery('.item-price-delete').append(item.Price);
         } else {
             gobalPrice=item.Price * (1 - item.Discount / 100);
             jQuery('.item-price-current').append(gobalPrice);
-            jQuery('.item-price-current').append("đ");
+            jQuery('.item-price-current').append(currency);
             jQuery('.item-price-delete').append(item.Price);
         }
     }

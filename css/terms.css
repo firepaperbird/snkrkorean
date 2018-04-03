@@ -13,3 +13,6 @@ br{
 .terms-content{
 	font-size: 18px;
 }
+.footer-copyright>br{
+	line-height: 6px;
+}

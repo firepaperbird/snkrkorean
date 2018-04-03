@@ -28,7 +28,7 @@ body{
 	top: 0;
 	left: 0;
 	background:rgba(0, 0, 0, 0.4);
-	height: 100%;
+	height: 85.5%;
 	width: 100%;
 }
 .imenu-Item{
@@ -45,4 +45,7 @@ body{
 }
 .name:hover{
 	cursor: cell;
+}
+.footer-import{
+	z-index: 999999;
 }
