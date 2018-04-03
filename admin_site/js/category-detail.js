@@ -22,14 +22,11 @@ function CreateForm(item) {
     form.append(CreateDisableInput('Mã-코드', "Id", item.Id));
     form.append(CreateInput('Tên-상품이름', "Name", item.Name));
     form.append(CreateInputTextarea('Mô tả-설명', "Description", item.Description));
-    // form.append(CreateSelect('Danh mục cha', "ParentId", GetListCategory(), item.ParentId));
+    form.append(CreateSelect('Danh mục cha', "ParentId", item.ParentId));
     form.append(CreateUpdateButton());
     return form;
 }
 
-function GetListCategory() {
-
-}
 
 function CreateDisableInput(name, id, data) {
     var div = jQuery('<div class="form-group"></div>');
@@ -59,7 +56,7 @@ function CreateInputTextarea(name, id, data) {
     return div;
 }
 
-function CreateSelect(name, id, data, selectedItemValue) {
+function CreateSelect(name, id, selectedItemValue) {
     var div = jQuery('<div class="form-group"></div>');
     var label = jQuery("<label for='" + id + "'>" + name + ":</label>");
     var select = jQuery("<select class='form-control' id='" + id + "' name='" + id + "'>");
@@ -71,11 +68,14 @@ function CreateSelect(name, id, data, selectedItemValue) {
     });
     request.done(function (data) {
         data.forEach(function (item) {
-            if (item.Id == selectedItemValue) {
-                isSelected = true;
-                select.append(CreateOptionSelected(item.Id, item.Name));
-            } else {
-                select.append(CreateOption(item.Id, item.Name));
+            if(item.ParentId==0)
+            {
+                if (item.Id == selectedItemValue) {
+                    isSelected = true;
+                    select.append(CreateOptionSelected(item.Id, item.Name));
+                } else {
+                    select.append(CreateOption(item.Id, item.Name));
+                }
             }
         });
         if (isSelected) {

@@ -4,7 +4,10 @@
 $(document).ready(function () {
     AddListenerForMenu();
     var id = getUrlVars()["cid"];
-
+    var subid = getUrlVars()["subid"];
+    if(subid!=null && subid != 'undefined'){
+        id = subid;
+    }
     GetCategories(id);
     controller(id,0);
     $('.custom-select').change(function(){

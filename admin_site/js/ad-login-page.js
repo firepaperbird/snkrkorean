@@ -31,3 +31,8 @@ function login(){
         toastr.error("Login fail!");
     });
 }
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        login();
+    }
+});
