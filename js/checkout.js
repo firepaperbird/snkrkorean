@@ -8,8 +8,9 @@ $(document).ready(function () {
 });
 
 function userLoged() {
+    var id =JSON.parse(sessionStorage.getItem('customer')).id;
     var dataJSON = {
-        username: JSON.parse(sessionStorage.getItem('customer')).id
+        username: id
         // token:getCookie("token")
     }
     var request = jQuery.ajax({

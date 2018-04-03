@@ -167,6 +167,7 @@ function CreateListComment(comments){
 }
 
 function CreateComment(comment){
+    console.log(comment);
     var div = jQuery('<div class="comment"></div>');
     var author = jQuery('<p class="author-name"></p>');
     author.append(comment.AuthorId);
