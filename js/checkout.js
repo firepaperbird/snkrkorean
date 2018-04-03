@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 function userLoged() {
     var dataJSON = {
-        username: JSON.parse(sessionStorage.getItem('customer'))
+        username: JSON.parse(sessionStorage.getItem('customer')).id
         // token:getCookie("token")
     }
     var request = jQuery.ajax({
@@ -56,7 +56,7 @@ function checkout() {
         };
         productslist.push(newItem);
     });
-    var username = JSON.parse(sessionStorage.getItem('customer'));
+    var username = JSON.parse(sessionStorage.getItem('customer')).name;
     var totalPrice = cart.orderbill.total;
     var products = productslist;
     var voucher = cart.voucher;

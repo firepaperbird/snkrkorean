@@ -307,7 +307,7 @@ function checkoutCart(){
 }
 function createOrder(){
     var order = {
-        username:JSON.parse(sessionStorage.getItem('customer')),
+        username:JSON.parse(sessionStorage.getItem('customer').id),
         productslist:storedAry,
         orderbill:bill,
         voucher:coupon,
@@ -315,7 +315,7 @@ function createOrder(){
     sessionStorage.setItem('order', JSON.stringify(order));
 }
 function checklogin(){
-    var username=JSON.parse(sessionStorage.getItem('customer'));
+    var username=JSON.parse(sessionStorage.getItem('customer').id);
     if (username!=null && username!="")
         return true;
     else

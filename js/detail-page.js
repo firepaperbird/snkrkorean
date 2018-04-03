@@ -156,7 +156,7 @@ function GetProductComment(id) {
     request.fail(function (data) {
         console.log("fail");
     })
-    $('.input-comment-author').text(JSON.parse(sessionStorage.getItem('customer')));
+    $('.input-comment-author').text(JSON.parse(sessionStorage.getItem('customer')).name);
 }
 
 function CreateListComment(comments){
@@ -231,7 +231,7 @@ function submitcmnt(){
 
     var cmntPack = {
         proId: getUrlVars()["id"],
-        username:JSON.parse(sessionStorage.getItem('customer')),
+        username:JSON.parse(sessionStorage.getItem('customer')).id,
         title:'',
         content:$('#input-comment-content').val(),
         token:getCookie("token")
@@ -253,7 +253,7 @@ function submitcmnt(){
 }
 
 function checklogin(){
-    var username=JSON.parse(sessionStorage.getItem('customer'));
+    var username=JSON.parse(sessionStorage.getItem('customer')).id;
     if (username!=null && username!="")
         return true;
     else

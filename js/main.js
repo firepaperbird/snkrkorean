@@ -63,7 +63,7 @@ window.fbAsyncInit = function() {
 
 
 function getCusname(){
-  return JSON.parse(sessionStorage.getItem('customer'));
+  return JSON.parse(sessionStorage.getItem('customer')).name;
 }
 function updateCartNav(){
   if( localStorage.getItem('cartlist')!='undefined'){

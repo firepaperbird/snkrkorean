@@ -25,7 +25,8 @@ function userLogin() {
     request.done(function (data) {
         if (data != "fail"){
             // document.cookie = "token="+data;
-            writteUN(jQuery("#username").val());
+            //writteUN(jQuery("#username").val());
+            userLoged(jQuery("#username").val());
             if(sessionStorage.getItem('isCheckout')!=null){
                 window.location.replace("cart.html");   
                 sessionStorage.removeItem('isCheckout');
@@ -39,8 +40,33 @@ function userLogin() {
     });
 
 }
-function writteUN(item){
-    sessionStorage.setItem('customer', JSON.stringify(item));
+function userLoged(id) {
+    var dataJSON = {
+        username: id
+        // token:getCookie("token")
+    }
+    var request = jQuery.ajax({
+        type: "GET",
+        // url: "https://snkrapiv2.azurewebsites.net/user/login",
+        url: HOST + "user/profile",
+        dataType: 'json',
+        data: dataJSON,
+        header: {"Access-Control-Allow-Origin": true},
+        traditional: true
+
+    });
+    request.done(function (data) {
+        if (data != null) {
+           writteUN(id,data.Fullname);
+        }
+    });
+    request.fail(function (data) {
+        console.log('fail');
+    });
+
+}
+function writteUN(thisId, thisName){
+    sessionStorage.setItem('customer', JSON.stringify({id:thisId,name:thisName}));
 }
 function getCusname(){
   return JSON.parse(sessionStorage.getItem('customer'));
@@ -82,7 +108,7 @@ function checkFbLoged(response){
             });
 
             request.done(function(data){
-              writteUN(response.name);
+              writteUN(response.id,response.name);
               // document.cookie = "token="+data;
               window.location.href = '../products.html';
             });

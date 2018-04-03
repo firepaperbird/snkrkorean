@@ -16,7 +16,9 @@ function GetCategories(id) {
     request.done(function (data) {
         if(data!=null){
             CreateListCategory(data,id);
-            getChillByParent(getUrlVars()["cid"],id);
+            if(id != undefined && id!= '0' ){
+                getChillByParent(getUrlVars()["cid"],id);
+            }
         }
     });
     request.fail(function (data) {
