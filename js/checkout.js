@@ -38,6 +38,9 @@ function autoFillForUser(data) {
     $('#phone').val(data.Phone);
     $('#email').val(data.Email);
     $('#address').val(data.Address);
+    if(data.Email==null || data.Email == ''){
+        $('#email').attr('disabled','disabled');
+    }
     updateTotalBill();
 }
 function updateTotalBill() {
