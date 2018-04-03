@@ -49,6 +49,8 @@ nav{
 	width: 100%;
 	height: 500px;
 	margin-bottom: 45px;
+	position: relative;
+
 	/*border: solid black;*/
 }
 .below-posts{
@@ -62,12 +64,14 @@ nav{
 	clear: both;
 	width: 49%;
 	float: left;
+	position: relative;
 	height: 800px;
 }
 .right-below{
 	width: 49%;
 	margin-left: 2%;
 	float: left;
+	position: relative;
 	height: 800px;
 }
 .below-posts .post-content{
@@ -75,14 +79,18 @@ nav{
 	width: 90%;
 	padding: 10px;
 	margin-left: 0 auto;
-	margin-top: 620px;
+	/*margin-top: 620px;*/
+	position: absolute;
+    bottom: 10px;
 }
 .top-post>.post-content{
 	background-color: rgba(255,255,255,0.45) ;
 	width: 50%;
 	float: left;
 	padding: 10px;
-	margin-top: 25%;
+	/*margin-top: 25%;*/
+	position: absolute;
+    bottom: 10px;
 	/*margin-left: 0px;
 	*/
 }
