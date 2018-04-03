@@ -65,12 +65,48 @@ function checkout() {
     var products = productslist;
     var voucher = cart.voucher;
 
-    sendOrder(username, totalPrice, products, voucher);
+    if(validateField()){
+        if($('#email').is(':disabled')){
+            updateEmail(username,jQuery("#email").val());
+        }
+        sendOrder(username, totalPrice, products, voucher);
+
+    }
+
     }else{
         toastr.warning("You should buy something before checkout");
     }
     
 }
+
+function updateEmail(userId, email){
+    var dataJson = {
+        userId: userId,
+        email:email
+    }
+
+    var request = jQuery.ajax({
+        type: "POST",
+        url: HOST + "user/update/email",
+        dataType: 'json',
+        data: dataJson,
+
+
+    });
+    request.done(function (data) {
+        if (data == 'success') {
+            //do somethign
+        }
+        if (data == 'fail') {
+            toastr.error("update email fail");
+        }
+    });
+    request.fail(function (data) {
+        toastr.error("update email fail");
+    })
+
+}
+
 function sendOrder(username, totalPrice, products, voucher) {
     var dataJson = {
         username: username,
@@ -107,4 +143,81 @@ function sendOrder(username, totalPrice, products, voucher) {
     request.fail(function (data) {
         toastr.error("Checkout fail");
     })
+}
+
+function validateField(){
+    var fullname = jQuery("#fullName").val();
+    var email = jQuery("#email").val();
+    var phone = jQuery("#phone").val();
+    var address = jQuery("#address").val();
+
+    jQuery("#fullName").next().remove();
+    jQuery("#email").next().remove();
+    jQuery("#phone").next().remove();
+    jQuery("#address").next().remove();
+
+    var isError = false;
+    
+  
+    if (IsOutRange(fullname, 2,50)){
+        isError = true;
+        jQuery('#fullName').parent().append(CreateErrorMessage('Fullname must have 2-50 characters'));
+    }
+    
+    if (IsNotMatch(email,/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/)){
+        isError = true;
+        jQuery('#email').parent().append(CreateErrorMessage('Email not valid'));
+    }
+
+    if (IsNotMatch(phone, /[0-9-()+]{3,20}/)){
+        phone = true;
+        jQuery('#phone').parent().append(CreateErrorMessage('Phone not valid'));
+    }
+
+    if (address == ""){
+        phone = true;
+        jQuery('#address').parent().append(CreateErrorMessage('Address not valid'));
+    }
+    return isError;
+}
+
+
+
+function CreateErrorMessage(msg){
+    var pTag = jQuery('<p></p>');
+    pTag.append(msg);
+    pTag.css('color','red');
+    return pTag;
+}
+
+
+function CreateOKMessage(msg){
+    var pTag = jQuery('<p></p>');
+    pTag.append(msg);
+    pTag.css('color','green');
+    return pTag;
+}
+
+
+function IsOutRange(text,min,max){
+    if (text.trim().length < min || text.trim().length > max){
+        return true;
+    }
+    return false;
+}
+
+function IsNotValidNumber(text,min,max){
+    var regex = /[1-9][0-9]{0,5}/;
+    if (!regex.test(text)){
+        return true;
+    }
+    console.log(parseInt(text));
+    if (parseInt(text) < min || parseInt > max){
+        return true;
+    }
+    return false;
+}
+
+function IsNotMatch(text,regex){
+    return !regex.test(text);
 }
