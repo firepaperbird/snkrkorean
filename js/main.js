@@ -38,7 +38,8 @@ window.fbAsyncInit = function() {
       $('#login-link').attr("href", "user.html");
       $('#login-link').css('text-decoration', 'underline');
       $('#signup-link').text('Signout');
-      $('#signup-link').attr("href", "#");
+      $('#signup-link').attr("href", "javascript:void(0);");
+      $('#signup-link').attr('onclick','logout()');
       $('#signup-link').css('text-decoration', 'underline');
     }
     updateCartNav();
@@ -60,7 +61,18 @@ window.fbAsyncInit = function() {
 });
   }(jQuery));
 
-
+function logout(){
+      sessionStorage.removeItem('customer');
+      localStorage.removeItem('cartlist');
+      localStorage.removeItem('blogId');
+      localStorage.removeItem('dealId');
+      localStorage.removeItem('pid');
+      sessionStorage.removeItem('order');
+      FB.logout(function(response) {
+        // user is now logged out
+      });
+      window.location.replace('products.html');
+}
 
 function getCusname(){
   return JSON.parse(sessionStorage.getItem('customer')).name;
