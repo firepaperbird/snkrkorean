@@ -38,7 +38,7 @@ function autoFillForUser(data) {
     $('#phone').val(data.Phone);
     $('#email').val(data.Email);
     $('#address').val(data.Address);
-    if(data.Email==null || data.Email == ''){
+    if(data.Email!=null && data.Email != ''){
         $('#email').attr('disabled','disabled');
     }
     updateTotalBill();
@@ -146,7 +146,7 @@ function sendOrder(username, totalPrice, products, voucher) {
 }
 
 function validateField(){
-    var fullname = jQuery("#fullName").val();
+    var fullname = jQuery("#fullname").val();
     var email = jQuery("#email").val();
     var phone = jQuery("#phone").val();
     var address = jQuery("#address").val();

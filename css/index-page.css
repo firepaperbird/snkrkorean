@@ -1,5 +1,6 @@
 body{
 	padding-top: 0px!important;
+	top: 0px !important;
 }
 .main-page{
     background:  url(../img/index.jpg) no-repeat;
@@ -7,6 +8,8 @@ body{
     /*background-repeat:   no-repeat;*/
     background-position: center top;   
     height: 100vh;
+    position: relative;
+    overflow: hidden;
     margin-top: 0px;
     /*opacity : 0.6;*/
 }
@@ -28,16 +31,16 @@ body{
 	top: 0;
 	left: 0;
 	background:rgba(0, 0, 0, 0.4);
-	height: 85.5%;
+	height: 100%;
 	width: 100%;
 }
 .imenu-Item{
 	text-align: center;
 	float: left;
-	/*width: 180px;*/
+	/*width: 180px;
 	width: auto;
 	margin-left: 40px;
-	margin-right: 40px;
+	margin-right: 40px;*/
 	/*border: solid;*/
 }
 .imenu-Item:hover{
@@ -48,4 +51,15 @@ body{
 }
 .footer-import{
 	z-index: 999999;
+}
+@media (max-width: 988px) {
+/*	.imenu-Item{
+		margin-left: 0;
+		margin-right: 10%;
+		margin: 0 auto;
+	}
+	.index-menu{
+		padding-left: 5%;
+		padding-right: 10px;
+	}*/
 }

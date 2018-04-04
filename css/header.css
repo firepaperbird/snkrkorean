@@ -123,6 +123,7 @@ a.nav-link:hover{
 	.navbar {		
 		max-height: 70px !important;
 		min-height:50px !important;
+		padding-left: 10px !important;
 	}
 	nav{
 		padding-left: 5% !important;
