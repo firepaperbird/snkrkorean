@@ -60,13 +60,13 @@ function checkout() {
         };
         productslist.push(newItem);
     });
-    var username = JSON.parse(sessionStorage.getItem('customer')).name;
+    var username = JSON.parse(sessionStorage.getItem('customer')).id;
     var totalPrice = cart.orderbill.total;
     var products = productslist;
     var voucher = cart.voucher;
 
-    if(validateField()){
-        if($('#email').is(':disabled')){
+    if(!validateField()){
+        if(!$('#email').is(':disabled')){
             updateEmail(username,jQuery("#email").val());
         }
         sendOrder(username, totalPrice, products, voucher);
@@ -163,8 +163,8 @@ function validateField(){
         isError = true;
         jQuery('#fullName').parent().append(CreateErrorMessage('Fullname must have 2-50 characters'));
     }
-    
-    if (IsNotMatch(email,/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/)){
+    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (IsNotMatch(email,re)){
         isError = true;
         jQuery('#email').parent().append(CreateErrorMessage('Email not valid'));
     }
@@ -219,5 +219,5 @@ function IsNotValidNumber(text,min,max){
 }
 
 function IsNotMatch(text,regex){
-    return !regex.test(text);
+    return !regex.test(String(text).toLowerCase());
 }

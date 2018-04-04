@@ -21,6 +21,7 @@ function GetAllOrder() {
         data:dataJSON
     });
     request.done(function (data) {
+        console.log(data);
         CreateTable(data);
     });
     request.fail(function (data) {
