@@ -132,9 +132,9 @@ function sendOrder(username, totalPrice, products, voucher) {
     request.done(function (data) {
         if (data == 'success') {
             toastr.success("Checkout success");
-            window.location.href="../checkout-done.html";
             localStorage.removeItem("cartlist");
             sessionStorage.removeItem("order");
+            location.href ="../checkout-done.html";
         }
         if (data == 'fail') {
             toastr.error("Checkout fail");
@@ -170,12 +170,12 @@ function validateField(){
     }
 
     if (IsNotMatch(phone, /[0-9-()+]{3,20}/)){
-        phone = true;
+        isError = true;
         jQuery('#phone').parent().append(CreateErrorMessage('Phone not valid'));
     }
 
     if (address == ""){
-        phone = true;
+        isError = true;
         jQuery('#address').parent().append(CreateErrorMessage('Address not valid'));
     }
     return isError;

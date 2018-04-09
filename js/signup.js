@@ -55,7 +55,7 @@ function SignUp(){
 	});
 	request.done(function(data){
 		if (data == 'success'){
-			window.location.href ='signup-done.html';
+			window.location.href ='login.html';
 		}else{
 			alert('Username exist already')
 			jQuery('#username').focus();
