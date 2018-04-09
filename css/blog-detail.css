@@ -13,19 +13,35 @@ nav{
 	/*width: 90%;*/
 	margin-top: 20px;
 	/*border: solid black;*/
-	padding: 7px;
-	/*padding-right: 5px;*/
+	padding: 0px;
+	padding-right: 5px;
 	min-height: 80vh;
 }
 .clearboth{
 	clear: both;
 }
+/*#myFooter{
+	margin-top: 50px !important;
+}*/
 .social-bar{
 	visibility: hidden;
+	height: 0px;
 }
 .second-bar{
+	width: 100%;
+	max-width : inherit !important;
+	padding-left: 20%;
+	margin: 0px;
+	margin-top: 50px;
 	background-color: #222222;
 }
+.footer-copyright{
+	height: 0px;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+}
+
 
 .img-container{
 	width: 100%;

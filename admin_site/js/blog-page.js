@@ -52,7 +52,7 @@ function CreateACell(data) {
 }
 function CreateACellContent(data) {
     var cell = jQuery('<td></td>');
-    data= data.toString().slice(0,100)+'...';
+    data= jQuery(data.toString()).text().slice(0,100)+'...';
     cell.append(data);
     return cell;
 }
