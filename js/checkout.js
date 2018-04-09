@@ -132,7 +132,7 @@ function sendOrder(username, totalPrice, products, voucher) {
     request.done(function (data) {
         if (data == 'success') {
             toastr.success("Checkout success");
-            window.location.href="../products.html";
+            window.location.href="../checkout-done.html";
             localStorage.removeItem("cartlist");
             sessionStorage.removeItem("order");
         }

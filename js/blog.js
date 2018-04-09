@@ -15,7 +15,7 @@ function GetAllPost(){
         traditional: true
     });
     request.done(function (data) {
-        // console.log(data);
+        console.log(data);
         if(data!=null){
             CreateListItem(data);
         }
@@ -70,6 +70,9 @@ function CreateTopPost(pst) {
     content.append(readmoreLink);
     // item.append(thepostoutline);
     item.append(content);
+    item.on('click',function(){
+        location.href = 'blog-detail.html?id='+pst.Id;
+    })
     return item;
 }
 function CreateBelowPost(pst,pos) {
@@ -93,6 +96,9 @@ function CreateBelowPost(pst,pos) {
     content.append(readmoreLink);
     leftRight.append(content);
     item.append(leftRight);
+    item.on('click',function(){
+        location.href = 'blog-detail.html?id='+pst.Id;
+    })
     return item;
 }
 
@@ -110,6 +116,9 @@ function CreateItemPost(pst) {
     content.append(readmoreLink);
     item.append(itemImage);
     item.append(content);
+    item.on('click',function(){
+        location.href = 'blog-detail.html?id='+pst.Id;
+    })
     return item;
 }
 function CreateImage(src, name) {
