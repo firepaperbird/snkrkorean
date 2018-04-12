@@ -1,3 +1,6 @@
+var pageSize = 5;
+var currentPage = 1;
+
 $(document).ready(function () {
     GetAllPost();
 });
@@ -15,7 +18,8 @@ function GetAllPost(){
         traditional: true
     });
     request.done(function (data) {
-        console.log(data);
+        window.localStorage.setItem('list-blog',JSON.stringify(data));
+        createPagingLink();
         if(data!=null){
             CreateListItem(data);
         }
@@ -27,24 +31,35 @@ function GetAllPost(){
 
 function  CreateListItem(postlist) {
     var list = $("#container");
-    postlist.forEach(function (item,index) {
-        // console.log(item);
-        switch(index){
-            case 0:
-                list.append(CreateTopPost(item));
-                break;
-            case 1:
-                var far = $('<div class="below-posts"></div>');
-                list.append(far);
-                CreateBelowPost(item,1);
-                break;
-            case 2:
-                CreateBelowPost(item,2);
-                $(".below-posts").append('<div style="clear: both;"></div>');
-                break;
-            default:
+    list.empty();
+    var blogList = JSON.parse(window.localStorage.getItem('list-blog'));
+    list.append(CreateTopPost(blogList[0]));
+    var far = $('<div class="below-posts"></div>');
+    list.append(far);
+    CreateBelowPost(blogList[1],1);
+    CreateBelowPost(blogList[2],2);
+    $(".below-posts").append('<div style="clear: both;"></div>');
+
+    blogList = blogList.slice((currentPage-1)*pageSize + 3,currentPage*pageSize + 3);
+
+    blogList.forEach(function (item,index) {
+        // // console.log(item);
+        // switch(index){
+        //     case 0:
+        //         list.append(CreateTopPost(item));
+        //         break;
+        //     case 1:
+                // var far = $('<div class="below-posts"></div>');
+                // list.append(far);
+                // CreateBelowPost(item,1);
+        //         break;
+        //     case 2:
+                // CreateBelowPost(item,2);
+                // $(".below-posts").append('<div style="clear: both;"></div>');
+        //         break;
+        //     default:
                 list.append(CreateItemPost(item));
-        }
+        // }
         
     });
     // fix container height bug
@@ -130,4 +145,23 @@ function CreateImage(src, name) {
     image.attr('src',src);
     image.attr('alt',name);
     return image;
+}
+
+function createPagingLink(){
+    var blogList = JSON.parse(window.localStorage.getItem('list-blog'));
+    var amountPage = (blogList.length - 4)/pageSize + 1;
+    for (var i = 1; i <= amountPage; i++) {
+        jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+    }
+}
+
+function setCurrentPage(page){
+    currentPage = page;
+    CreateListItem();
+}
+
+function createFrameItem(){
+    var blogList = JSON.parse(window.localStorage.getItem('list-blog'));
+    blogList = blogList.slice((currentPage-1)*pageSize,currentPage*pageSize);
+    CreateListItem(blogList);
 }
