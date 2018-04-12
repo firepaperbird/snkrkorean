@@ -1,8 +1,14 @@
 /**
  * Created by ngocnt on 3/3/2018.
  */
+
+var pageSize = 10;
+var currentPage = 1;
+
 $(document).ready(function () {
     AddListenerForMenu();
+    currentPage = 1;
+
     var id = getUrlVars()["cid"];
     var subid = getUrlVars()["subid"];
     if(subid!=null && subid != 'undefined'){
@@ -24,21 +30,22 @@ $(document).ready(function () {
 function controller(id, sr){
     if (id!=null & id > 0){
             GetProductByCategory(id,sr);//chua sort
-        }else{
-            if(id==0 || id == null){
-                GetAllProduct(sr);
-            }
-            if(id == -1){
-                getDealingPro(sr);
-            }   
-            if(id == -2){
-                getUpcomingPro(sr);
-            }   
-            if(id == -3){
-                var str = getUrlVars()["search"];
-                showSearch(str);
-            }          
+    }else{
+        if(id==0 || id == null){
+            GetAllProduct(sr);
         }
+        if(id == -1){
+            getDealingPro(sr);
+        }   
+        if(id == -2){
+            getUpcomingPro(sr);
+        }   
+        if(id == -3){
+            var str = getUrlVars()["search"];
+            showSearch(str);
+        }          
+    }
+
 }
 
 function GetAllProduct(sort){
@@ -54,14 +61,18 @@ function GetAllProduct(sort){
         header: {"Access-Control-Allow-Origin":true},
         traditional: true
     });
-    request.done(function (data) {
-        // console.log(data);
-        CreateListItem(data);
+    var productList = request.done(function (data) {
+        window.localStorage.setItem('list-product',JSON.stringify(data));
+        createPagingLink();
+        //CreateListItem(data);
+        createFrameItem();
     });
     request.fail(function (data) {
        console.log("fail roi");
     });
 }
+
+
 
 function  CreateListItem(products) {
     var list = $("#list-item-product");
@@ -144,7 +155,10 @@ function GetProductByCategory(cate,sort){
         traditional: true
     });
     request.done(function (data) {
-        CreateListItem(data);
+        window.localStorage.setItem('list-product',JSON.stringify(data));
+        createPagingLink();
+        //CreateListItem(data);
+        createFrameItem();
         editCateName(cate);
     });
     request.fail(function (data) {
@@ -172,7 +186,10 @@ function getDealingPro(sort){
         traditional: true
     });
     request.done(function (data) {
-        CreateListItem(data);
+        window.localStorage.setItem('list-product',JSON.stringify(data));
+        createPagingLink();
+        //CreateListItem(data);
+        createFrameItem();
     });
     request.fail(function (data) {
        console.log("fail roi");
@@ -192,7 +209,10 @@ function getUpcomingPro(sort){
         traditional: true
     });
     request.done(function (data) {
-        CreateListItem(data);
+        window.localStorage.setItem('list-product',JSON.stringify(data));
+        createPagingLink();
+        //CreateListItem(data);
+        createFrameItem();
     });
     request.fail(function (data) {
        console.log("fail roi");
@@ -217,4 +237,23 @@ function showSearch(str){
     request.fail(function (data) {
        console.log("fail roi");
     });
+}
+
+function createPagingLink(){
+    var productList = JSON.parse(window.localStorage.getItem('list-product'));
+    var amountPage = (productList.length - 1)/10 + 1;
+    for (var i = 1; i <= amountPage; i++) {
+        jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+    }
+}
+
+function setCurrentPage(page){
+    currentPage = page;
+    createFrameItem();
+}
+
+function createFrameItem(){
+    var listProduct = JSON.parse(window.localStorage.getItem('list-product'));
+    listProduct = listProduct.slice((currentPage-1)*pageSize,currentPage*pageSize);
+    CreateListItem(listProduct);
 }
