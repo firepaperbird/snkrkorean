@@ -57,6 +57,10 @@ body{
 	top: 21px;
 	left: 524px;
 }*/
+.logo-Img{
+	width: auto;
+	height: 47px;
+}
 .logo{
 	width: 47px;
 	height: 47px;
@@ -88,6 +92,10 @@ a.nav-link:hover{
 	}
 	.menu-item{
 		margin-left: 10px; 
+	}
+	.logo-Img{
+		height: 39px;
+		margin-top: 5px;
 	}
 	.logo{
 		width:39px;

@@ -7,7 +7,7 @@ body{
 nav{
 	background-color: #222222 !important;
 }
-.container{
+#container{
 	background-color: #FFFFFF !important;
 	height: auto;
 	/*width: 90%;*/
@@ -132,6 +132,20 @@ nav{
 	width: 86px !important;
 	font-size: 12px;
 	color: #222222;
+}
+#paging>a{
+    height: 30px !important;
+    width: 30px !important;
+    padding-top: 5px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: #303030; 
+    margin: 0 auto;
+    display: block;
+    color: white;
+}
+#paging{
+    margin-top: 20px;
 }
 /*mobile*/
 @media (max-width: 988px) {

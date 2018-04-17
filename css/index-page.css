@@ -37,11 +37,16 @@ body{
 .imenu-Item{
 	text-align: center;
 	float: left;
+	height: 90px
 	/*width: 180px;
 	width: auto;
 	margin-left: 40px;
 	margin-right: 40px;*/
 	/*border: solid;*/
+}
+.imenu-Item a{
+	display: inline-block;
+	margin-top: 22px!important;
 }
 .imenu-Item:hover{
 	cursor: pointer;
@@ -51,6 +56,10 @@ body{
 }
 .footer-import{
 	z-index: 999999;
+}
+.logo-Img{
+	width: auto;
+	height: 90px;
 }
 @media (max-width: 988px) {
 /*	.imenu-Item{
@@ -62,4 +71,7 @@ body{
 		padding-left: 5%;
 		padding-right: 10px;
 	}*/
+	.main-opacity{
+		padding-top: 35vh;
+	}
 }
