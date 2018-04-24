@@ -74,19 +74,19 @@ function CreateProduct(item) {
     jQuery('.item-id').append('ID: ' + item.ProductId);
     if (item.Discount == 0) {
         gobalPrice=item.Price;
-        jQuery('.item-price-current').append(gobalPrice);
         jQuery('.item-price-current').append(currency);
+        jQuery('.item-price-current').append(gobalPrice);
         jQuery('.item-price-delete').css('display', 'none');
     } else {
         if (item.Type == true) {
-            gobalPrice=(item.Price - item.Discount);
-            jQuery('.item-price-current').append(gobalPrice);
+            gobalPrice=(item.Price - item.Discount);            
             jQuery('.item-price-current').append(currency);
+            jQuery('.item-price-current').append(gobalPrice);
             jQuery('.item-price-delete').append(item.Price);
         } else {
             gobalPrice=item.Price * (1 - item.Discount / 100);
-            jQuery('.item-price-current').append(gobalPrice);
             jQuery('.item-price-current').append(currency);
+            jQuery('.item-price-current').append(gobalPrice);
             jQuery('.item-price-delete').append(item.Price);
         }
     }
@@ -156,7 +156,11 @@ function GetProductComment(id) {
     request.fail(function (data) {
         console.log("fail");
     })
-    $('.input-comment-author').text(JSON.parse(sessionStorage.getItem('customer')).name);
+    //
+    var tmp = sessionStorage.getItem('customer');
+    if(tmp!=null || tmp!=undefined){
+        $('.input-comment-author').text(JSON.parse(tmp).name);
+    }
 }
 
 function CreateListComment(comments){
@@ -268,11 +272,16 @@ function zoomImg(){
     var img = document.getElementById('myImg');
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementById("caption");
-    img.onclick = function(){
+    // img.onclick = function(){
+    //     modal.style.display = "block";
+    //     modalImg.src = this.src;
+    //     captionText.innerHTML = this.alt;
+    // }
+    $('#myImg').on('click', function() {
         modal.style.display = "block";
         modalImg.src = this.src;
         captionText.innerHTML = this.alt;
-    }
+    });
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];

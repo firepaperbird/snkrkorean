@@ -75,7 +75,13 @@ function logout(){
 }
 
 function getCusname(){
-  return JSON.parse(sessionStorage.getItem('customer')).name;
+  var tmp = sessionStorage.getItem('customer');
+  if(tmp!=null || tmp!=undefined){
+    return JSON.parse(tmp).name;
+  }
+  else{
+    return '';
+  }    
 }
 function updateCartNav(){
   if( localStorage.getItem('cartlist')!='undefined'){

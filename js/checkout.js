@@ -45,7 +45,7 @@ function autoFillForUser(data) {
 }
 function updateTotalBill() {
     var cart = JSON.parse(sessionStorage.getItem('order'));
-    $(".total-last").text(cart.orderbill.total + currency);
+    $(".total-last").text(currency+cart.orderbill.total);
 }
 
 function checkout() {

@@ -103,9 +103,9 @@ function CreateItem(pst) {
     content.append(name);
 
     var prices = $('<div class="item-price"></div>');
-    var stockPrice = $('<p class="stockPr">'+pst.Price+currency+'</p>');
+    var stockPrice = $('<p class="stockPr">'+currency+pst.Price+'</p>');
     if(pst.Discount>0){
-        var discountPrice = $('<p class="disPrice">'+calDiscount(pst.Price,pst.Discount)+currency+'</p>');   
+        var discountPrice = $('<p class="disPrice">'+currency+calDiscount(pst.Price,pst.Discount)+'</p>');   
         prices.append(discountPrice);
         stockPrice.css({"text-decoration": "line-through", "font-size": "17px"});
     }
@@ -262,7 +262,7 @@ function updateDiscount(disc){
             num:disnum,
         };
     if(type == "$"){
-        $('.discountnum').text('-'+disnum+currency);           
+        $('.discountnum').text('-'+currency+disnum);           
     }else{
         $('.discountnum').text('-'+disnum+'%');          
     }
@@ -277,7 +277,7 @@ function updateTotalBill(){
         total+= (+item.lastPrice)*(+item.quantity);
     });
     lasttotal=total;
-    $(".total-undis").text(total+currency);
+    $(".total-undis").text(currency+total);
     // alert(total);
     if(discount!=null){
         var type = discount.distype;
@@ -291,7 +291,7 @@ function updateTotalBill(){
         total:lasttotal,
         disct:discount,
     };
-    $(".total-last").text(lasttotal+currency);   
+    $(".total-last").text(currency+lasttotal);   
 }
 function checkoutCart(){
     if(storedAry!=null){
