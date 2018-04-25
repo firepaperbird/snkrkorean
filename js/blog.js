@@ -150,14 +150,41 @@ function CreateImage(src, name) {
 function createPagingLink(){
     var blogList = JSON.parse(window.localStorage.getItem('list-blog'));
     var amountPage = (blogList.length - 4)/pageSize + 1;
-    for (var i = 1; i <= amountPage; i++) {
-        jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+    if (amountPage <= maxNumberOfPageShow){
+        for (var i = 1; i <= amountPage; i++) {
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+        }
+    }else{
+
+        if (currentPage <= 4){
+            for (var i = 1; i <= 6; i++) {
+                jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+            }
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+amountPage+')">'+amountPage+'</a>'));
+        }else if (currentPage > 4 && currentPage < amountPage - 4){
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+1+')">'+1+'</a>'));
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            for (var i = currentPage - 2; i <= currentPage + 2; i++) {
+                jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+            }
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+amountPage+')">'+amountPage+'</a>'));
+
+        }else {
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+1+')">'+1+'</a>'));
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            for (var i = amountPage - 5; i <= amountPage; i++) {
+                jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+            }
+        }
     }
 }
 
 function setCurrentPage(page){
     currentPage = page;
     CreateListItem();
+    createPagingLink();
 }
 
 function createFrameItem(){

@@ -4,6 +4,7 @@
 
 var pageSize = 10;
 var currentPage = 1;
+var maxNumberOfPageShow = 7;
 
 $(document).ready(function () {
     AddListenerForMenu();
@@ -240,16 +241,45 @@ function showSearch(str){
 }
 
 function createPagingLink(){
+    jQuery("#paging").empty();
     var productList = JSON.parse(window.localStorage.getItem('list-product'));
     var amountPage = (productList.length - 1)/pageSize + 1;
-    for (var i = 1; i <= amountPage; i++) {
-        jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+    if (amountPage <= maxNumberOfPageShow){
+        for (var i = 1; i <= amountPage; i++) {
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+        }
+    }else{
+
+        if (currentPage <= 4){
+            for (var i = 1; i <= 6; i++) {
+                jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+            }
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+amountPage+')">'+amountPage+'</a>'));
+        }else if (currentPage > 4 && currentPage < amountPage - 4){
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+1+')">'+1+'</a>'));
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            for (var i = currentPage - 2; i <= currentPage + 2; i++) {
+                jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+            }
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+amountPage+')">'+amountPage+'</a>'));
+
+        }else {
+            jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+1+')">'+1+'</a>'));
+            jQuery("#paging").append(jQuery('<a href="#"">...</a>'));
+            for (var i = amountPage - 5; i <= amountPage; i++) {
+                jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
+            }
+        }
     }
+    
 }
 
 function setCurrentPage(page){
     currentPage = page;
     createFrameItem();
+    createPagingLink();
 }
 
 function createFrameItem(){
