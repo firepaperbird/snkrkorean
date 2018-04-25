@@ -80,7 +80,7 @@ function getCusname(){
     return JSON.parse(tmp).name;
   }
   else{
-    return '';
+    return null;
   }    
 }
 function updateCartNav(){

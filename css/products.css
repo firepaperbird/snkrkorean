@@ -171,6 +171,7 @@
     height: 30px !important;
     width: 30px !important;
     padding-top: 5px;
+    float: left;
     text-align: center;
     border-radius: 15px;
     background-color: #303030; 
