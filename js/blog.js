@@ -149,6 +149,7 @@ function CreateImage(src, name) {
 }
 
 function createPagingLink(){
+    jQuery("#paging").empty();
     var blogList = JSON.parse(window.localStorage.getItem('list-blog'));
     jQuery("#paging").empty();
     var amountPage = (blogList.length - 4)/pageSize + 1;
