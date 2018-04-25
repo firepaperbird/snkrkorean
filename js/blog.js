@@ -1,5 +1,6 @@
 var pageSize = 5;
 var currentPage = 1;
+var maxNumberOfPageShow = 7;
 
 $(document).ready(function () {
     GetAllPost();
