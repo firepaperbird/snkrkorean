@@ -21,7 +21,7 @@ function GetListCategory() {
 
 function CreateOptionParentCategory(categories) {
     categories.forEach(function (category) {
-        if(category.ParentId==0)
+        //if(category.ParentId==0)
             jQuery('#ParentId').append('<option value="'+category.Id+'">'+category.Name+'</option>')
     });
 }

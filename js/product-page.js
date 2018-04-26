@@ -2,7 +2,7 @@
  * Created by ngocnt on 3/3/2018.
  */
 
-var pageSize = 10;
+var pageSize = 12;
 var currentPage = 1;
 var maxNumberOfPageShow = 7;
 
@@ -94,12 +94,12 @@ function CreateItemProduct(product) {
     var divPrice = $('<div></div>');
     var currentPice = $('<span class="price"></span>');
     var price = (product.Type == false)? (product.Price*(1-product.Discount/100)):(product.Price-product.Discount);
-    currentPice.append(price + currency);
+    currentPice.append(currency + price);
 
     divPrice.append(currentPice);
     if (product.Discount != 0){
         var deletedPrice=$('<span class="delete-price"></span>');
-        deletedPrice.append(product.Price + currency);
+        deletedPrice.append(currency + product.Price);
         divPrice.append(deletedPrice);
     }
 
@@ -232,7 +232,7 @@ function showSearch(str){
         traditional: true
     });
     request.done(function (data) {
-        console.log(data);
+        //console.log(data);
         CreateListItem(data);
     });
     request.fail(function (data) {

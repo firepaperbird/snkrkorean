@@ -66,6 +66,7 @@ function getChillByParent(parentId,selectId){
             url:HOST + "category/sub?id="+parentId,
         });
         request.done(function (data) {
+            console.log(data);
             putChild(parentId,data,selectId);
         });
         request.fail(function(data){
@@ -82,6 +83,7 @@ function CreateCategoryChild(name, categoryId, parentId,selectId){
     if (categoryId == selectId){
         category.attr("class","li-actived");
     }
+    category.append('<ul></ul>');
     return category;
 }
 function CreateCategory(name, categoryId, selectedCategory) {
