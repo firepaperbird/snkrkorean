@@ -243,7 +243,7 @@ function showSearch(str){
 function createPagingLink(){
     jQuery("#paging").empty();
     var productList = JSON.parse(window.localStorage.getItem('list-product'));
-    var amountPage = (productList.length - 1)/pageSize + 1;
+    var amountPage = Math.ceil((productList.length)/pageSize);
     if (amountPage <= maxNumberOfPageShow){
         for (var i = 1; i <= amountPage; i++) {
             jQuery("#paging").append(jQuery('<a href="#" onclick="setCurrentPage('+i+')">'+i+'</a>'));
