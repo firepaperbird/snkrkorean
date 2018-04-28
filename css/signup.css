@@ -66,6 +66,7 @@
 	margin-left: 37%;
 	margin-top: 15px !important;
 }
+
 @media (max-width: 988px) {
 
 	#main-fbtext, .reset-pass-form{
@@ -75,7 +76,6 @@
 	width: 60% !important;
 	}
 	#container{
-		height: 650px;
 	}
 	.signup-form{
 		width: 100%;
