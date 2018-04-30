@@ -35,8 +35,12 @@
             </a>
         </div>
         <div class="" id="main-fbtext">
-            <a href="#"><img src="img/social/fb_login_default.png" target="popup" onclick="makeFbLogin()"></a>        
-            <!-- <div class="fb-login-button" data-width="145" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onclick="checkFbLoop()"></div> -->
+                <!-- for desktop  -->
+            <a class="d-none d-lg-block" href="#" >
+                <img src="img/social/fb_login_default.png" target="popup" onclick="makeFbLogin()">
+            </a>    
+                <!-- for mobile -->
+            <div class="fb-login-button d-lg-none" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onlogin="makeFbLogin();"></div>
 
             <div id="lg-text">
                 <div><span>OR</span></div>                
