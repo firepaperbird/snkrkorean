@@ -315,11 +315,15 @@ function createOrder(){
     sessionStorage.setItem('order', JSON.stringify(order));
 }
 function checklogin(){
-    var username=JSON.parse(sessionStorage.getItem('customer')).id;
-    if (username!=null && username!="")
-        return true;
-    else
+    var customer=JSON.parse(sessionStorage.getItem('customer'));
+    if (customer != null){
+            if (username!=null && username!="")
+                return true;
+            else
+            readyeturn false;
+    }else
         return false;
+    
 }
 
 $(document).ready(function () {
