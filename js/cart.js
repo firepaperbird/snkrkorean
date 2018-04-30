@@ -299,9 +299,9 @@ function checkoutCart(){
             createOrder();
             window.location.replace("checkout-fill-info.html");
         }else{
-            alert('please login to checkout <3 ');
-            sessionStorage.setItem('isCheckout',1);
-            window.location.replace("login.html");
+           
+            modal.css('display','block');
+            
         }
     }
 }
@@ -336,3 +336,37 @@ $(document).ready(function () {
         // alert(e.keyCode);
     });
 });
+
+//MODAL JS
+// Get the modal
+var modal = $('#myModal');
+
+var btnYes = $('#btnYes');
+var btnNo = $('#btnNo');
+
+//Go to login page
+btnYes.on('click',function (){
+    sessionStorage.setItem('isCheckout',1);
+    window.location.replace("login.html");
+});
+
+btnNo.on('click',function   (){
+    modal.css('display','none');
+    
+})
+
+// Get the <span> element that closes the modal
+var span = $(".close");
+
+// When the user clicks on <span> (x), close the modal
+span.on('click',function() {
+    modal.css('display','none');
+})
+
+// When the user clicks anywhere outside of the modal, close it
+$( "body" ).on('click',function(event) {
+    if (event.target == modal) {
+            modal.css('display','none');
+        
+    }
+})
