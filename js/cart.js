@@ -317,10 +317,11 @@ function createOrder(){
 function checklogin(){
     var customer=JSON.parse(sessionStorage.getItem('customer'));
     if (customer != null){
+        var username = customer.id;
             if (username!=null && username!="")
                 return true;
             else
-            readyeturn false;
+                return false;
     }else
         return false;
     
