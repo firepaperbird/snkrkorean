@@ -110,12 +110,13 @@ function createImg(imgList){
 }
 
 function addImgToTrash(id){
-    trashBin.push(id);
+    //trashBin.push(id);
+    jQuery('.itemImg').removeClass('trashImg');
     jQuery('#'+id).addClass('trashImg');
 }
 function removeFromTrash(index,imgId) {
     jQuery('#'+imgId).removeClass('trashImg');
-    trashBin.splice(index, 1);
+    //trashBin.splice(index, 1);
 }
 
 
