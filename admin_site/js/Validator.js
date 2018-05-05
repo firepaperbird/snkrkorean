@@ -21,7 +21,7 @@ function IsNotValidNumber(text,min,max){
         return true;
     }
     console.log(parseInt(text));
-    if (parseInt(text) < min || parseInt > max){
+    if (parseInt(text) < min || parseInt(text) > max){
         return true;
     }
     return false;

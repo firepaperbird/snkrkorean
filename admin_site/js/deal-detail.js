@@ -72,12 +72,13 @@ function CreateItemList(){
     var selectedCategory = $('.category-select').val();
     var dataJSON ={
         categoryId:selectedCategory, 
+        sortByPrice: 1
     };
     if(selectedCategory>=0){
         if(selectedCategory > 0){//product/add
             var request = jQuery.ajax({
                 type:"GET",
-                url: HOST + "product/endTime",
+                url: HOST + "product/get/category",
                 dataType:'json',
                 data:dataJSON,
                 header: {"Access-Control-Allow-Origin":true},
@@ -238,7 +239,7 @@ function addItemToList(itemId,name,dis,type){
           }
     });
     var typeBox = $('<select class="category-select form-control custom-select" id="dis-type" ><option value="0">%</option><option value="1">₩</option></select>');
-    typeBox.val(type.toString()).prop('selected', true);
+    typeBox.val(+type).prop('selected', true);
     typeBox.on( "change",function(){
         amountBox.val('0');
         if(typeBox.val()=='0'){

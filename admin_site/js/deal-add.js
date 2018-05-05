@@ -68,12 +68,14 @@ function CreateItemList(){
     var selectedCategory = $('.category-select').val();
     var dataJSON ={
         categoryId:selectedCategory, 
+        sortByPrice: 1
     };
     if(selectedCategory>=0){
         if(selectedCategory > 0){//product/add
             var request = jQuery.ajax({
                 type:"GET",
-                url: HOST + "product/endTime",
+                // url: HOST + "product/endTime",
+                url: HOST + "product/get/category",
                 dataType:'json',
                 data:dataJSON,
                 header: {"Access-Control-Allow-Origin":true},
@@ -82,7 +84,7 @@ function CreateItemList(){
         }else{
             dataJSON ={
                 sortByPrice:-1, //sort from newest to oldest
-                sortById:0
+                sortById:1
             };
             var request = jQuery.ajax({
                 type:"GET",
@@ -211,7 +213,7 @@ function addDeal(){
     });
     request.done(function (data) {
         // alert('add success');
-        window.location.href = "../admin_site/deal-add.html";
+        window.location.href = "../admin_site/deal.html";
     });
     request.fail(function (data) {
         console.log(data);

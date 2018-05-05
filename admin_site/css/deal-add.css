@@ -6,6 +6,10 @@
 	margin: 5px;
 	border: solid;
 }
+.itemPro:active{
+	background-color: green;
+	color: black;
+}
 #dis-num{
 	width: 100%;
 	min-width: 70px;
