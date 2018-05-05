@@ -11,6 +11,7 @@ jQuery(document).ready(function () {
     var productId = window.localStorage.getItem("productId");
     window.localStorage.removeItem("productId");
     GetProduct(productId);
+    
 });
 
 function GetProduct(productId) {
@@ -89,7 +90,8 @@ function createImg(imgList){
     var itme = jQuery('#currentImg');
     if(imgList!=null){
         imgList.forEach(function(Image,index){
-            var imgItem = jQuery('<img src="'+Image.Url+'" id="'+Image.Id+'" class="itemImg">');
+            var divImage = jQuery('<div></div>');
+            var imgItem = jQuery('<img src="'+Image.Url+'" id="'+Image.Id+'" class="itemImg" ondblclick="deleteImage('+Image.Id+')">');
             imgItem.on( "click", function() {
                     const index = trashBin.indexOf(Image.Id);
                     if(index<0){
@@ -100,7 +102,8 @@ function createImg(imgList){
                     //
                     console.log(trashBin);
                 });
-            itme.append(imgItem);
+            divImage.append(imgItem);
+            itme.append(divImage);
         });
     }
     
@@ -171,8 +174,7 @@ function UpdateProduct() {
 function DeleteImg(){
     if(trashBin.length>0){
         var dataJson = {
-            imageId:trashBin,
-            token:getCookie("token")
+            imageId:trashBin
         }
         var request = jQuery.ajax({
             type: "GET",
@@ -191,6 +193,22 @@ function DeleteImg(){
         });
     }
  
+}
+
+function deleteImage(id){
+    var dataJson = {
+        imageId:id
+    };
+    var request = jQuery.ajax({
+            type: "GET",
+            url: HOST + "product/delete/image",
+            dataType: 'json',
+            data: dataJson,
+
+        });
+        request.done(function (data) {
+            jQuery("#"+id).remove();
+        });
 }
 
 function resizeIframe() {
