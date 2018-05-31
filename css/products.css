@@ -111,7 +111,8 @@
 }
 .item{
     width: 28%;
-    height: auto;
+    height: 365px;
+    /*max-height: */
     float: left;    
     margin: 20px;
     margin-bottom: 5%px;
